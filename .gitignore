@@ -43,3 +43,4 @@
 
 bancadoramon.local.key
 bancadoramon.local.crt
+skin/frontend/default/adaptive-shop/node_modules/*
