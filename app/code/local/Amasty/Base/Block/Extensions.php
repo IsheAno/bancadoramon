@@ -1,11 +1,9 @@
 <?php
 /**
  * @author Amasty Team
- * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @copyright Copyright (c) 2016 Amasty (https://www.amasty.com)
  * @package Amasty_Base
- */
-
-
+ */ 
 class Amasty_Base_Block_Extensions extends Mage_Adminhtml_Block_System_Config_Form_Fieldset
 {
     protected $_dummyElement;
@@ -19,10 +17,14 @@ class Amasty_Base_Block_Extensions extends Mage_Adminhtml_Block_System_Config_Fo
         sort($modules);
 
         foreach ($modules as $moduleName) {
-            $moduleFullName = explode('_', $moduleName);
-
-            if (!in_array($moduleFullName[0], array('Amasty', 'Belitsoft', 'Mageplace', 'Magpleasure'))) {
-                continue;
+            if (strstr($moduleName, 'Amasty_') === false) {
+                if(strstr($moduleName, 'Belitsoft_') === false){
+                    if(strstr($moduleName, 'Mageplace_') === false){
+                        if(strstr($moduleName, 'Magpleasure_') === false) {
+                            continue;
+                        }
+                    }
+                }
             }
 
             if (in_array($moduleName, array(
@@ -31,11 +33,10 @@ class Amasty_Base_Block_Extensions extends Mage_Adminhtml_Block_System_Config_Fo
                 continue;
             }
 
-            if ((string)Mage::getConfig()->getModuleConfig($moduleName)->is_system == 'true') {
+            if ((string)Mage::getConfig()->getModuleConfig($moduleName)->is_system == 'true')
                 continue;
-            }
 
-            $html .= $this->_getFieldHtml($element, $moduleName);
+            $html.= $this->_getFieldHtml($element, $moduleName);
         }
         $html .= $this->_getFooterHtml($element);
 
@@ -53,9 +54,8 @@ class Amasty_Base_Block_Extensions extends Mage_Adminhtml_Block_System_Config_Fo
     protected function _getFieldHtml($fieldset, $moduleCode)
     {
         $currentVer = Mage::getConfig()->getModuleConfig($moduleCode)->version;
-        if (!$currentVer) {
+        if (!$currentVer)
             return '';
-        }
 
          // in case we have no data in the RSS
         $moduleName = (string)Mage::getConfig()->getNode('modules/' . $moduleCode . '/name');
@@ -73,12 +73,15 @@ class Amasty_Base_Block_Extensions extends Mage_Adminhtml_Block_System_Config_Fo
 
         $status = '<a  target="_blank"><img src="'.$this->getSkinUrl('images/ambase/ok.gif').'" title="'.$this->__("Installed").'"/></a>';
 
-        if ($allExtensions && isset($allExtensions[$moduleCode])) {
+        if ($allExtensions && isset($allExtensions[$moduleCode])){
 
-            if (is_array($allExtensions[$moduleCode]) && !array_key_exists('name', $allExtensions[$moduleCode])) {
+            $ext = array();
 
-                if (!empty($baseKey) && isset($allExtensions[$moduleCode][$baseKey])) {
+            if (is_array($allExtensions[$moduleCode]) && !array_key_exists('name', $allExtensions[$moduleCode])){
+
+                if (!empty($baseKey) && isset($allExtensions[$moduleCode][$baseKey])){
                     $ext = $allExtensions[$moduleCode][$baseKey];
+
                 } else {
                     $ext = end($allExtensions[$moduleCode]);
                 }
