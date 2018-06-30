@@ -1,0 +1,34 @@
+/* Retina Display
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@media all and (-webkit-min-device-pixel-ratio:2){
+	#dispositivos{background-image:url(../../images/responsive-icon-retina.png);background-size:79px auto;}
+	#mucci a{background-image:url(../../images/mucci-retina.png);background-size:17px 17px;}
+	.product-info .bt-buy,
+	.bt-buy{background-image:url(../../images/bt-nova-buy-2x.png);background-size:25px 22px;}
+	#nav-top #cart{background-image:url(../../images/cart-2x.png);background-size:26px 23px;}
+	#touch{background:transparent url(../../images/login-2x.png) 5px center no-repeat;background-size:26px 23px;}
+	.allc > span{background:url(../../images/allc-arrow-2x.png) 95% center no-repeat;background-size:17px 11px;}
+	.bt-s{background:#3b2705 url(../../images/lupa-src-2x.png) center center no-repeat;background-size:23px 23px;}
+	.cart-table .edit-cart{background-image:url(../../images/edit-2x.png);background-size:19px 20px;}
+	.cart-table .btn-remove{background-image:url(../../images/del-2x.png);background-size:15px 20px;}
+	.box-cart ul li .icons a{background-image:url(../../images/del-t-2x.png);background-size:12px 16px;}
+	.c-visa{background-image:url(../../images/flag/i-visa-2x.png);background-size:28px 19px;}
+	.c-master{background-image:url(../../images/flag/i-master-2x.png);background-size:28px 19px;}
+	.c-boleto{background-image:url(../../images/flag/i-boleto-2x.png);background-size:39px 19px;}
+	.c-bradesco{background-image:url(../../images/flag/i-bradesco-2x.png);background-size:28px 19px;}
+	.c-itau{background-image:url(../../images/flag/i-itau-2x.png);background-size:28px 19px;}
+	.c-bb{background-image:url(../../images/flag/i-bb-2x.png);background-size:29px 29px;}
+	.c-amex{background-image:url(../../images/flag/i-amex-2x.png);background-size:28px 19px;}
+	.c-hiper{background-image:url(../../images/flag/i-hiper-2x.png);background-size:28px 19px;}
+	.i-brasil{background-image:url(../../images/i-entrega-brasil-2x.jpg);background-size:193px 30px;}
+	.i-brasil{background-image:url(../../images/i-entrega-brasil-2x.jpg);background-size:193px 30px;}
+	.i-trans{background-image:url(../../images/i-transportadora-2x.jpg);background-size:193px 26px;}
+	.i-motoboy{background-image:url(../../images/i-motoboy-2x.jpg);background-size:193px 26px;}
+	.i-correios{background-image:url(../../images/i-correios-2x.jpg);background-size:193px 23px;}
+	.i-pagseguro{background-image:url(../../images/icones/i-pagseguro-2x.png);background-size:88px 20px;}
+	.i-paypal{background-image:url(../../images/icones/i-paypal-2x.png);background-size:83px 20px;}
+	.i-cielo{background-image:url(../../images/icones/i-cielo-2x.png);background-size:45px 15px;}
+	.logotipo a{background:url(../../images/logo@2x.png) center center no-repeat;background-size:98px 106px;}
+	.logo_mobile .logotipo a{background:url(../../images/logo-mobile@2x.png) 0 0 no-repeat;background-size:235px 51px;}
+}

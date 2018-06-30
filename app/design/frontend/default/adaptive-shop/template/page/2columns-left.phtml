@@ -1,0 +1,124 @@
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+	<head><?php echo $this->getChildHtml('head') ?></head>
+	<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+		<?php echo $this->getChildHtml('after_body_start') ?>
+	    <?php echo $this->getChildHtml('global_notices') ?>       
+	    <?php echo $this->getChildHtml('header') ?>        
+	    <?php echo $this->getChildHtml('global_messages') ?>
+		<?php
+			$routeName = Mage::app()->getRequest()->getRouteName();
+			$identifier = Mage::getSingleton('cms/page')->getIdentifier();
+		?>	
+		
+		<div id="full" <?php if($routeName != 'cms' && $identifier != 'home') { ?>class="no-home"<?php } ?>>
+			<div id="wrapper">
+
+				<?php if($this->getChildHtml('breadcrumbs') && $routeName != 'cms'):?>
+					<?php echo $this->getChildHtml('breadcrumbs') ?>
+				<?php else: ?>
+					<div id="colunas12">
+						<br/>
+					</div>
+				<?php endif?>
+
+				<div id="colunas3">
+					<?php if($routeName != 'cms' && $identifier != 'home') { ?>
+					
+						<script src="https://www.bancadoramon.com.br/js/jquery/jquery-1.8.1.min.js" type="text/javascript"></script>
+						<script type="text/javascript">
+							jQuery.noConflict();
+							jQuery(document).ready(function(){
+								jQuery("#cat h3").click(function(){
+									jQuery("#cat h3").removeClass( "currently" );
+									jQuery("#cat ul").slideUp();
+									if(!jQuery(this).next().is(":visible")){
+										jQuery(this).next().slideDown();
+									}
+									if(!jQuery(this).hasClass( "currently" )){
+										jQuery(this).addClass( "currently" );
+									}
+								})
+							})
+						</script>
+						<style>#cat li h3{cursor:pointer;}#cat ul {display: none;}#cat li.active ul {display: block;}</style>
+						<?php echo $this->getChildHtml('left') ?>
+					
+					<?php } else if($routeName == 'cms' && $identifier == 'home') { ?>
+		
+						<script type="text/javascript">
+							jQuery.noConflict();
+							jQuery(document).ready(function(){
+								jQuery("#cat h3").click(function(){
+									jQuery("#cat h3").removeClass( "currently" );
+									jQuery("#cat ul").slideUp();
+									if(!jQuery(this).next().is(":visible")){
+										jQuery(this).next().slideDown();
+									}
+									if(!jQuery(this).hasClass( "currently" )){
+										jQuery(this).addClass( "currently" );
+									}
+								})
+							})
+						</script>
+						<style>#cat li h3{cursor:pointer;}#cat ul {display: none;}#cat li.active ul {display: block;}</style>
+						<?php echo $this->getChildHtml('left') ?>					
+						<div class="banner_left"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('banner_left_1')->toHtml(); ?></div>
+						<div class="banner_left"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('banner_left_2')->toHtml(); ?></div>
+						
+						<div class="redes_sociais_left">
+							<p class="bold">SIGA-NOS NAS NOSSAS REDES SOCIAIS</p>
+							<ul>
+								<li><a href="https://www.facebook.com/BancadoRamon" target="_blank" class="trans opacity-1-5"><img src="<?php echo Mage::getBaseUrl() ?>media/images/Facebook-Icon.svg" width="50" height="50"/></a></li>
+								<li><a href="https://www.instagram.com/bancadoramon_/" target="_blank" class="trans opacity-1-5"><img src="<?php echo Mage::getBaseUrl() ?>media/images/Instagram-Icon.svg" width="50" height="50"/></a></li>
+								<li><a href="https://twitter.com/bancaramon" target="_blank" class="trans opacity-1-5"><img src="<?php echo Mage::getBaseUrl() ?>media/images/Twitter-Icon.svg" width="50" height="50"/></a></li>
+							</ul>
+						</div>
+						
+					<?php } else { ?>
+						<style>#cat{display: none}</style>
+						<?php echo $this->getChildHtml('left') ?>
+						<div class="menu_cms">
+							<h4 class="fs-18 cor"><strong>Informações</strong></h4>
+							<ul class="fs-18 cor">
+								<li><a href="https://bancadoramon.com.br/">Home</a></li>
+								<li><a href="http://bancadoramon.local/empresa">Sobre Nós</a></li>
+								<li><a href="http://bancadoramon.local/conheca">Conheça as bancas</a></li>
+								<li><a href="http://bancadoramon.local/como-comprar">Como Comprar</a></li>
+								<li><a href="http://bancadoramon.local/formas-pagamento">Formas de Pagamento</a></li>
+								<li><a href="http://bancadoramon.local/formas-entrega">Formas de Entrega</a></li>
+								<li><a href="http://bancadoramon.local/televendas">Televendas</a></li>
+								<li><a href="http://bancadoramon.local/contacts/" title="Contact Us">Contact Us</a></li>
+							</ul>
+						</div>
+					<?php } ?>			
+				</div>
+				
+				<div id="wrapper-colunas9" class="<?php if($routeName == 'cms' && $identifier == 'home') { ?>homepage<?php } ?>">
+					<?php echo $this->getChildHtml('content') ?>	
+					
+					<div class="fs-16 txt descricao-cat" style="margin: 20px 0px">
+						<?php
+							if($routeName == 'cms' && $identifier == 'home') {
+								$categoryId = 31;
+								$category = Mage::getModel('catalog/category')->load($categoryId);
+								if($category->getId()) {
+								    echo $category->getDescription();
+								}
+							}
+						?>	
+					</div>
+							
+				</div>			
+			</div>
+		</div>  	
+	   	<?php echo $this->getChildHtml('footer') ?>
+	    <?php echo $this->getChildHtml('before_body_end') ?>
+	    <?php echo $this->getAbsoluteFooter() ?>    
+	</body>
+</html>

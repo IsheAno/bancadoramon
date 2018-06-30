@@ -1,0 +1,11 @@
+## Modman Module Mozg
+app/code/local/Mozg/Fee/	app/code/local/Mozg/Fee/
+app/design/adminhtml/default/default/layout/mozg_fee.xml	app/design/adminhtml/default/default/layout/mozg_fee.xml
+app/design/adminhtml/default/default/template/mozg_fee/	app/design/adminhtml/default/default/template/mozg_fee/
+app/design/frontend/base/default/layout/mozg_fee.xml	app/design/frontend/base/default/layout/mozg_fee.xml
+app/design/frontend/base/default/template/mozg_fee/	app/design/frontend/base/default/template/mozg_fee/
+app/etc/modules/Mozg_Fee.xml	app/etc/modules/Mozg_Fee.xml
+app/locale/pt_BR/Mozg_Fee.csv	app/locale/pt_BR/Mozg_Fee.csv
+skin/adminhtml/default/default/images/mozg_fee/	skin/adminhtml/default/default/images/mozg_fee/
+skin/frontend/base/default/css/mozg_fee/	skin/frontend/base/default/css/mozg_fee/
+skin/frontend/base/default/images/mozg_fee/	skin/frontend/base/default/images/mozg_fee/

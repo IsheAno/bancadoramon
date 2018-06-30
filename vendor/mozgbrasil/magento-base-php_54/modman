@@ -1,0 +1,13 @@
+## Modman Module Mozg
+app/code/local/Mozg/Base/	app/code/local/Mozg/Base/
+app/design/adminhtml/default/default/layout/mozg_base.xml	app/design/adminhtml/default/default/layout/mozg_base.xml
+app/design/adminhtml/default/default/template/mozg_base/	app/design/adminhtml/default/default/template/mozg_base/
+app/design/frontend/base/default/layout/mozg_base.xml	app/design/frontend/base/default/layout/mozg_base.xml
+app/design/frontend/base/default/template/mozg_base/	app/design/frontend/base/default/template/mozg_base/
+app/etc/modules/Mozg_Base.xml	app/etc/modules/Mozg_Base.xml
+app/locale/pt_BR/Mozg_Base.csv	app/locale/pt_BR/Mozg_Base.csv
+js/mozg_base/	js/mozg_base/
+skin/adminhtml/default/default/css/mozg_base/	skin/adminhtml/default/default/css/mozg_base/
+skin/adminhtml/default/default/images/mozg_base/	skin/adminhtml/default/default/images/mozg_base/
+skin/frontend/base/default/css/mozg_base/	skin/frontend/base/default/css/mozg_base/
+skin/frontend/base/default/images/mozg_base/	skin/frontend/base/default/images/mozg_base/

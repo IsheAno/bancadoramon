@@ -1,0 +1,192 @@
+<?php    
+        $orderId = Mage::app()->getRequest()->getParam('order_id');
+        $order = Mage::getModel('sales/order')->load($orderId);
+        
+        $cpf = $order->getData('customer_taxvat');
+        
+        $controleFraudes = $this->getModel();
+      
+        //verifica se o CC_Number deve ser enviado
+        //se SIM, verifica se o pedido possui CC number
+        //!!Em caso de customização editar o trecho: $cc = $controleFraudes->getCcNumber($order);       
+        $cc = null;
+        if($controleFraudes->getConfigData('enviar_cc')){
+           // caso utilize um módulo que não salve o CC_Number na tabela padrão do magento
+           // recupere o valor do CC_Number (descriptografado) e atualize valor da variável $cc
+           $cc = $controleFraudes->getCcNumber($order);
+           if($cc !== null){
+                $cc_ok = true;               
+           }
+           else{
+                $cc_ok = false;                
+                $controleFraudes->log('O cartão deveria ser enviado, porém não possível recuperá-lo.');
+           }
+        }
+        else{
+            $cc_ok = true;
+        }
+        
+        //verifica se a transação foi aprovada (Librepag)
+        $aprovada = null;
+        $tr = $controleFraudes->getTransaction($order->getRealOrderId());
+        if($tr) {
+            $transResposta = $tr['transResposta'];
+            if($transResposta == 5 || $transResposta == 6 || $transResposta == 8) {
+                $aprovada = true;
+            }
+            else {
+                $aprovada = false;
+            }
+        }
+        else {
+            $aprovada = true;
+        }
+        
+        //verifica se o método selecionado na configuração do módulo é o mesmo utilizado na compra
+        //se não houver método nenhum marcado nas configurações segue utilizando o Cartão Librepag
+        $metodos = $controleFraudes->getConfigData('metodos');
+        if(empty($metodos)){
+                $metodo_ok = true;
+        }
+        else {
+            $metodos = strtoupper($metodos);
+            $metodos = explode(',',$metodos);
+            $method = strtoupper($order->getPayment()->getMethod());
+            if(in_array($method,$metodos)){
+                $metodo_ok = true;
+            }
+            else{
+                $metodo_ok = false;              
+                $controleFraudes->log('Método não é compatível com a consulta(Ex: Boleto), ou não foi selecionado nas configurações do módulo.');
+                $controleFraudes->log('Método do order:'.$method);
+            }
+        }
+        
+        //checar se campos de billing podem ser recuperados.
+        $billing = $order->getBillingAddress();        
+        if(is_object($billing)){
+            $billing_ok = true;
+        }
+        else{
+            $billing_ok = false;
+            $controleFraudes->log('Não foi possível recuperar os dados de pagamento (Billing).');
+        }
+            
+        //checar se campos de shipping podem ser recuperados.
+        $shipping = $order->getShippingAddress();
+        if(is_object($shipping)){
+            $shipping_ok = true;
+        }
+        else{
+            $shipping_ok = false;
+            $controleFraudes->log('Não foi possível recuperar os dados de entrega (Shipping).');
+            $isVirtual = false;
+            foreach ($order->getAllVisibleItems() as $orderItem) {
+                if ($orderItem->getProductType() == Mage_Catalog_Model_Product_Type::TYPE_VIRTUAL) {
+                    $isVirtual = true;
+                    break;
+                }
+            }
+            if($isVirtual && $controleFraudes->getConfigData('empresa') == 'start') {
+                $shipping_ok = true;
+                $controleFraudes->log('Compra contém produto virtual, pode ser enviado ao Start.');
+            }
+        }
+        
+        $data_ok = null;
+        $dataminima = $controleFraudes->getConfigData('dataminima');
+        if(empty($dataminima)) {
+            $data_ok = true;
+        }
+        else {
+            $date = Mage::app()->getLocale()->date(
+                $dataminima,
+                Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
+                null, 
+                false
+            );
+            $formattedDate = $date->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
+            $created = $order->getCreatedAtStoreDate()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
+            if($created > $formattedDate) {
+                $data_ok = true;
+            }
+            else {
+                $data_ok = false;
+                echo 'Data do pedido inferior a data mínima configurada no módulo ClearSale';
+            }
+        }
+
+// verifica se pode renderizar o conteúdo do bloco com base nas verificações acima.       
+if($cc_ok && $metodo_ok && $billing_ok && $shipping_ok && $data_ok && $aprovada){  
+    
+    if($cpf =='')
+    {
+        $controleFraudes->log('Não tem CPF, tenta consultar direto dos dados do cliente.');
+        //tenta recuperar no cliente, caso utilize campo personalizado
+        $customer = Mage::getSingleton('customer/customer')->load($order->getCustomerId());
+        $cpf = $customer->getData($controleFraudes->getConfigData('cpf'));
+        //tenta recuperar do billing
+        $controleFraudes->log('Valor do campo personalizado: '.$controleFraudes->getConfigData('cpf'));
+        if($cpf =='')
+        {
+            $controleFraudes->log('Ainda não tem CPF, tenta consultar do billing.');
+            $cpf = $billing->getData($controleFraudes->getConfigData('cpf'));
+            //tenta recuperar do shipping
+            if($cpf =='')
+            {
+                $controleFraudes->log('Ainda não tem CPF, tenta consultar do shipping.');
+                $cpf = $shipping->getData($controleFraudes->getConfigData('cpf'));
+            }
+        }
+    }
+?>
+
+<div class="entry-edit" style="width: 510px;">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-payment-method">Controle de Fraudes</h4>
+    </div>
+    <fieldset>           
+
+<?php if (!is_null($order) && $order->getId() && $controleFraudes && $controleFraudes->isEnabled()) : ?>
+    <?php if($controleFraudes->checkEntry()) :?>
+    <?php Mage::app()->getRequest()->setParam('consulta_ok', true); ?>
+    <p><strong>Controle de Fraudes</strong></p>
+
+    <?php if ($controleFraudes->isFrame) : ?>
+        <iframe
+            src="<?php echo $controleFraudes->getUrl($order->getId(), '', $cpf, $this->getParcelas(),$cc); ?>"
+            width="280"
+            height="90"
+            frameborder="0"
+            scrolling="no">
+
+            <p>Seu Browser não suporta iframes</p>
+        </iframe>
+    <?php else : ?>
+        <?php            
+            $status = $controleFraudes->consulta($order->getId(), $cpf, $this->getParcelas(),$cc);
+            if(isset($status)){
+        ?>
+        <div>
+            <p>Data da consulta: <?php echo $status->data; ?></p>
+            <p>Status: <?php echo "({$status->status})" . $controleFraudes->getStatusText($status->status); ?></p>
+            <p>Score: <?php echo $status->score; ?></p>
+            <?php if(!empty ($status->free)) {
+                echo $status->free;
+            }?>
+        </div>
+    <?php
+            }
+        endif; 
+    ?>
+    <?php else: ?>
+        </br><p>ATENÇÃO: <b>A licença de uso do módulo Weblibre - Controle de Fraudes é inválida ou não foi informada</b>.</p>
+        <p>Entre em contato com <strong>Weblibre</strong> (<a href="http://www.weblibre.com.br" target="_blank">www.weblibre.com.br</a>), informe o domínio da sua loja e solicite a sua licença.</p>
+        <?php echo '<b>Domínio:</b> '.Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>
+    <?php endif ;?>
+<?php endif; ?>
+
+    </fieldset>
+</div>
+
+<?php }

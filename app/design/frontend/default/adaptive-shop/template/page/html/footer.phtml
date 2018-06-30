@@ -1,0 +1,113 @@
+<?php
+/**
+ * AdaptiveShop - Mucci Estudio
+ * ola@mucci.co
+ */
+
+/**
+ * Footer
+ **/
+?>
+
+<div id="full">
+	<div id="wrapper">
+		<div id="colunas12">
+		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('banner_block_footer')->toHtml(); ?>
+		</div>
+	</div>
+</div>
+
+<div id="full" class="footer-news">
+	<div id="wrapper"> <?php echo $this->getChildHtml('newsletter') ?> </div>
+</div>
+
+<div id="full" class="footer-bg">
+	<div id="wrapper">
+		<div id="colunas3">
+			<h4 class="footer-h cor-sec info"><strong>Informa&ccedil;&otilde;es</strong></h4>
+			<?php echo $this->getChildHtml('footer_links') ?>
+		</div>
+		<div id="colunas3">
+			<h4 class="footer-h cor-sec pag"><strong>Formas de pagamento</strong></h4>
+			<div class="box-cc"> <img src="/media/pagamento.png" alt="Formas de Pagamento"> </div>
+		</div>
+		<div id="colunas3">
+			<h4 class="footer-h cor-sec pag"><strong>Entrega</strong></h4>
+			<img src="/media/entrega.png" alt="Entrega">
+		</div>
+		<div id="colunas3">
+			<h4 class="footer-h cor-sec news"><strong>Certificados de Seguran&ccedil;a</strong></h4>
+			<div id="certificado-blindado">
+				<a href="http://portal.clearsale.com.br/" target="_blank"><img src="/media/selo.png" alt="ClearSale - Controle anti-fraude" /></a>
+			</div>
+			<div id="armored_website">
+				<param id="aw_preload" value="true" />
+				<script asycn defer type="text/javascript" src="//selo.siteblindado.com/aw.js"></script>
+			</div>
+			<div id="sslblindado">
+				<param id="sslblindado_preload" value="true"/>
+				<script asycn defer type="text/javascript" src="//selo.siteblindado.com/sslblindado.js"></script>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="full" class="foot-bg">
+	<div id="wrapper">
+		<div id="colunas9" class="no-bottom cor-sec fs-12"> Emporio Moreno Andrade &bull; CNPJ: 072542940001-27 &bull; IE: 117.093.870.113<br />
+			&copy; <?php echo $today = date("Y"); ?> <?php echo $this->getCopyright(); ?>
+		</div>
+		<div id="colunas3" class="no-bottom cor-sec fs-12 bold">
+			<div id="mucci"><a target="_blank" href="http://mucci.co/" class="trans opacity-1-5"></a></div>
+			<div id="dispositivos"></div>
+		</div>
+	</div>
+</div>
+
+
+<?php $routeName = Mage::app()->getRequest()->getRouteName(); ?>
+<?php if($routeName != 'cms'): ?>
+
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS); ?>infinite/jquery.ias.min.js"></script>
+
+<script type="text/javascript" asycn defer>
+	var ias  = jQuery.ias({
+	  container   : ".grid-produtos",
+	  item		  : ".prod",
+	  pagination  : ".pages",
+	  next		  : ".pages a.next",
+	  loader	  : "<img src='<?php echo $this->getUrl('') ?>media/images/loading.svg' style='margin-left:48%'/>"
+	});
+
+	ias.on('rendered', function(items) {
+
+		$j = jQuery.noConflict();
+		$j(document).ready(function() {
+		   $j(".list-qtd span.less").on("click", function() {
+		          var qtd_current = parseInt($j(this).parents(".list-qtd").find("input").val());
+		          return qtd_current--, 0 >= qtd_current && (qtd_current = 1), qtd_current > 9 || (qtd_current = qtd_current),$j(this).parents(".list-qtd").find("input").val(qtd_current), !1
+		      });
+		      $j(".list-qtd span.more").on("click", function() {
+		          var qtd_current = parseInt($j(this).parents(".list-qtd").find("input").val());
+		          return qtd_current++, qtd_current > 9 || (qtd_current = qtd_current), $j(this).parents(".list-qtd").find("input").val(qtd_current), !1
+		      });
+		})
+	});
+	ias.extension(new IASSpinnerExtension({
+		
+		src: '<?php echo $this->getUrl('') ?>media/images/loading.svg',
+	}));
+	ias.extension(new IASTriggerExtension({offset: 1, text: '+ Veja mais Produtos'}));
+</script>
+
+<?php endif; ?>
+
+<!--Start of Zendesk Chat Script-->
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+$.src="https://v2.zopim.com/?2xNLTHzXauoJgH5laZbw0EQsBProyXgP";z.t=+new Date;$.
+type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+</script>
+<!--End of Zendesk Chat Script-->

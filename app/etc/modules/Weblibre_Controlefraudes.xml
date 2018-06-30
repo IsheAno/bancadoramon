@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Weblibre_Controlefraudes>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Payment />
+		<Weblibre_WLPayment />
+            </depends>
+        </Weblibre_Controlefraudes>
+    </modules>
+    <global>
+        <blocks>
+            <adminhtml>
+                <rewrite>
+                    <consulta>Weblibre_Controlefraudes_Block_Adminhtml_Consulta</consulta>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+    </global>
+</config>

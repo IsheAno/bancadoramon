@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<layout>
+    <adminhtml_sales_order_creditmemo_new>
+        <reference name="creditmemo_totals">
+            <block type="mozg_fee/adminhtml_sales_order_creditmemo_totals" before="tax" name="mozg_totals" />
+            <block type="mozg_fee/adminhtml_sales_order_creditmemo_create_adjustments" before="adjustments" name="adjust_mozg_fee" template="mozg_fee/creditmemo/totals/adjustments.phtml" />
+        </reference>
+    </adminhtml_sales_order_creditmemo_new>
+
+    <adminhtml_sales_order_creditmemo_updateqty>
+        <reference name="creditmemo_totals">
+            <block type="mozg_fee/adminhtml_sales_order_creditmemo_totals" before="tax" name="mozg_totals" />
+            <block type="mozg_fee/adminhtml_sales_order_creditmemo_create_adjustments" before="adjustments" name="adjust_mozg_fee" template="mozg_fee/creditmemo/totals/adjustments.phtml" />
+        </reference>
+    </adminhtml_sales_order_creditmemo_updateqty>
+</layout>

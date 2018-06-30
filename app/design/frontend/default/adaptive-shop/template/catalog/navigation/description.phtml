@@ -1,0 +1,9 @@
+<?php
+$_helper = $this->helper('catalog/output');
+$_category = $this->getCurrentCategory();
+$_description=$this->getCurrentCategory()->getDescription();
+	
+	 ?>
+<div class="category-description">
+  <?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?> 
+</div>

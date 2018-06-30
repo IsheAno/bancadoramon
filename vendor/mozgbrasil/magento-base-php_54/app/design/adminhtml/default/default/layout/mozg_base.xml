@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<layout>
+
+    <default>
+        <reference name="head">
+          <!--<action method="addJs">
+                <script>mozg_base/utils.js</script>
+                <params><![CDATA[name=""]]></params>
+            </action>-->
+            <action method="addItem">
+              <type>js_css</type>
+              <name>prototype/windows/themes/default.css</name>
+              <params><![CDATA[name=""]]></params>
+            </action>
+            <action method="addCss">
+              <css>lib/prototype/windows/themes/magento.css</css>
+              <params><![CDATA[name=""]]></params>
+            </action>
+            <!--<action method="addJs">
+              <script>mozg_base/symfony_dump.js</script>
+              <params><![CDATA[name=""]]></params>
+            </action>-->
+            <action method="addJs">
+              <script>mozg_base/script.js</script>
+              <params><![CDATA[name=""]]></params>
+            </action>
+            <action method="addCss">
+              <stylesheet>css/mozg_base/style.css</stylesheet>
+            </action>
+        </reference>
+    </default>
+
+    <adminhtml_sales_order_create_index>
+        <reference name="head">
+            <action method="addJs">
+                <script>mozg_base/bundle.js</script>
+                <params><![CDATA[name=""]]></params>
+            </action>
+            <block type="core/text" name="mozg.base.include.script">
+                <action method="setText">
+                    <text><![CDATA[
+                    <script>
+                    console.log(require);
+                    </script>
+                    ]]>
+                    </text>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_sales_order_create_index>
+
+<!--
+    <adminhtml_sales_order_view>
+
+        <reference name="content">
+            <block type="mozg_loggi/adminhtml_sales_order_view_info" name="mozg_loggi_order_info2" template="mozg_loggi/sales/order/view/info.phtml" before="-" />
+        </reference>
+
+        <reference name="order_tab_info">
+            <block type="adminhtml/template" name="popup_window" template="mozg_loggi/sales/order/view/info.phtml">
+             </block>
+        </reference>
+
+        <reference name="order_info">
+            <block type="mozg_loggi/adminhtml_sales_order_view_info" name="mozg_base_order_info" template="mozg_base/to-do.phtml" />
+        </reference>
+        
+    </adminhtml_sales_order_view>
+
+-->
+
+</layout>

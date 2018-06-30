@@ -1,0 +1,8 @@
+<?php
+	$numParcelas = $this->getNumParcelas();
+	$valorParcela = $this->getValorParcela($numParcelas);
+?>
+
+<?php if ($numParcelas > 1) : ?>
+		ou <?php echo $numParcelas ?>x de R$ <?php echo number_format($valorParcela,2,',','.') ?>
+<?php endif; ?>

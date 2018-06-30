@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <weblibre>
+            <label>Weblibre</label>
+            <sort_order>200</sort_order>
+        </weblibre>
+    </tabs>
+    <sections>
+        <weblibre_controlefraudes translate="label" module="adminhtml">
+            <label>Controle de Fraudes</label>
+            <tab>weblibre</tab>
+            <sort_order>200</sort_order>
+            <frontend_type>text</frontend_type>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <controlefraudes translate="label" module="controlefraudes">
+                    <label>Configuração</label>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Ativo</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <serial translate="label">
+                            <label>Número da Licença</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </serial>
+                        <empresa translate="label">
+                            <label>Modalidade</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Weblibre_Controlefraudes_Model_Source_Empresas</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </empresa>
+                        <modo translate="label">
+                            <label>Modo</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Weblibre_Controlefraudes_Model_Source_Modo</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </modo>
+                        <codigo translate="label">
+                            <label>Código de Acesso (EntityCode)</label>
+                            <!--<comment>preencha somente se tiver selecionado a empresa Clear Sale</comment>-->
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </codigo>
+                        <fingerprint translate="label">
+                            <label>Chave do app (Fingerprint)</label>
+                            <comment>
+                                <![CDATA[ 
+                                    Utilizado para T-ClearSale e A-ClearSale.
+                                    Preencha este campo com a chave de fingerprint informada pela ClearSale.
+                                    Caso sua integração não utilize chave de fingerprint, deixe este campo em branco.
+                                ]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </fingerprint>
+                        <order_status translate="label">
+                            <label>Status alterado em caso de aprovação</label>
+                            <comment>
+                                <![CDATA[ 
+                                    Utilizado para T-ClearSale e A-ClearSale.
+                                    Se nenhum status for selecionado a o módulo não realizará alteração no status dos pedidos.
+                                    Caso necessite de um Estado personalizado, após criá-lo, vincule o mesmo ao status <strong>'new'</strong>.                                    
+                                ]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status_new</source_model>
+                            <sort_order>38</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </order_status>
+                        <controle_status translate="label">
+                            <label>Status alterado no momento da consulta automática</label>
+                            <comment>
+                                <![CDATA[ 
+                                    Utilizado para T-ClearSale e A-ClearSale.
+                                    Se nenhum status for selecionado a o módulo não realizará alteração no status dos pedidos.
+                                    Caso necessite de um Estado personalizado, após criá-lo, vincule o mesmo ao status <strong>'new'</strong>.
+                                ]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status_new</source_model>
+                            <sort_order>38</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </controle_status>
+                        <consulta_auto translate="label">
+                            <label>Consultar status no ato da venda</label>
+                            <comment>
+                                <![CDATA[ 
+                                    Utilizado para T-ClearSale e A-ClearSale.
+                                    Ative esta opção caso deseje que o módulo envie o pedido para a ClearSale assim que a venda ocorrer.
+                                    Utilize esta opção caso o método de pagamento da venda não faça essa consulta automaticamente.
+                                ]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>39</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </consulta_auto>
+                        <metodos translate="label">
+                            <label>Método de Pagamento</label>
+                            <comment>
+                                <![CDATA[
+                                    Selecione apenas métodos de pagamento via cartão de crédito.
+                                ]]>
+                            </comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>Weblibre_Controlefraudes_Model_Source_Metodos</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </metodos>
+                        <limite_produto translate="label">
+                            <label>Limitar tamanho do nome dos produtos</label>
+                            <comment>
+                                <![CDATA[ 
+                                    Utilizado para T-ClearSale e Start ClearSale.
+                                    Em alguns casos, o envio do nome completo do produto pode ocasionar erros no envio do XML à ClearSale.
+                                    Caso isto ocorra, habilite esta opção.                                    
+                                ]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>41</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </limite_produto>
+                        <enviar_cc translate="label">
+                            <label>Enviar número de cartão</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>42</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enviar_cc>
+                        <debug translate="label">
+                            <label>Debug</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>43</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </debug> 
+                        <cpf translate="label">
+                            <label>Campo personalizado para CPF</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>44</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cpf>
+                        <dataminima translate="label">
+                            <label>Analisar pedidos feitos a partir de:</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>Weblibre_Controlefraudes_Block_Adminhtml_System_Config_Date</frontend_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </dataminima>
+                    </fields>
+                </controlefraudes>
+            </groups>
+        </weblibre_controlefraudes>
+    </sections>
+</config>

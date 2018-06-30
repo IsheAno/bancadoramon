@@ -1,0 +1,42 @@
+{
+    "name": "mozgbrasil/magento-base-php_54",
+    "description": "Módulo base para Magento",
+    "version": "dev-master",
+    "type": "magento-module",
+    "keywords": ["cerebrum", "mozg", "magento", "email", "api", "bridge"],
+    "homepage": "http://mozg.com.br",
+    "time": "2017-10-25 18:35:42",
+    "license": [
+        "proprietary"
+    ],
+    "authors": [
+        {
+            "name": "Marcio dos Santos Amorim",
+            "email": "suporte@mozg.com.br",
+            "homepage": "http://mozg.com.br",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "suporte@mozg.com.br",
+        "issues": "https://github.com/mozgbrasil/magento-base-php_54/issues",
+        "forum": "http://mozg.com.br/forums/view/1",
+        "wiki": "http://wiki.mozg.com.br",
+        "irc": "irc://irc.freenode.org/mozgbrasil",
+        "source": "https://github.com/mozgbrasil/magento-base-php_54",
+        "docs": "https://github.com/mozgbrasil/magento-base-php_54/wiki",
+        "rss": "http://mozg.com.br/sitemap.xml"
+    },
+    "require" : {
+        "magento-hackathon/magento-composer-installer": "*",
+        "mozgbrasil/php-framework-php_54": "dev-master"
+    },
+    "suggest": {
+        "connect20/mage_locale_pt_br": "pt_BR locale",
+        "aschroder/smtp_pro": "sending Magento mail through an external smtp-server",
+        "aoepeople/aoe_scheduler": "Magento Cron Scheduler",
+        "magento-hackathon/hackathon_magemonitoring": "Magento Monitoring Module to get information about the current installation (Server,Cache,PHP,Rewrites,Logs,...)",
+        "jayelkaake/enhancedgrid": "Improves the existing Magento admin product management grid. It adds some useful, customizable features to the admin product management grid including new columns and tools.",
+        "husseycoding/customordergrid": "Sort and filter the sales order grid by many different columns."
+    }
+}

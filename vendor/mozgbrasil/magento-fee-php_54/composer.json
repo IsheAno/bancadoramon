@@ -1,0 +1,30 @@
+{
+    "name": "mozgbrasil/magento-fee-php_54",
+    "description": "Integração ao fee",
+    "version": "dev-master",
+    "type": "magento-module",
+    "keywords": ["cerebrum", "mozg", "magento", "shipping", "entrega", "fee", "transporte"],
+    "homepage": "http://mozg.com.br",
+    "time": "2017-10-25 18:35:42",
+    "license": [
+        "proprietary"
+    ],
+    "authors": [
+        {
+            "name": "Marcio dos Santos Amorim",
+            "email": "suporte@mozg.com.br",
+            "homepage": "http://mozg.com.br",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "suporte@mozg.com.br",
+        "issues": "https://github.com/mozgbrasil/magento-fee-php_54/issues",
+        "forum": "http://mozg.com.br/forums/view/1",
+        "wiki": "http://wiki.mozg.com.br",
+        "irc": "irc://irc.freenode.org/mozgbrasil",
+        "source": "https://github.com/mozgbrasil/magento-fee-php_54",
+        "docs": "https://github.com/mozgbrasil/magento-fee-php_54/wiki",
+        "rss": "http://mozg.com.br/sitemap.xml"
+    }
+}

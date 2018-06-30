@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_InvisibleCaptcha
+ */
+-->
+<config>
+    <modules>
+        <Amasty_InvisibleCaptcha>
+            <version>1.0.0</version>
+        </Amasty_InvisibleCaptcha>
+    </modules>
+    <global>
+        <helpers>
+            <aminvisiblecaptcha>
+                <class>Amasty_InvisibleCaptcha_Helper</class>
+            </aminvisiblecaptcha>
+        </helpers>
+        <blocks>
+            <aminvisiblecaptcha>
+                <class>Amasty_InvisibleCaptcha_Block</class>
+            </aminvisiblecaptcha>
+        </blocks>
+        <models>
+            <aminvisiblecaptcha>
+               <class>Amasty_InvisibleCaptcha_Model</class>
+            </aminvisiblecaptcha>
+        </models>
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <ampredispatch>
+                        <class>Amasty_InvisibleCaptcha_Model_Observer</class>
+                        <method>handleControllers</method>
+                    </ampredispatch>
+                </observers>
+            </controller_action_predispatch>
+        </events>
+    </global>
+    <frontend>
+        <translate>
+            <modules>
+                <Amasty_InvisibleCaptcha>
+                    <files>
+                        <default>Amasty_InvisibleCaptcha.csv</default>
+                    </files>
+                </Amasty_InvisibleCaptcha>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <aminvisiblecaptcha>
+                    <file>amasty/aminvisiblecaptcha.xml</file>
+                </aminvisiblecaptcha>
+            </updates>
+        </layout>
+    </frontend>
+</config>

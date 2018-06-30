@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+     <!-- Insere a tag na página de coclusão do pedido com sucesso -->
+     <checkout_onepage_success>
+	<reference name="content">            
+            <block type="controlefraudes/success" name="controlefraudes_success" template="controlefraudes/success.phtml" />
+        </reference>        
+     </checkout_onepage_success>
+     
+</layout>

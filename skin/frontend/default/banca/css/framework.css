@@ -1,0 +1,70 @@
+
+.opc .active .step-title, #nav ul li.over, .block .block-title, .data-table thead th, .account-login .content h2, .fieldset .legend{background:#C40000;}
+
+.tabs li.active{border-top:2px solid #C40000}
+
+#nav li.active { border-top: 1px solid #C40000;}
+
+button.button span{background:#C40000!important; border:0px solid #C40000!important;}
+
+.btn-remove, .btn-edit, .my-wishlist .buttons-set button.button span, .button.btn-continue span, .button.btn-update span, .shipping button.button span, .discount button.button span, .btn-edit2, .my-wishlist .link-edit, 
+.email-friend:hover i, .add-to-links .link-wishlist:hover i, .add-to-links .link-compare:hover i, #fancybox-close, .flexslider button.button {background-color:#C40000}
+ 
+.cart-top-container .details-border:before{border-color: transparent transparent #C40000 transparent;}
+.search-form-border:before{border-color: transparent transparent #C40000 transparent;}
+
+/** links hover color **/
+.header-container .links li a:hover, .product-view .product-shop .no-rating a:hover, .product-view .product-shop .ratings a:hover, .data-table td a:hover, .block-account .block-content li.current{color:#C40000}
+
+.tabs a{background:#F5F5F5}
+
+.tabs a{color:#000}
+
+.regular-price .price, .categories-slide .product-details .regular-price .price, .price-box .price, .price, .product-view .product-shop .price, .products-list .regular-price .price{color:#2F2F2F}
+
+.header {background:#252525;}
+
+.top-links {background:#111111;}
+
+.top-login a.link, .site-links li a, .selectSwitch2 a, .cart-top a{color:#999999}
+
+.top-login a.link:hover, .site-links li a:hover, .selectSwitch2 a:hover, .cart-top a:hover{color:#ffffff}
+
+.footer-info h3 {color:#FFFFFF}
+
+.wrapper, .wrap-page, .main {background:#FBFBFB}
+
+.page-head-alt h3,
+.block-login .block-title,
+#checkout-review-table h3,
+.product-category-title,
+#shopping-cart-totals-table strong, h1, h2, h3, h4, h5, h6, .page-title h1, .page-title h2, .std h1, .std h2, .std h3, .std h4, 
+
+.product-view .product-shop .product-name h1, .blockHome .product-title a,.product-collateral h2, .categories-slide .title, .block .block-title {color:#000000}
+
+.product-view .product-shop .no-rating a, .product-view .product-shop .ratings a,
+.data-table td a, .add-to-links li a, .products-list .desc .link-learn, .product-view .add-to-links a, .email-friend a, 
+.box-account a, .blockCategory .cat-view, .product-view .product-shop .add-to-links a, .block .block-content a{color:#999999}
+
+.product-view .product-shop .no-rating a:hover, .product-view .product-shop .ratings a:hover,
+.data-table td a:hover, .add-to-links li a:hover, .products-list .desc .link-learn:hover, .product-view .add-to-links a:hover, .email-friend a:hover, 
+.box-account a:hover, .rating-links a:hover, .blockCategory .cat-view:hover, .block-cart .amount a:hover, 
+.link-wishlist:hover, .link-compare:hover, .product-view .product-shop .add-to-links a:hover,
+.cart .totals .checkout-types a:hover, .mini-login .mini-login-forgotpass span a:hover, .block .product-name a:hover, .block-account .block-content li a:hover,
+.block-content a:hover{color:#8F0000}
+
+.navmobile #left-nav {background-color:#252525}
+
+.navmobile #left-nav ul.subcategory {background-color:#000}
+
+.navmobile #left-nav li.active a, .navmobile #left-nav li.openn a, .navmobile #left-nav li a {color:#FFFFFF}
+
+.navmobile #left-nav li ul li a {color:#fff}
+
+
+#nav a {color:#E3E3E3}
+
+.footer-container{background-color:#1E1E1E}
+
+.footer-info a, .footer-info ul li a, .footer .copyright a, .footer a, .footer address a, .copyright-info ul.links a {color:#9C9C9C}
+

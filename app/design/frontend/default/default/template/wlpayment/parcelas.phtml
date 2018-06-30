@@ -1,0 +1,142 @@
+<?php
+	$payments = Mage::getSingleton('payment/config')->getActiveMethods();
+	foreach ($payments as $paymentCode=>$paymentModel) {
+		//echo $paymentCode . ' : ' . $paymentModel . '<br />';
+
+		$this->setPaymentTitle(Mage::getStoreConfig('payment/'.$paymentCode.'/title'));
+
+		if (Mage::getStoreConfig('payment/' . $paymentCode . '/parcelas') != '') {
+			$this->setMaxParcelas(Mage::getStoreConfig('payment/' . $paymentCode . '/parcelas'));
+		}
+		else {
+			$this->setMaxParcelas($this->getMaxParcelas());
+		}
+
+		if (Mage::getStoreConfig('payment/' . $paymentCode . '/valor_minimo') != '') {
+			$this->setValorMinimo(Mage::getStoreConfig('payment/' . $paymentCode . '/valor_minimo'));
+		}
+		else {
+			$this->setValorMinimo($this->getValorMinimo());
+		}
+
+		if (Mage::getStoreConfig('payment/' . $paymentCode . '/taxa_juros') != '') {
+			$this->setTaxaJuros(Mage::getStoreConfig('payment/' . $paymentCode . '/taxa_juros'));
+		}
+		else {
+			$this->setTaxaJuros($this->getTaxaJuros());
+		}
+		
+		if (Mage::getStoreConfig('payment/' . $paymentCode . '/parcelas_semjuros') != '') {
+			$this->setParcelasSemJuros(Mage::getStoreConfig('payment/' . $paymentCode . '/taxa_juros'));
+		}
+		else {
+			$this->setParcelasSemJuros($this->getParcelasSemJuros());
+		}
+
+		$numParcelas = $this->getNumParcelas();
+		$parcelasSemJuros = $this->getParcelasSemJuros();
+
+		if ($paymentCode == 'BoletoBancario_standard') {
+?>
+			<div class="boleto-info">
+				<div class="boleto-image">
+					<img src="<?php echo $this->getSkinUrl('images/cards/ct_boleto.gif') ?>" />
+				</div>
+				<p>Pague com Boleto Bancário.</p>
+				<p class="boleto-valor">
+					<?php 
+						$valorDesconto = $this->getDesconto($this->getTotal(), 0.04);
+						echo 'R$ '. number_format($valorDesconto,2,',','.');
+					?>
+				</p>
+				<p>(valor já c/ 4% de desconto)</p>
+			</div>
+<?php	}
+		
+		else if ($paymentCode == 'bankpayment') {
+?>
+			<div class="deposito-info">
+				<div class="deposito-image">
+					<img src="<?php echo $this->getSkinUrl('images/cards/ct_deposito.gif') ?>" />
+				</div>
+				<p>Pague com Débito Online.</p>
+				<p class="deposito-valor"><?php desconto($this->getTotal()); ?></p>
+				<p>(valor já c/ 4% de desconto)</p>
+			</div>
+<?php	}
+
+		else if (($paymentCode == 'ccsave' || $paymentCode == 'ipagare') && $numParcelas > 1) { 
+?>
+			<div class="parcelamento-info">
+				<div class="parcelamento-images">
+					<img src="<?php echo $this->getSkinUrl('images/cards/visa.gif') ?>" />
+					<img src="<?php echo $this->getSkinUrl('images/cards/mastercard.gif') ?>" />
+					<img src="<?php echo $this->getSkinUrl('images/cards/amex.gif') ?>" />
+					
+					<?php if ($paymentCode == 'ipagare') : ?>
+						<img src="<?php echo $this->getSkinUrl('images/cards/ct_boleto.gif') ?>" />
+						<img src="<?php echo $this->getSkinUrl('images/cards/ct_deposito.gif') ?>" />
+					<?php endif; ?>
+				</div>
+				
+				<div class="parcelamento-title">Parcelamento no cartão de crédito *</div>
+				<table width="100%" class="parcelas-grid">
+					<tr>
+					<?php if($parcelasSemJuros > 0){ ?>
+						<td>
+							<table width="100%" class="sem-juros">
+								<tr>
+									<th>Parcelas</th>
+									<th>Valor</th>
+								</tr>
+								<?php	
+								for($i=1; $i <= $parcelasSemJuros; $i++){
+									$valorParcela = $this->getValorParcela($i);
+									$infJuros = 'sem juros';
+								?>
+										<tr>
+											<td <?php if($i <= $parcelasSemJuros){ ?>class="valor-parcela-bold"<?php }else{ ?>class="valor-parcela"<?php } ?>>
+												<?php echo $i ?>x <?php echo $infJuros; ?>
+											</td>
+											<td align="right" <?php if($i <= $parcelasSemJuros){ ?>class="valor-parcela-bold"<?php }else{ ?>class="valor-parcela"<?php } ?>>
+												R$ <?php echo number_format($valorParcela,2,',','.') ?>
+											</td>
+										</tr>
+								<?php 
+								} 
+								?>
+							</table>
+						</td>
+					<?php } if($numParcelas - $parcelasSemJuros > 0){ ?>
+						<td>
+							<table width="100%" class="com-juros">
+								<tr>
+									<th>Parcelas</th>
+									<th>Valor</th>
+								</tr>
+								<?php	
+								for($i = $parcelasSemJuros+1; $i <= $numParcelas; $i++){
+									$valorParcela = $this->getValorParcela($i);
+									$infJuros = 'com juros';
+								?>
+									<tr>
+										<td <?php if($i <= $parcelasSemJuros){ ?>class="valor-parcela-bold"<?php }else{ ?>class="valor-parcela"<?php } ?>>
+											<?php echo $i ?>x <?php echo $infJuros; ?>
+										</td>
+										<td <?php if($i <= $parcelasSemJuros){ ?>class="valor-parcela-bold"<?php }else{ ?>class="valor-parcela"<?php } ?>>
+											R$ <?php echo number_format($valorParcela,2,',','.') ?>
+										</td>
+									</tr>
+								<?php 
+								} 
+								?>
+							</table>
+						</td>
+					<?php } ?>
+					</tr>
+				</table>
+			</div>	
+<?php 
+		}
+	}
+?>

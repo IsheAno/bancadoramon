@@ -1,0 +1,110 @@
+<?php
+/**
+ */
+?>
+<?php if($this->getItems()->getSize()): ?>
+	<br/>
+    <div id="colunas12">
+        <h3 class="cor fs-20 d-b">Veja tamb&eacute;m</h3>
+    </div>
+
+    <?php $_columnCount = 4; ?>
+    <?php $i=0; foreach($this->getItems() as $_item): ?>
+    <?php if ($i++%$_columnCount==0): ?>
+    <?php endif ?>
+    <div id="colunas3" class="prod">
+    <div class="nova-h">
+        <div class="tag-label">
+            <?php // flag novo produto ?>
+			<?php // Limit dates for newness
+			$newFromDate = Mage::getModel('catalog/product')->load($_item->getID())->getNewsFromDate();
+			$newToDate = Mage::getModel('catalog/product')->load($_item->getID())->getNewsToDate();
+			// Date and time (now)
+			$now = date("Y-m-d");
+			if($newFromDate < $now && $newToDate >= $now): ?>
+				<p class="novo">novidade</p>
+			<?php endif; ?>
+
+			<?php if($_item->isSaleable()): ?>
+		    <?php else: ?>
+		    	<p class="novo">esgotado</p>
+		    <?php endif; ?>
+
+            <?php // flag promo‹o ?>
+			<?php
+    		// Get the Special Price
+    		/* $specialprice = Mage::getModel('catalog/product')->load($_item->getId())->getSpecialPrice(); 
+    		// Get the Special Price FROM date
+    		$specialPriceFromDate = Mage::getModel('catalog/product')->load($_item->getId())->getSpecialFromDate();
+    		// Get the Special Price TO date
+    		$specialPriceToDate = Mage::getModel('catalog/product')->load($_item->getId())->getSpecialToDate();
+    		// Get Current date
+    		$today =  time(); 
+    		if ($specialprice):
+        		if($today >= strtotime( $specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >=
+strtotime( $specialPriceFromDate) && is_null($specialPriceToDate)): */ ?>
+				<!--<p class="oferta">promo&ccedil;&atilde;o</p>-->
+			<?php  
+        	/*	endif;
+    		endif; */ 
+    		?>
+        </div>
+    	<a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_item, 'small_image'), null, true) ?>" class="product-image prod">
+           <img class="img-prod" src="<?php echo $this->helper('catalog/image')->init($_item, 'small_image')->resize(263); ?>" width="263" height="263" alt="<?php echo $this->stripTags($this->getImageLabel($_item, 'small_image'), null, true) ?>" /></a>
+           
+        <div id="info-prod">
+        	<a class="fs-14 txt d-b" href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $_item->getName() ?>"><h2><?php echo $_item->getName() ?></h2></a>
+        	<!--R$ <?php //echo number_format($_item->getFinalPrice(), '2', '.', ','); ?>-->
+			<?php echo $this->getPriceHtml($_item, true) ?>
+			<p class="cor fs-20 bold">
+				<?php // parcelamento valor ?>
+				<?php 
+				$Preco = $_item->getFinalPrice();				
+				if($Preco >= 100){ 
+				$Parcelamento = 2;
+				$Resultado = $Preco/ $Parcelamento;
+				echo $Parcelamento .'x '.number_format($Resultado, 2, ',', '').' sem juros';
+				}/*else if($Preco >= 79.90 and $Preco <= 119.80){ 
+				$Parcelamento = 2;
+				}else if($Preco >= 119.90 and $Preco <= 159.60){
+				$Parcelamento = 3; 
+				}else if($Preco >= 159.70 and $Preco <= 199.50){
+				$Parcelamento = 4; 
+				}else if($Preco >= 199.60 and $Preco <= 239.40){
+				$Parcelamento = 5; 
+				}else if($Preco >= 239.50 and $Preco <= 279.60){
+				$Parcelamento = 6; 
+				}else if($Preco >= 279.70 and $Preco <= 319.20){
+				$Parcelamento = 7; 
+				}else if($Preco >= 319.30 and $Preco <= 359.10){
+				$Parcelamento = 8; 
+				}else if($Preco >= 359.20 and $Preco <= 398.90){
+				$Parcelamento = 9; 
+				}else if($Preco >= 399){
+				$Parcelamento = 10; 
+				}*/
+				//$Parcelamento = 10;
+				?>
+			</p>
+			 <form action="<?php echo $this->getAddToCartUrl($_item) ?>" method="post" id="product_addtocart_form_<?php echo $_item->getId()?>"<?php if($_item->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+				 <div class="list-qtd">
+					 <span class="qtd-text">Qtd:</span>
+					 <?php $loadProduct = Mage::getModel('catalog/product')->load( $_item->getId() );?>
+					<?php if($_item->isSaleable()): ?>
+						<input style="text-align:center;" class="op-i" type="text" name="qty" id="qty" maxlength="5" value="<?php echo $this->getMinimalQty($loadProduct);?>" />
+				    <?php else: ?>
+						<input style="text-align:center;" class="op-i" type="text" name="qty" id="qty" disabled="disabled" maxlength="5" value="<?php echo $this->getMinimalQty($loadProduct);?>" />
+				    <?php endif; ?>
+				 </div>
+										
+				<div class="bt-nova">
+					<!-- <a href="javascript:void(0)" onclick="setLocation('<?php echo $this->getAddToCartUrl($_item) ?>')" title="Comprar">Comprar</a> -->
+					<a href="javascript:void(0)" title="Comprar" onclick="document.getElementById('product_addtocart_form_<?php echo $_item->getId()?>').submit(); return false">Adicionar</a>
+				</div>
+			</form>
+        </div>
+    </div>
+    </div>
+    <?php if($i%$_columnCount==0): ?><div id="colunas12" class="no-bottom"></div><?php endif ?>
+    <?php endforeach ?>
+<?php endif ?>

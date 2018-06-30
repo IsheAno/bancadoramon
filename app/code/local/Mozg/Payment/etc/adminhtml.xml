@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children> 
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <mozg_base>
+                        <children>
+                            <payment>
+                                <title>Payment Methods</title>
+                                <sort_order>40</sort_order>
+                            </payment>
+                        </children>
+                    </mozg_base>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <mozg_base>
+            <children>
+                <payment translate="title">
+                    <title>Payment Methods</title>
+                    <action>adminhtml/system_config/edit/section/payment</action>
+                    <sort_order>40</sort_order>
+                    <children>  
+                    </children>
+                </payment>
+            </children>
+        </mozg_base>
+    </menu>
+</config>

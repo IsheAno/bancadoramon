@@ -1,0 +1,22 @@
+<?php if($crumbs && is_array($crumbs)): ?>
+	<div id="colunas12">
+	  <div class="breadcrumbs fs-15 txt">
+	    <ul>
+	      <li class="inicio">
+	        <div> <span>&laquo;&nbsp;</span> <a href="https://www.bancadoramon.com.br/" title="Home"><span>Home</span>&nbsp;&raquo;&nbsp; </a> </div>
+	      </li>
+	      <?php foreach($crumbs as $_crumbName=>$_crumbInfo): ?>
+	      <li class="<?php echo $_crumbName ?>">
+	        <?php if($_crumbInfo['link']): ?>
+	        <div> <a href="<?php echo $_crumbInfo['link'] ?>" title="<?php echo $this->htmlEscape($_crumbInfo['title']) ?>"><span itemprop="title"><?php echo $this->htmlEscape($_crumbInfo['label']) ?></span></a>&nbsp;&raquo;&nbsp; </div>
+	        <?php elseif($_crumbInfo['last']): ?>
+	        <div> <span class="bold"><?php echo $this->htmlEscape($_crumbInfo['label']) ?></span> </div>
+	        <?php else: ?>
+	        <div> <span><?php echo $this->htmlEscape($_crumbInfo['label']) ?></span> </div>
+	        <?php endif; ?>
+	      </li>
+	      <?php endforeach; ?>
+	    </ul>
+	  </div>
+	</div>
+<?php endif; ?>

@@ -1,0 +1,36 @@
+<?php
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+/*dump($this->getData());
+dump(get_class_methods(get_class($this)));
+dump(get_class_vars(get_class($this)));*/
+
+?>
+
+<!-- <?php echo get_class($this) ?> -->
+
+<script type="text/javascript">
+console.log('<?php echo get_class($this) ?>');
+</script>
+
+<div id="notification-messages">
+    <ul class="messages">
+        <li class="notice-msg">
+            <ul>
+                <li><span>Aguarde a finalização do carregamento da página</span></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+window.addEventListener("load", function(){ 
+    document.getElementById('notification-messages').style.display = 'none'; 
+});
+</script>
+
+
+<!-- / <?php echo get_class($this) ?> -->

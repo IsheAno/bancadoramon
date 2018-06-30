@@ -1,0 +1,8 @@
+[29-Sep-2016 22:03:01 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/lib/php/extensions/no-debug-non-zts-20131226/suhosin.so' - /usr/local/lib/php/extensions/no-debug-non-zts-20131226/suhosin.so: undefined symbol: zend_execute_ex in Unknown on line 0
+[29-Sep-2016 22:03:01 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/lib/php/extensions/no-debug-non-zts-20131226/pdo.so' - /usr/local/lib/php/extensions/no-debug-non-zts-20131226/pdo.so: undefined symbol: zend_new_interned_string in Unknown on line 0
+[29-Sep-2016 22:03:01 UTC] PHP Warning:  PHP Startup: pdo_sqlite: Unable to initialize module
+Module compiled with module API=20131226
+PHP    compiled with module API=20090626
+These options need to match
+ in Unknown on line 0
+[29-Sep-2016 22:03:01 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/lib/php/extensions/no-debug-non-zts-20131226/pdo_mysql.so' - /usr/local/lib/php/extensions/no-debug-non-zts-20131226/pdo_mysql.so: undefined symbol: mysqlnd_allocator in Unknown on line 0

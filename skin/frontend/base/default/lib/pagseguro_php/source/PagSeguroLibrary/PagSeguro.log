@@ -1,0 +1,41 @@
+{2017/06/02 17:44:40} [Info] PagSeguroPaymentService.Register(PagSeguroRequest: array (
+  'Reference' => '14381',
+  'SenderEmail' => 'fernanda_k1@hotmail.com',
+)) - begin 
+{2017/06/02 17:44:42} [Info] PagSeguroPaymentService.Register(PagSeguroRequest: array (
+  'Reference' => '14381',
+  'SenderEmail' => 'fernanda_k1@hotmail.com',
+)) - end {1}052889C9141430F1144F9F9FFE51F205 
+{2017/06/03 14:20:52} [Info] PagSeguroPaymentService.Register(PagSeguroRequest: array (
+  'Reference' => '14386',
+  'SenderEmail' => 'eniobutzke@gmail.com',
+)) - begin 
+{2017/06/03 14:20:54} [Info] PagSeguroPaymentService.Register(PagSeguroRequest: array (
+  'Reference' => '14386',
+  'SenderEmail' => 'eniobutzke@gmail.com',
+)) - end {1}D91AA3881E1EDFFDD45A6F82527EA03F 
+{2017/06/03 14:23:46} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=6F8754-EA662E662E49-D884E75FAED4-145FFB) - begin 
+{2017/06/03 14:23:48} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=6F8754-EA662E662E49-D884E75FAED4-145FFB) - end Transaction: array (
+  'code' => '10E9632D-0A7D-4118-B5B8-6773FD14821B',
+  'email' => 'eniobutzke@gmail.com',
+  'date' => '2017-06-03T11:21:14.000-03:00',
+  'reference' => '14386',
+  'status' => '3',
+  'itemsCount' => 1,
+)) 
+{2017/06/17 14:27:14} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=6BCDF6-C8045F045F63-C994A3CF988C-64FC8B) - begin 
+{2017/06/17 14:27:15} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=6BCDF6-C8045F045F63-C994A3CF988C-64FC8B) - error [HTTP 401] - UNAUTHORIZED  
+{2017/06/17 15:22:13} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=6BCDF6-C8045F045F63-C994A3CF988C-64FC8B) - begin 
+{2017/06/17 15:22:18} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=6BCDF6-C8045F045F63-C994A3CF988C-64FC8B) - error [HTTP 401] - UNAUTHORIZED  
+{2017/06/17 17:19:07} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=6BCDF6-C8045F045F63-C994A3CF988C-64FC8B) - begin 
+{2017/06/17 17:19:08} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=6BCDF6-C8045F045F63-C994A3CF988C-64FC8B) - error [HTTP 401] - UNAUTHORIZED  
+{2017/06/17 19:21:49} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=6BCDF6-C8045F045F63-C994A3CF988C-64FC8B) - begin 
+{2017/06/17 19:21:50} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=6BCDF6-C8045F045F63-C994A3CF988C-64FC8B) - error [HTTP 401] - UNAUTHORIZED  
+{2017/06/17 21:23:24} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=6BCDF6-C8045F045F63-C994A3CF988C-64FC8B) - begin 
+{2017/06/17 21:23:25} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=6BCDF6-C8045F045F63-C994A3CF988C-64FC8B) - error [HTTP 401] - UNAUTHORIZED  
+{2017/06/17 23:24:52} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=6BCDF6-C8045F045F63-C994A3CF988C-64FC8B) - begin 
+{2017/06/17 23:24:53} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=6BCDF6-C8045F045F63-C994A3CF988C-64FC8B) - error [HTTP 401] - UNAUTHORIZED  
+{2018/01/12 19:03:31} [Info] PagSeguroTransactionSearchService.SearchByDate(initialDate=2017-12-13T19:03, finalDate=2018-01-12T15:03) - begin 
+{2018/01/12 19:03:32} [Error] PagSeguroTransactionSearchService.SearchByDate(initialDate=2017-12-13T19:03, finalDate=2018-01-12T15:03) - end [HTTP 401] - UNAUTHORIZED  
+{2018/01/12 19:03:35} [Info] PagSeguroTransactionSearchService.searchAbandoned(initialDate=2017-12-13T19:03, finalDate=2018-01-12T15:03) - begin 
+{2018/01/12 19:03:36} [Error] PagSeguroTransactionSearchService.searchAbandoned(initialDate=2017-12-13T19:03, finalDate=2018-01-12T15:03) - end [HTTP 401] - UNAUTHORIZED  

@@ -1,0 +1,21 @@
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <aminvisiblecaptcha translate="title" module="aminvisiblecaptcha">
+                                        <title>Google Invisible Captcha</title>
+                                    </aminvisiblecaptcha>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

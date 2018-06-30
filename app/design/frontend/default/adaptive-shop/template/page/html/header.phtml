@@ -1,0 +1,289 @@
+<?php
+/**
+	ADAPTIVE SHOP - MUCCI ESTUDIO
+	@var Mage_Page_Block_Html_Header $this
+**/
+?>
+
+<!-- GetSite Control -->
+<script>
+  (function (w,i,d,g,e,t,s) {w[d] = w[d]||[];t= i.createElement(g);
+    t.async=1;t.src=e;s=i.getElementsByTagName(g)[0];s.parentNode.insertBefore(t, s);
+  })(window, document, '_gscq','script','//widgets.getsitecontrol.com/103827/script.js');
+</script>
+<!-- End GetSite Control -->
+
+<script type="text/javascript" asycn defer>
+	var j = jQuery.noConflict();
+	j(function() {
+		j( '#dl-menu, #dl-menu-mobile' ).dlmenu({
+			animationClasses : { classin : 'dl-animate-in-3', classout : 'dl-animate-out-3' }
+		});
+	});
+</script>
+
+<div id="full" class="top-bar-bg white menu_fixed_mobile">
+	<div id="wrapper" style="width:100%;padding: 0px !important;">
+
+		<div class="barra_superior_mobile">
+			<div class="logo_mobile">
+				<div class="logotipo">
+					<a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo d-b trans opacity-1-5">
+						<span><?php echo $this->getLogoAlt() ?></span>
+					</a>
+				</div>
+			</div>
+			<div class="carrinho_mobile">
+				<?php echo $this->getChildHtml('cart_top') ?>
+			</div>
+		</div>
+
+		<div class="barra_inferior_mobile">
+			<div id="dl-menu-mobile" class="dl-menuwrapper menu_mobile" style="display: inline-block;margin: 0;float: left;position: relative;z-index: 99999;">
+				<a href="#" id="clickmenu" class="dl-trigger trans liclickmenu " title="Menu"></a>
+				<ul class="dl-menu"><?php echo $this->getChildHtml('topMenu') ?></ul>
+			</div>
+			<div class="barra_busca_mobile"><?php echo $this->getChildHtml('topSearchMobile') ?></div>
+			<div class="my_account_mobile">
+				<a href="/customer/account/login/">
+					<svg width="21px" height="21px" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+					        <g id="iPhone-7" transform="translate(-341.000000, -84.000000)" stroke-width="2" stroke="#3B2706">
+					            <g id="header_Menu/0ff-Copy" transform="translate(342.000000, 85.000000)">
+					                <g id="Group-3">
+					                    <circle id="Oval" cx="9.5" cy="5.5" r="5.5"></circle>
+					                    <polygon id="Rectangle" stroke-linecap="round" stroke-linejoin="round" points="3 11 16 11 19 19 0 19"></polygon>
+					                </g>
+					            </g>
+					        </g>
+					    </g>
+					</svg>
+				</a>
+			</div>
+		</div>
+
+		<div class="barra_ofertas_mobile">
+			<div class="promocao_topo">
+		        <p>
+					<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+					        <g id="header" transform="translate(-140.000000, -18.000000)" stroke="#C7B199">
+					            <g id="promo-top" transform="translate(140.000000, 18.000000)">
+					                <g id="ico_promocao">
+					                    <g id="Icone-Promoção" transform="translate(1.000000, 1.000000)">
+					                        <polygon id="Star" stroke-width="2" points="13 24.0500003 8.98277907 25.3637347 6.50497278 21.939638 2.48277907 20.6412083 2.4908252 16.4146379 -1.47970525e-12 13 2.4908252 9.58536212 2.48277907 5.35879172 6.50497278 4.06036196 8.98277907 0.636265288 13 1.94999969 17.0172209 0.636265288 19.4950272 4.06036196 23.5172209 5.35879172 23.5091748 9.58536212 26 13 23.5091748 16.4146379 23.5172209 20.6412083 19.4950272 21.939638 17.0172209 25.3637347"></polygon>
+					                    </g>
+					                    <polygon id="Star-2" fill="#C7B199" points="14.180608 16.5936271 11.5968502 17.9519889 12.090304 15.0749323 10 13.0373895 12.8887291 12.6176326 14.180608 10 15.4724869 12.6176326 18.361216 13.0373895 16.270912 15.0749323 16.7643658 17.9519889"></polygon>
+					                </g>
+					            </g>
+					        </g>
+					    </g>
+					</svg>
+			       Frete Grátis para compras acima de R$150,00 para São Paulo (capital). Entrega em 24 horas
+			    </p>
+	        </div>
+		</div>
+
+	</div>
+</div>
+
+<div id="full" class="menu_desktop_margin"></div>
+
+<div id="full" class="menu_fixed_desktop">
+	<div id="wrapper">
+		<div id="colunas12" class="no-bottom">
+
+			<div id="header_logo_grid" class="no-bottom">
+				<div class="logotipo">
+					<a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo d-b trans opacity-1-5">
+						<span><?php echo $this->getLogoAlt() ?></span>
+					</a>
+				</div>
+			</div>
+
+			<div id="header_barras_grid" class="no-bottom">
+		        <div class="barra_superior">
+			        <div class="promocao_topo">
+				        <p>
+							<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+							    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+							        <g id="header" transform="translate(-140.000000, -18.000000)" stroke="#C7B199">
+							            <g id="promo-top" transform="translate(140.000000, 18.000000)">
+							                <g id="ico_promocao">
+							                    <g id="Icone-Promoção" transform="translate(1.000000, 1.000000)">
+							                        <polygon id="Star" stroke-width="2" points="13 24.0500003 8.98277907 25.3637347 6.50497278 21.939638 2.48277907 20.6412083 2.4908252 16.4146379 -1.47970525e-12 13 2.4908252 9.58536212 2.48277907 5.35879172 6.50497278 4.06036196 8.98277907 0.636265288 13 1.94999969 17.0172209 0.636265288 19.4950272 4.06036196 23.5172209 5.35879172 23.5091748 9.58536212 26 13 23.5091748 16.4146379 23.5172209 20.6412083 19.4950272 21.939638 17.0172209 25.3637347"></polygon>
+							                    </g>
+							                    <polygon id="Star-2" fill="#C7B199" points="14.180608 16.5936271 11.5968502 17.9519889 12.090304 15.0749323 10 13.0373895 12.8887291 12.6176326 14.180608 10 15.4724869 12.6176326 18.361216 13.0373895 16.270912 15.0749323 16.7643658 17.9519889"></polygon>
+							                </g>
+							            </g>
+							        </g>
+							    </g>
+							</svg>
+					        <span>Frete Grátis </span>para compras acima de R$150,00 para São Paulo (capital). Entrega em 24 horas
+					    </p>
+			        </div>
+			        <div class="header_contatos_funmask display_desktop">
+						<ul>
+							<li style="margin-right: 30px;">
+								<svg width="22px" height="20px" viewBox="0 0 22 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+								    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								        <g id="header" transform="translate(-761.000000, -22.000000)">
+								            <g id="ico_tel" transform="translate(761.000000, 22.000000)">
+								                <path d="M17,7 C17,3.6862915 14.3137085,1 11,1 C7.6862915,1 5,3.6862915 5,7" id="Oval" stroke="#C7B199" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+								                <rect id="Rectangle" stroke="#C7B199" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x="1" y="8" width="4" height="6" rx="2"></rect>
+								                <rect id="Rectangle-Copy-2" stroke="#C7B199" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x="17" y="8" width="4" height="6" rx="2"></rect>
+								                <path d="M17,10 C17,10 17,11.4673233 17,13.2885385 L17,14.7114615 C17,16.5276711 15.5283692,18 13.7125075,18 L11,18" id="Rectangle-Copy-3" stroke="#C7B199" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+								                <path d="M5,11.5714286 L5,7" id="Line" stroke="#C7B199" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+								                <path d="M17,11.5714286 L17,7" id="Line-Copy-2" stroke="#C7B199" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+								                <circle id="Oval-2" fill="#C7B199" fill-rule="evenodd" cx="8.5" cy="9.5" r="1.5"></circle>
+								                <circle id="Oval-2-Copy-2" fill="#C7B199" fill-rule="evenodd" cx="11" cy="18" r="2"></circle>
+								                <circle id="Oval-2-Copy" fill="#C7B199" fill-rule="evenodd" cx="13.5" cy="9.5" r="1.5"></circle>
+								            </g>
+								        </g>
+								    </g>
+								</svg>
+								<a href="#"class="trans">(11) 3228-1377</a>  |  <a href="#"class="trans">(11) 3329-9300</a>
+							</li>
+							<li>
+								<a href="https://api.whatsapp.com/send?phone=5511941498555&text=Ol%C3%A1%2C%20Banca%20do%20Ramon!" title="(11) 9-4149-8555" class="trans whatsapp" target="_blank">
+									WhatsApp
+								</a>
+							</li>
+						</ul>
+					</div>
+			    </div>
+		        <div class="barra_inferior">
+					<ul id="nav-top" class="f-l cor-sec fs-12">
+						<li class="liclickmenu f-l" >
+							<div id="dl-menu" class="dl-menuwrapper" style="display: inline-block;margin: 0;float: left;position: relative;z-index: 99999;">
+								<a href="#" id="clickmenu" class="dl-trigger trans menu-desktop" title="Menu">Navegue por aqui</a>
+								<ul class="dl-menu"><?php echo $this->getChildHtml('topMenu') ?></ul>
+							</div>
+						</li>
+					</ul>
+					<ul class="list_login_cart">
+						<div class="cart_desktop">
+							<?php echo $this->getChildHtml('cart_top') ?>
+						</div>
+                        <li class="f-l fs-14 mob login" id="login-container">
+
+                        </li>
+					</ul>
+					<?php echo $this->getChildHtml('topSearch') ?>
+		        </div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<?php
+	$routeName = Mage::app()->getRequest()->getRouteName();
+	$identifier = Mage::getSingleton('cms/page')->getIdentifier();
+?>
+<?php if($routeName == 'cms'){ ?>
+
+	<link rel="stylesheet" type="text/css" href="https://www.bancadoramon.com.br/js/owl-carousel/owl.carousel.css" />
+	<link rel="stylesheet" type="text/css" href="https://www.bancadoramon.com.br/js/owl-carousel/owl.theme.css"/>
+	<link rel="stylesheet" type="text/css" href="https://www.bancadoramon.com.br/js/owl-carousel/owl.transitions.css"/>
+	<script type="text/javascript" src="https://www.bancadoramon.com.br/js/owl-carousel/owl.carousel.min.js"></script>
+	<script type="text/javascript">
+		jQuery.noConflict();
+		jQuery(document).ready(function() {
+			jQuery("#b-slider").owlCarousel({
+				autoPlay : 5000,
+				stopOnHover : true,
+				navigation: false,
+				pagination: true,
+				singleItem : true,
+				autoHeight : true,
+				reponsive: true
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		jQuery.noConflict();
+		jQuery(document).ready(function() {
+			jQuery('#carousel-home .grid-produtos').owlCarousel({
+			   	navigation: true,
+				pagination: true,
+				items: 4,
+				itemsMobile : [767,2]
+			});
+		});
+	</script>
+		
+	<?php if($identifier == 'home') { ?>
+
+		<div id="full" class="banner-bg"  style="height: 320px;">
+			<div id="b-slider" class="owl-carousel owl-theme bnr_novo_modelo">
+				
+				<div class="new-banner banner-image banner-copa"><a href="https://www.bancadoramon.com.br/ofertas-promocoes"></a></div>
+				<div class="new-banner banner-image banner-kit-inverno"><a href="https://www.bancadoramon.com.br/catalogsearch/result/index/?q=kit+de+inverno"></a></div>
+
+				<!--<div class="new-banner banner-image banner-diadosnamorados"><a href="https://www.bancadoramon.com.br/super-ofertas-especial-dia-dos-namorados"></a></div> -->
+                
+                <div class="new-banner banner-image banner-vinhos"><a href="https://www.bancadoramon.com.br/bebidas/vinhos"></a></div>
+                <div class="new-banner banner-image banner-queijos"><a href="https://www.bancadoramon.com.br/catalogsearch/result/?q=queijo"></a></div>
+            </div>
+		</div>
+
+		<div id="full" class="banner-faixa">
+			<div id="wrapper">
+				<div id="colunas12"></div>
+				<div id="colunas12">
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('banner_faixa')->toHtml(); ?>
+				</div>
+				<div id="colunas6" class="banner_responsive">
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('banner_block_e_s')->toHtml(); ?>
+				</div>
+				<div id="colunas6" class="banner_responsive">
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('banner_block_d_s')->toHtml(); ?>
+				</div>
+			</div>
+		</div>
+
+	<?php } else if($identifier == 'empresa') { ?>
+
+		<div id="full" class="banner-bg"  style="height: 320px;">
+			<div id="b-slider" class="owl-carousel owl-theme bnr_novo_modelo">
+				<div class="new-banner banner-image banner-empresa"><a href="#"></a></div>
+			</div>
+		</div>
+
+	<?php } else if($identifier == 'como-comprar') { ?>
+
+		<div id="full" class="banner-bg"  style="height: 320px;">
+			<div id="b-slider" class="owl-carousel owl-theme bnr_novo_modelo">
+				<div class="new-banner banner-image banner-comocomprar"><a href="#"></a></div>
+			</div>
+		</div>
+
+	<?php } else if($identifier == 'formas-pagamento') { ?>
+
+		<div id="full" class="banner-bg"  style="height: 320px;">
+			<div id="b-slider" class="owl-carousel owl-theme bnr_novo_modelo">
+				<div class="new-banner banner-image banner-formasdepagamento"><a href="#"></a></div>
+			</div>
+		</div>
+
+	<?php } else if($identifier == 'formas-entrega') { ?>
+
+		<div id="full" class="banner-bg"  style="height: 320px;">
+			<div id="b-slider" class="owl-carousel owl-theme bnr_novo_modelo">
+				<div class="new-banner banner-image banner-formasdeentrega"><a href="#"></a></div>
+			</div>
+		</div>
+
+	<?php } else if($identifier == 'conheca') { ?>
+
+		<div id="full" class="banner-bg"  style="height: 320px;">
+			<div id="b-slider" class="owl-carousel owl-theme bnr_novo_modelo">
+				<div class="new-banner banner-image banner-conheca"><a href="#"></a></div>
+			</div>
+		</div>
+
+	<?php } ?>
+
+<?php } ?>

@@ -1,0 +1,98 @@
+/* Ações */
+
+/* Cor
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.cor-sec,
+.cor-sec a{color:#faf6f0;}
+.cor,
+.cor a,
+.cor a span,
+.std a,
+.box-cart ul li span .price{color:#3b2705;}
+.txt,
+.txt a,
+p,
+span,
+.product-info{color:#3b2705;}
+.top-bar-bg{background:#3b2705;}
+.footer-bg{background:#faf7f3;}
+.footer-news{background:#e6ddd1;}
+.banner-bg{background:#faf7f3;}
+input[type="text"],
+textarea{background:#fff;border-radius:0;}
+.foot-bg{background:#3b2705;padding:20px 0 16px!important;}
+.bt,
+.bt2{background-color:#387606;border:none;padding:8px 10px 7px;color:#fff;}
+.bt2{padding:5px 10px 4px;}
+.bt3{background-color:#bbb;border:none;padding:3px 8px;}
+.bt:hover{background-color:#489708;text-decoration:none;}
+.bt2:hover{background-color:#489608;text-decoration:none;}
+.bt3:hover{background-color:#816d59;text-decoration:none;}
+.no-bt{border:none;text-decoration:none!important;background:#999 url(../../images/no-bt-nova-buy.png) 20px center no-repeat!important;}
+
+/* Detalhes
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+a{text-decoration:none;}
+a:hover,
+button:hover{text-decoration:underline;cursor:pointer;}
+.bd-t{border-top:1px solid #eaeaea;}
+.trans,
+.trans a,
+.trans img{transition:all 0.15s ease-in-out 0s!important;-moz-transition:all 0.15s ease-in-out 0s!important;-webkit-transition:all 0.15s ease-in-out 0s!important;-o-transition:all 0.15s ease-in-out 0s!important;}
+.opacity-1-5,
+.opacity-1-5 a,
+.opacity-1-5 img{opacity:1;}
+.opacity-1-5:hover,
+.opacity-1-5 a:hover,
+.opacity-1-5 img:hover{opacity:0.5;cursor:pointer;}
+
+/* Tipografia
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.fs-10{font-size:10px;}
+.fs-11{font-size:11px;}
+.fs-12{font-size:12px;}
+.fs-13{font-size:13px;}
+.fs-14{font-size:14px;}
+.fs-15{font-size:15px;}
+.fs-16{font-size:16px;}
+.fs-17{font-size:17px;}
+.fs-18{font-size:18px;}
+.fs-20{font-size:20px;}
+.fs-22{font-size:22px;}
+.fs-23{font-size:23px;}
+.fs-24{font-size:24px;}
+.fs-25{font-size:25px;}
+.price{color:#3b2705;}
+.prod .price{font-size:20px;}
+.td-n,
+.td-n a{text-decoration:none!important;}
+.td-u,
+.td-u a{text-decoration:underline;}
+.tt-u{text-transform:uppercase;}
+.normal{font-weight:normal;}
+em{font-style:italic;}
+.bold,
+strong{font-family:"effra-n7","effra",sans-serif;font-style:normal;font-weight:700;}
+.regular{font-family:"effra-n4","effra",sans-serif;font-style:normal;font-weight:400;}
+.medium{font-family:"effra-n5","effra",sans-serif;font-style:normal;font-weight:500;}
+.italic{font-family:"effra-i4","effra",sans-serif;font-style:italic;font-weight:400;}
+
+/* Alinhamento
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.f-r{float:right;}
+.f-l{float:left;}
+.ta-c{text-align:center;}
+.ta-l{text-align:left;}
+.ta-r{text-align:right;}
+.d-b{display:block;}
+.d-i{display:inline;}
+.d-ib{display:inline-block;}
+.clear,
+.clear4{clear:both;}
+.no-bottom{margin-bottom:0px!important;}
+.m-auto{margin:0 auto!important;}
+.m-top{margin-top:20px!important;}
+.no-p{padding:0!important;}
+::selection{color:#FFFFFF;background-color:#3B2705;}
+::-webkit-selection{color:#FFFFFF;background-color:#3B2705;}
+::-moz-selection{color:#FFFFFF;background-color:#3B2705;}

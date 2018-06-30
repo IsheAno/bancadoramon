@@ -1,0 +1,55 @@
+<?php
+
+	$payments = Mage::getSingleton('payment/config')->getActiveMethods();
+	foreach ($payments as $paymentCode=>$paymentModel) {
+		//echo $paymentCode . ' : ' . $paymentModel . '<br />';
+
+		$this->setPaymentTitle(Mage::getStoreConfig('payment/'.$paymentCode.'/title'));
+
+		if (Mage::getStoreConfig('payment/' . $paymentCode . '/parcelas') != '') {
+			$this->setMaxParcelas(Mage::getStoreConfig('payment/' . $paymentCode . '/parcelas'));
+		}
+		else {
+			$this->setMaxParcelas(10);
+		}
+
+		if (Mage::getStoreConfig('payment/' . $paymentCode . '/valor_minimo') != '') {
+			$this->setValorMinimo(Mage::getStoreConfig('payment/' . $paymentCode . '/valor_minimo'));
+		}
+		else {
+			$this->setValorMinimo(0);
+		}
+
+		if (Mage::getStoreConfig('payment/' . $paymentCode . '/taxa_juros') != '') {
+			$this->setTaxaJuros(Mage::getStoreConfig('payment/' . $paymentCode . '/taxa_juros'));
+		}
+		else {
+			$this->setTaxaJuros(1.99);
+		}
+		
+		if (Mage::getStoreConfig('payment/' . $paymentCode . '/parcelas_semjuros') != '') {
+			$this->setParcelasSemJuros(Mage::getStoreConfig('payment/' . $paymentCode . '/taxa_juros'));
+		}
+		else {
+			$this->setParcelasSemJuros(6);
+		}
+
+		$numParcelas = $this->getNumParcelas();
+		$parcelasSemJuros = $this->getParcelasSemJuros();
+		
+		//var_dump($paymentCode);
+		
+		if ($paymentCode == 'ccsave' && $numParcelas > 1) { 
+?>
+			<div class="parcelamento-categoria">
+				<?php
+					$valorParcela = $this->getValorParcela($numParcelas);
+				?>
+				<p>
+					ou até <?php echo $numParcelas ?>x de <span>R$ <?php echo number_format($valorParcela,2,',','.') ?></span>
+				</p>
+			</div>	
+<?php 
+		}
+	}
+?>

@@ -1,0 +1,12 @@
+## Modman Module Mozg
+app/code/local/Mozg/Payment/	app/code/local/Mozg/Payment/
+app/design/adminhtml/default/default/layout/mozg_payment.xml	app/design/adminhtml/default/default/layout/mozg_payment.xml
+app/design/adminhtml/default/default/template/mozg_payment/	app/design/adminhtml/default/default/template/mozg_payment/
+app/design/frontend/base/default/layout/mozg_payment.xml	app/design/frontend/base/default/layout/mozg_payment.xml
+app/design/frontend/base/default/template/mozg_payment/	app/design/frontend/base/default/template/mozg_payment/
+app/etc/modules/Mozg_Payment.xml	app/etc/modules/Mozg_Payment.xml
+app/locale/pt_BR/Mozg_Payment.csv	app/locale/pt_BR/Mozg_Payment.csv
+js/mozg_payment/	js/mozg_payment/
+skin/adminhtml/default/default/images/mozg_payment/	skin/adminhtml/default/default/images/mozg_payment/
+skin/frontend/base/default/css/mozg_payment/	skin/frontend/base/default/css/mozg_payment/
+skin/frontend/base/default/images/mozg_payment/	skin/frontend/base/default/images/mozg_payment/

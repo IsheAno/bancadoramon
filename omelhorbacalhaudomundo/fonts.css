@@ -1,0 +1,17 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+    font-family: "expressway";
+    src: url("fonts/expressway rg.eot"); /*somente para o IE*/
+    src: url("fonts/expressway rg.ttf") format("truetype"); /*para outros browsers*/
+}
+@font-face {
+    font-family: "Museo300-Regular";
+    src: url("fonts/Museo300-Regular.eot"); /*somente para o IE*/
+    src: url("fonts/Museo300-Regular.ttf") format("truetype"); /*para outros browsers*/
+}
+@font-face {
+    font-family: "Museo300-Regular";
+    src: url("fonts/Museo300-Regular.eot"); /*somente para o IE*/
+    src: url("fonts/Museo300-Regular.ttf") format("truetype"); /*para outros browsers*/
+}

@@ -1,0 +1,1404 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config>
+    <!--<sections>
+        <payment>
+            <groups>
+                <mozg_payment_abstract translate="label" module="mozg_payment">
+                    <label>Payment Default Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <frontend_class>complex</frontend_class>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_payment/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path/>
+                    <fields>
+                        <mozg_payment_getting_started type="group" translate="label comment tooltip">
+                            <label><![CDATA[Documentation & Support]]></label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>0</sort_order>
+                            <frontend_class>mozg-payment-methods with-button</frontend_class>
+                            <frontend_model>mozg_payment/adminhtml_system_config_fieldset_gettingstarted</frontend_model>
+                            <comment><![CDATA[
+                            <ul>
+                                <li><a target="_blank" href="http://vimeo.com/94005128">Instructional video on how to set up the Mozg Magento plugin</a></a>
+                                <li><a target="_blank" href="https://www.mozg.com/dam/documentation/manuals/MagentoQuickIntegrationManual.pdf">Download the Quick Quick Integration Guide</a></li>
+                                <li><a target="_blank" href="https://www.mozg.com/dam/documentation/manuals/MozgMagentoExtension.pdf">Download the more advanced manual</a></li>
+                                <li><a target="_blank" href="https://www.mozg.com/home/payment-services/plug-ins/magento#form"><strong>Sign</strong> up for a test account</a></li>
+                                <li>The latest version of the <a target="_blank" href="https://github.com/mozgpayments/magento/releases">Mozg Magento module is also available through GitHub</a>.</li>
+                            </ul>
+                            <p>In the test modus you nee to use test cards. <a target="_blank" href="http://mozg.com/test-card-numbers">Test cards can be found here</a>
+                            <p>In the test envirenment you can test with refused cards for more information <a target="_blank" href="https://docs.mozg.com/display/TD/Error+code+testing">click here</a></p>
+                            <p>You can find this in the Mozg back-office. The Mozg back-office can be found on <a target="_blank" href="https://ca-test.mozg.com">https://ca-test.mozg.com</a> for test or <a target="_blank" href="https://ca-live.mozg.com">https://ca-live.mozg.com</a> for live.</p>
+                            <p>If you have any further questions, please visit the <a target="_blank" href="http://www.mozg.com">Mozg.com</a> website or email <a href="mailto:magento@mozg.com">magento@mozg.com</a>.</p>
+                            ]]>
+                            </comment>
+                            <fields>
+                                <version translate="label">
+                                    <label>Extension version</label>
+                                    <frontend_type>label</frontend_type>
+                                    <frontend_model>mozg_payment/adminhtml_version</frontend_model>
+                                    <sort_order>0</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </version>
+                            </fields>
+                        </mozg_payment_getting_started>
+
+                        <mozg_payment_required_settings type="group" translate="label comment tooltip">
+                            <label>Required Settings</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>5</sort_order>
+                            <frontend_model>mozg_payment/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <demoMode translate="label">
+                                    <label>Test/Production Mode</label>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_payment_abstract/demoMode</config_path>
+                                    <source_model>mozg_payment/source_DemoModes</source_model>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <tooltip><![CDATA[ In the test mode you must use test cards. See section Documentation & Support for the link to the test cards]]></tooltip>
+                                </demoMode>
+                                <MerchantId_test translate="label comment tooltip">
+                                    <label>Merchant ID Test</label>
+                                    <tooltip><![CDATA[ ]]></tooltip>
+                                    <comment><![CDATA[ ]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <backend_model>mozg_payment/system_config_backend_trim</backend_model>
+                                    <config_path>payment/mozg_payment_abstract/MerchantId_test</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </MerchantId_test>
+                                <MerchantKey_test translate="label comment tooltip">
+                                    <label>Merchant Key Test</label>
+                                    <tooltip><![CDATA[ ]]></tooltip>
+                                    <comment><![CDATA[ ]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <backend_model>mozg_payment/system_config_backend_trim</backend_model>
+                                    <config_path>payment/mozg_payment_abstract/MerchantKey_test</config_path>
+                                    <sort_order>30</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </MerchantKey_test>
+                                <MerchantId_live translate="label comment tooltip">
+                                    <label>Merchant ID Production</label>
+                                    <tooltip><![CDATA[ ]]></tooltip>
+                                    <comment><![CDATA[ ]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <backend_model>mozg_payment/system_config_backend_trim</backend_model>
+                                    <config_path>payment/mozg_payment_abstract/MerchantId_live</config_path>
+                                    <sort_order>40</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </MerchantId_live>
+                                <MerchantKey_live translate="label comment tooltip">
+                                    <label>Merchant Key Production</label>
+                                    <tooltip><![CDATA[ ]]></tooltip>
+                                    <comment><![CDATA[ ]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <backend_model>mozg_payment/system_config_backend_trim</backend_model>
+                                    <config_path>payment/mozg_payment_abstract/MerchantKey_live</config_path>
+                                    <sort_order>50</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </MerchantKey_live>
+                                <capture_mode translate="label">
+                                    <label>Capture Delay</label>
+                                    <frontend_type>select</frontend_type>
+                                    <tooltip>Immediate is the default. Set to manual if you want to perform the capture of funds manually later (only affects credit cards and a few alternative payment methods). You need to change this setting as well in Mozg Customer Area => Settings => Merchant Settings => Capture Delay. If you have selected a capture delay of a couple of days in Mozg keep it here on immediate</tooltip>
+                                    <source_model>mozg_payment/source_captureModes</source_model>
+                                    <config_path>payment/mozg_payment_abstract/capture_mode</config_path>
+                                    <sort_order>130</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </capture_mode>
+                                <order_status translate="label">
+                                    <label>Order status: order creation</label>
+                                    <tooltip>Status given to newly created orders before payment result confirmation via server notifications from Mozg.</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_payment_abstract/order_status</config_path>
+                                    <source_model>adminhtml/system_config_source_order_status_new</source_model>
+                                    <sort_order>140</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </order_status>
+                                <payment_pre_authorized>
+                                    <label>Order status: payment authorisation</label>
+                                    <tooltip>Status given to orders after authorisation confirmed by an AUTHORISATION notification from Mozg. Note: an authorisation status via the result URL does not yet trigger this status.</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_payment_abstract/payment_pre_authorized</config_path>
+                                    <source_model>adminhtml/system_config_source_order_status_newprocessing</source_model>
+                                    <sort_order>150</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </payment_pre_authorized>
+                                <payment_authorized translate="label">
+                                    <label>Order status: payment confirmed</label>
+                                    <tooltip>Status given to orders after capture result is confirmed by an AUTHORISATION notification (if capture mode = immediate) or a CAPTURE notification (if capture mode = manual capture) from Mozg.</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_payment_abstract/payment_authorized</config_path>
+                                    <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                                    <sort_order>160</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </payment_authorized>
+                                <payment_cancelled translate="label">
+                                    <label>Order status: order cancellation</label>
+                                    <tooltip>Status given to orders after order cancellation is confirmed by a CANCEL_OR_REFUND notification from Mozg. If orders are already invoiced, they cannot be cancelled, but will be refunded instead.</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_payment_abstract/payment_cancelled</config_path>
+                                    <source_model>mozg_payment/source_cancelModes</source_model>
+                                    <sort_order>170</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </payment_cancelled>
+                                <debug translate="label">
+                                    <label>Enable debug logging</label>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_payment_abstract/debug</config_path>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>180</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </debug>
+                            </fields>
+                        </mozg_payment_required_settings>
+                        <mozg_payment_order_process type="group" translate="label comment tooltip">
+                            <label>Advanced: Magento Order Processing</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>30</sort_order>
+                            <frontend_model>mozg_payment/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <payment_authorized_virtual>
+                                    <label>Order status: payment capture (virtual products)</label>
+                                    <tooltip>(optional) Select only status assigned to state complete. Leave empty to use the same as normal products</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_payment_abstract/payment_authorized_virtual</config_path>
+                                    <source_model>mozg_payment/source_status_complete</source_model>
+                                    <sort_order>30</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </payment_authorized_virtual>
+                                <refund_authorized translate="label">
+                                    <label>Order status: Mozg Refunded</label>
+                                    <tooltip>Status given to order after a refund has been made on the order. This is triggered when the REFUND notification is received</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_payment_abstract/refund_authorized</config_path>
+                                    <source_model>mozg_payment/source_status_refund</source_model>
+                                    <sort_order>40</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </refund_authorized>
+                                <refund_partial_authorized translate="label">
+                                    <label>Order status: Mozg partial Refunded</label>
+                                    <tooltip>Status given to order after a partial refund has been made on the order. This is triggered when the REFUND notification is received. We advise to don't set this status and let Magento decide the status</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_payment_abstract/refund_partial_authorized</config_path>
+                                    <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                                    <sort_order>41</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </refund_partial_authorized>
+                                <pending_status>
+                                    <label>Order status: pending Bank Transfer/SEPA orders</label>
+                                    <tooltip>By default, Mozg does not inform your Magento store about pending payments. If you want these notifications to be received, Go to Mozg Customer Area => Server Communication and add BankTransfer Pending Notification and Direct-Debit Pending Notification.</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_payment_abstract/pending_status</config_path>
+                                    <source_model>mozg_payment/source_status_pending</source_model>
+                                    <sort_order>50</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </pending_status>
+                                <create_pending_invoice translate="label">
+                                    <label>Create a pending invoice (only for manual capture)</label>
+                                    <tooltip>This will create a pending invoice if the AUTHORISATION notification is received. Note: this will cause Magento to push all orders to Status:'Processing' once the invoice is created, ignoring all other settings.</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>70</sort_order>
+                                    <config_path>payment/mozg_payment_abstract/create_pending_invoice</config_path>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </create_pending_invoice>
+                                <capture_on_shipment>
+                                    <label>Order status: Capture on shipment</label>
+                                    <frontend_type>select</frontend_type>
+                                    <tooltip>If you enable this function it will do a capture request to Mozg if you do a shipment.</tooltip>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_payment_abstract/capture_on_shipment</config_path>
+                                    <sort_order>80</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </capture_on_shipment>
+                                <uncancelorder translate="label">
+                                    <label>Enable Uncancel Order</label>
+                                    <tooltip>If an order is cancelled for some reason but it received a notification that the payment is authorised this will automatically uncancel the order</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_payment_abstract/uncancelorder</config_path>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>90</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>0</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </uncancelorder>
+                                <autorefundoncancel translate="label">
+                                    <label>Automatic cancel\refund when a order is canceled</label>
+                                    <tooltip>Enable/Disable automatic refund when canceling a order.</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <config_path>payment/mozg_payment_abstract/autorefundoncancel</config_path>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>100</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>0</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </autorefundoncancel>
+                                <send_invoice_update_mail translate="label">
+                                    <label>Invoice email</label>
+                                    <frontend_type>select</frontend_type>
+                                    <tooltip>Enable/Disable update mails to customers.</tooltip>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_payment_abstract/send_invoice_update_mail</config_path>
+                                    <sort_order>1000</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </send_invoice_update_mail>
+                                <send_update_mail translate="label">
+                                    <label>Customers receive order status update email (deprecated).</label>
+                                    <frontend_type>select</frontend_type>
+                                    <tooltip>Enable/Disable update mails for all order status changes to the shopper.</tooltip>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_payment_abstract/send_update_mail</config_path>
+                                    <sort_order>1200</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </send_update_mail>
+                            </fields>
+                        </mozg_payment_order_process>
+                        <mozg_payment_order_notifications type="group" translate="label comment tooltip">
+                            <label>Advanced: Mozg Payment Notifications</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>40</sort_order>
+                            <frontend_model>mozg_payment/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <ignore_refund_notification>
+                                    <label>Ignore refund notification</label>
+                                    <tooltip>If the refund is done on the Mozg Platform it will send a refund notification to Magento which automatically creates a credit memo. If you set this setting to 'Yes', this will not happen because it will not process any of the REFUND notification that is received.</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>230</sort_order>
+                                    <config_path>payment/mozg_payment_abstract/ignore_refund_notification</config_path>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </ignore_refund_notification>
+                            </fields>
+                        </mozg_payment_order_notifications>
+                        <mozg_payment_billing_agreements type="group" translate="label comment tooltip">
+                            <label>Advanced: Billing Agreements</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <sort_order>50</sort_order>
+                            <frontend_model>mozg_payment/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <comment>
+                                <![CDATA[
+                                    <p>
+                                    <strong>ONECLICK</strong>: The shopper opts in to storing their card details for future use.
+                                    The shopper is present for the subsequent transaction, for cards the security code (CVC/CVV) is required.
+                                    </p>
+                                    <p>
+                                    <strong>RECURRING*</strong>: Payment details are stored for future use. For cards, the security
+                                    code (CVC/CVV) is not required for subsequent payments.
+                                    </p>
+                                    <p>
+                                    <strong>ONECLICK, RECURRING*</strong>: Payment details are stored for future use. This allows the use of
+                                    the stored payment details regardless of whether the shopper is on your site or not.
+                                    </p>
+                                    <p>* keep in mind you need the recurring permission enabled. You can contact magento@mozg.com to enable this for your account.
+                                ]]>
+                            </comment>
+                            <fields>
+                                <recurringtypes translate="label">
+                                    <label>Agreement Type</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_payment/source_recurringType</source_model>
+                                    <config_path>payment/mozg_payment_abstract/recurringtypes</config_path>
+                                    <sort_order>79</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <tooltip>When enabled, users can save their Credit Cards and their SEPA authorizations. ONECLICK will require the input of the CVC for subsequent payments, while RECURRING does not.</tooltip>
+                                </recurringtypes>
+                            </fields>
+                        </mozg_payment_billing_agreements>
+                        <mozg_payment_checkout_experience type="group" translate="label comment tooltip">
+                            <label>Advanced: Checkout Experience</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>220</sort_order>
+                            <frontend_model>mozg_payment/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <payment_cancelled_redirect>
+                                    <label>Redirect destination after cancellation</label>
+                                    <frontend_type>select</frontend_type>
+                                    <tooltip>Determines how shoppers get redirected after they cancel a payment.</tooltip>
+                                    <source_model>mozg_payment/source_cancelRedirect</source_model>
+                                    <config_path>payment/mozg_payment_abstract/payment_cancelled_redirect</config_path>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </payment_cancelled_redirect>
+                                <title_renderer>
+                                    <label>Payment method render method</label>
+                                    <frontend_type>select</frontend_type>
+                                    <tooltip>Determines whether the payment methods will be displayed with its logo or just the name.</tooltip>
+                                    <source_model>mozg_payment/source_rendermode</source_model>
+                                    <config_path>payment/mozg_payment_abstract/title_renderer</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </title_renderer>
+                                <shopperlocale translate="label">
+                                    <label>Language locale (optional)</label>
+                                    <tooltip>This will override the default shopper locale of the Magento store (e.g. nl_NL). Leave empty to let Magento decide.</tooltip>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_payment_abstract/shopperlocale</config_path>
+                                    <sort_order>180</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </shopperlocale>
+                                <countryCode translate="label">
+                                    <label>ISO Country Code (optional)</label>
+                                    <tooltip>This will override the shopper billing address country when determining what payment methods to display.</tooltip>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_payment_abstract/countryCode</config_path>
+                                    <sort_order>190</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </countryCode>
+                            </fields>
+                        </mozg_payment_checkout_experience>
+                        <mozg_payment_manual_review type="group" translate="label comment tooltip">
+                            <label>Advanced: Manual Review</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>300</sort_order>
+                            <frontend_model>mozg_payment/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <comment>
+                                <![CDATA[
+                                    <p>
+                                    Mozg's Risk analysis tool allows merchants to configure when a transaction should be rejected or accepted depending on certain characteristics of the payment.
+                                This process has always had two automatic outcomes, either accept or reject the payment. Now, Mozg's risk system can tell merchants when a transaction seems to be risky but without rejecting it, and requires to be manually reviewed in order to decide if it should be accepted or rejected.
+                                    If you want this to be turned on please contact <a href="mailto:magento@mozg.com">magento@mozg.com</a>
+                                    </p>
+                                ]]>
+                            </comment>
+                            <fields>
+                                <fraud_manual_review_status>
+                                    <label>Manual Review Status</label>
+                                    <tooltip>This status will be triggered when Mozg notifies your Magento module that the payment has come under Manual Review. If you do not have this set up or do not want a separate status, please keep it on the default (e.g.'— Please Select —').</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_payment/source_status_pending</source_model>
+                                    <config_path>payment/mozg_payment_abstract/fraud_manual_review_status</config_path>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </fraud_manual_review_status>
+                                <fraud_manual_review_accept_status>
+                                    <label>Manual Review Accepted Status</label>
+                                    <tooltip>Only relevant if you do not have an action defined when you accept a manual review. This status will be triggered when a 'MANUAL_REVIEW_ACCEPT' notification is received from Mozg. If you have already asked Mozg to set an action for this (e.g. capture) or don't want a separate status for this, please keep it on the default (e.g.'— Please Select —')</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                                    <config_path>payment/mozg_payment_abstract/fraud_manual_review_accept_status</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </fraud_manual_review_accept_status>
+                            </fields>
+                        </mozg_payment_manual_review>
+                        <mozg_payment_split_payments type="group" translate="label comment tooltip">
+                            <label>Advanced: Split Payments</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>305</sort_order>
+                            <frontend_model>mozg_payment/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <comment>
+                                <![CDATA[
+                                    <p>
+                                    It is possible to do split payments with GiftCards please configure here what refund strategie you want to use
+                                    </p>
+                                ]]>
+                            </comment>
+                            <fields>
+                                <split_payments_refund_strategy>
+                                    <label>Refund Strategy</label>
+                                    <tooltip>Only relevant if you accept giftcards on Mozg platform</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>mozg_payment/source_SplitPaymentsRefundStrategies</source_model>
+                                    <config_path>payment/amozg_payment_abstract/split_payments_refund_strategy</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </split_payments_refund_strategy>
+                            </fields>
+                        </mozg_payment_split_payments>
+                    </fields>
+                </mozg_payment_abstract>
+                <mozg_payment_cc translate="label" module="mozg_payment">
+                    <label>Payment Credit Card</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>8010</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_payment/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_payment_cc/active</activity_path>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+    			            <tooltip>Set the sequence number of this payment method in the checkout. Payment methods with a higher sort order number will be displayed lower in the list.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <allowspecific translate="label">
+                            <label>Payment from applicable countries</label>
+                            <frontend_type>allowspecific</frontend_type>
+                            <sort_order>40</sort_order>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific>
+                        <specificcountry translate="label">
+                            <label>Payment from specific countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>50</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><allowspecific>1</allowspecific></depends>
+                        </specificcountry>
+                        <heading_end translate="label">
+                            <label><![CDATA[<hr/>]]></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </heading_end>
+                        <cctypes translate="label">
+                            <label>Credit Card Types</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>mozg_payment/source_ccType</source_model>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cctypes>
+                        <visible_type>
+                            <label>Visible in</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>mozg_payment/source_VisibleType</source_model>
+                            <sort_order>170</sort_order>
+                            <tooltip>Determine the visibility of this payment method in the frontend and/or backend of Magento.</tooltip>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </visible_type>
+                        <mozg_payment_cc_advanced type="group" translate="label">
+                            <label>Advanced Settings</label>
+                            <frontend_class>config-advanced</frontend_class>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>180</sort_order>
+                            <fields>
+                                <authenticate>
+                                    <label>Authenticate</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_payment_cc/authenticate</config_path>
+                                    <sort_order>104</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </authenticate>
+                                <enable_moto>
+                                    <label>Enable MOTO for backend orders</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_payment_cc/enable_moto</config_path>
+                                    <sort_order>105</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <tooltip><![CDATA[Important you have to activate MOTO for your account contact magento@mozg.com. For more information <a target="_blank" href="https://www.mozg.com/dam/documentation/manuals/MotoManual.pdf">check our MOTO manual</a>]]></tooltip>
+                                </enable_moto>
+                                <enable_installments translate="label">
+                                    <label>Enable Installments</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_payment_cc/enable_installments</config_path>
+                                    <sort_order>110</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </enable_installments>
+                                <installments translate="label">
+                                    <label>Installments default</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_cc/installments</config_path>
+                                    <sort_order>120</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <comments>This is the fallback if specific credit card type has no installments configured</comments>
+                                </installments>
+                                <installments_AE translate="label">
+                                    <label>Installments For American Express</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_cc/installments_AE</config_path>
+                                    <sort_order>130</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </installments_AE>
+                                <installments_VI translate="label">
+                                    <label>Installments For Visa</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_cc/installments_VI</config_path>
+                                    <sort_order>140</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </installments_VI>
+                                <installments_MC translate="label">
+                                    <label>Installments For Master Card</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_cc/installments_MC</config_path>
+                                    <sort_order>150</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </installments_MC>
+                                <installments_DI translate="label">
+                                    <label>Installments For Discover</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_cc/installments_DI</config_path>
+                                    <sort_order>160</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </installments_DI>
+                                <installments_DC translate="label">
+                                    <label>Installments For Diners Club</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_cc/installments_DC</config_path>
+                                    <sort_order>170</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </installments_DC>
+                                <installments_MO translate="label">
+                                    <label>Installments For Maestro</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_cc/installments_MO</config_path>
+                                    <sort_order>180</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </installments_MO>
+                                <installments_JCB translate="label">
+                                    <label>Installments For JCB</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_cc/installments_JCB</config_path>
+                                    <sort_order>190</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </installments_JCB>
+                                <installments_ELO translate="label">
+                                    <label>Installments For Elo</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_cc/installments_ELO</config_path>
+                                    <sort_order>200</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </installments_ELO>
+                                <installments_hipercard translate="label">
+                                    <label>Installments For Hipercard</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_cc/installments_hipercard</config_path>
+                                    <sort_order>210</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </installments_hipercard>
+                                <disable_zero_total>
+                                    <label>Disable at zero grand total</label>
+                                    <tooltip>Disable this payment method in the checkout when the grand total of the quote is 0.</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_payment_cc/disable_zero_total</config_path>
+                                    <sort_order>220</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </disable_zero_total>
+                            </fields>
+                        </mozg_payment_cc_advanced>
+                    </fields>
+                </mozg_payment_cc>
+                <mozg_payment_dc translate="label" module="mozg_payment">
+                    <label>Payment Debit Card</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>8010</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_payment/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_payment_dc/active</activity_path>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+                            <tooltip>Set the sequence number of this payment method in the checkout. Payment methods with a higher sort order number will be displayed lower in the list.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <allowspecific translate="label">
+                            <label>Payment from applicable countries</label>
+                            <frontend_type>allowspecific</frontend_type>
+                            <sort_order>40</sort_order>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific>
+                        <specificcountry translate="label">
+                            <label>Payment from specific countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>50</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><allowspecific>1</allowspecific></depends>
+                        </specificcountry>
+                        <heading_end translate="label">
+                            <label><![CDATA[<hr/>]]></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </heading_end>
+                        <dctypes translate="label">
+                            <label>Debit Card Types</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>mozg_payment/source_dcType</source_model>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </dctypes>
+                        <visible_type>
+                            <label>Visible in</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>mozg_payment/source_VisibleType</source_model>
+                            <sort_order>170</sort_order>
+                            <tooltip>Determine the visibility of this payment method in the frontend and/or backend of Magento.</tooltip>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </visible_type>
+                        <mozg_payment_dc_advanced type="group" translate="label">
+                            <label>Advanced Settings</label>
+                            <frontend_class>config-advanced</frontend_class>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>180</sort_order>
+                            <fields>
+                                <enable_moto>
+                                    <label>Enable MOTO for backend orders</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_payment_dc/enable_moto</config_path>
+                                    <sort_order>105</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <tooltip><![CDATA[Important you have to activate MOTO for your account contact magento@mozg.com. For more information <a target="_blank" href="https://www.mozg.com/dam/documentation/manuals/MotoManual.pdf">check our MOTO manual</a>]]></tooltip>
+                                </enable_moto>
+                                <enable_installments translate="label">
+                                    <label>Enable Installments</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_payment_dc/enable_installments</config_path>
+                                    <sort_order>110</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </enable_installments>
+                                <installments translate="label">
+                                    <label>Installments default</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_dc/installments</config_path>
+                                    <sort_order>120</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <comments>This is the fallback if specific credit card type has no installments configured</comments>
+                                </installments>
+                                <installments_AE translate="label">
+                                    <label>Installments For American Express</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_dc/installments_AE</config_path>
+                                    <sort_order>130</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </installments_AE>
+                                <installments_VI translate="label">
+                                    <label>Installments For Visa</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_dc/installments_VI</config_path>
+                                    <sort_order>140</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </installments_VI>
+                                <installments_MC translate="label">
+                                    <label>Installments For Master Card</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_dc/installments_MC</config_path>
+                                    <sort_order>150</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </installments_MC>
+                                <installments_DI translate="label">
+                                    <label>Installments For Discover</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_dc/installments_DI</config_path>
+                                    <sort_order>160</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </installments_DI>
+                                <installments_DC translate="label">
+                                    <label>Installments For Diners Club</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_dc/installments_DC</config_path>
+                                    <sort_order>170</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </installments_DC>
+                                <installments_MO translate="label">
+                                    <label>Installments For Maestro</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_dc/installments_MO</config_path>
+                                    <sort_order>180</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </installments_MO>
+                                <installments_JCB translate="label">
+                                    <label>Installments For JCB</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_dc/installments_JCB</config_path>
+                                    <sort_order>190</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </installments_JCB>
+                                <installments_ELO translate="label">
+                                    <label>Installments For Elo</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_dc/installments_ELO</config_path>
+                                    <sort_order>200</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </installments_ELO>
+                                <installments_hipercard translate="label">
+                                    <label>Installments For Hipercard</label>
+                                    <frontend_model>mozg_payment/adminhtml_form_field_installments</frontend_model>
+                                    <backend_model>mozg_payment/system_config_backend_installments</backend_model>
+                                    <config_path>payment/mozg_payment_dc/installments_hipercard</config_path>
+                                    <sort_order>210</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </installments_hipercard>
+                                <disable_zero_total>
+                                    <label>Disable at zero grand total</label>
+                                    <tooltip>Disable this payment method in the checkout when the grand total of the quote is 0.</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_payment_dc/disable_zero_total</config_path>
+                                    <sort_order>220</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </disable_zero_total>
+                            </fields>
+                        </mozg_payment_dc_advanced>
+                    </fields>
+                </mozg_payment_dc>
+                <mozg_payment_oneclick>
+                    <label>Payment OneClick - Requires Mozg Credit Card</label>
+                    <frontend_type>text</frontend_type>
+                    <comment><![CDATA[
+                                During checkout shoppers can choose to have their payment details remembered and stored for trusted websites in Mozg’s highly secure platform. Mozg takes care of this process for its customers. Shoppers can then select in the Magento checkout the saved card and checkout with ‘OneClick’.
+                                <br />
+                                <b>Make sure you have turned on RECURRING_CONTRACT notification on your merchantAccount. If you want to add this or if you are not sure, just send us an <a href="mailto:magento@mozg.com">email</a>.</b>
+                            ]]></comment>
+                    <sort_order>8020</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_payment/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_payment_oneclick/active</activity_path>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>OneClick payments only work if you have Mozg Credit Card enabled</tooltip>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+            			    <tooltip>Set the sequence number of this payment method in the checkout. Payment methods with a higher sort order number will be displayed lower in the list.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <recurring_payment_type translate="label">
+                            <label>Agreement Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>mozg_payment/source_recurringPaymentType</source_model>
+                            <config_path>payment/mozg_payment_oneclick/recurring_payment_type</config_path>
+                            <sort_order>79</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>With ONECLICK the shopper needs to fill in their security code for credit cards. For RECURRING, this is not needed. If you want to use RECURRING make sure you have Agreement Type set to RECURRING or ONECLICK,RECURRING. In the Backend always recurring is used because OneClick could trigger 3D secure.</tooltip>
+                        </recurring_payment_type>
+                    </fields>
+                </mozg_payment_oneclick>
+                <mozg_payment_hpp translate="label" module="mozg_payment">
+                    <label>Payment HPP</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>8030</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_payment/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_payment_hpp/active</activity_path>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+            			    <tooltip>Set the sequence number of this payment method in the checkout. Payment methods with a higher sort order number will be displayed lower in the list.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <mozg_payment_hpp_advanced type="group" translate="label">
+                            <label>Advanced Settings</label>
+                            <frontend_class>config-advanced</frontend_class>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>70</sort_order>
+                            <fields>
+                                <title translate="label">
+                                    <label>Title</label>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_payment_hpp/title</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </title>
+                                <delivery_days translate="label">
+                                    <label>Days to Delivery</label>
+                                    <validate>validate-digits</validate>
+                                    <tooltip>How many days to be added to the current date for delivery. ONLY whole numbers allowed.</tooltip>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>payment/mozg_payment_hpp/delivery_days</config_path>
+                                    <sort_order>70</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>0</show_in_store>
+                                </delivery_days>
+                                <disable_hpptypes translate="label">
+                                    <label>Leave payment method selection on HPP</label>
+                                    <tooltip>If you set this to 'Yes', payment methods in the checkout won't be displayed and you will be redirected to the Mozg HPP to make the selection.</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_payment_hpp/disable_hpptypes</config_path>
+                                    <sort_order>90</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </disable_hpptypes>
+                                <disable_zero_total>
+                                    <label>Disable at zero grand total</label>
+                                    <tooltip>Disable this payment method in the checkout when the grand total of the quote is 0.</tooltip>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>payment/mozg_payment_hpp/disable_zero_total</config_path>
+                                    <sort_order>120</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </disable_zero_total>
+                            </fields>
+                        </mozg_payment_hpp_advanced>
+                    </fields>
+                </mozg_payment_hpp>
+                <mozg_payment_boleto translate="label" module="mozg_payment">
+                    <label>Payment Boleto</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>8040</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_payment/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_payment_boleto/active</activity_path>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+            			    <tooltip>Set the sequence number of this payment method in the checkout. Payment methods with a higher sort order number will be displayed lower in the list.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <allowspecific translate="label">
+                            <label>Payment from applicable countries</label>
+                            <frontend_type>allowspecific</frontend_type>
+                            <sort_order>40</sort_order>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific>
+                        <specificcountry translate="label">
+                            <label>Payment from specific countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>50</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><allowspecific>1</allowspecific></depends>
+                        </specificcountry>
+                        <heading_end translate="label">
+                            <label><![CDATA[<hr/>]]></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </heading_end>
+                        <delivery_days translate="label">
+                            <label>Days for Delivery</label>
+                            <tooltip>How many days to be added to the current date for delivery. Only whole numbers allowed.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </delivery_days>
+                        <boletotypes translate="label">
+                            <label>Boleto Types</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>mozg_payment/source_boletoType</source_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </boletotypes>
+                        <use_taxvat>
+                            <label>Use taxvat for CPF or CNPJ</label>
+                            <tooltip>If you use taxvat for the CPF/CNPJ field you can then enable this option to auto fill in the Social Security Number</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </use_taxvat>
+                        <order_underpaid_status translate="label">
+                            <label>Order status underpaid</label>
+                            <tooltip>With Boleto it is possible to pay less than the full amount. Select here the status if this is the case. If you leave this empty it will take the Order status authorised payment as default status</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                            <sort_order>230</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </order_underpaid_status>
+                        <order_overpaid_status translate="label">
+                            <label>Order status overpaid</label>
+                            <tooltip>With Boleto it is possible to pay more than the total amount. Select here the status if this is the case. If you leave this empty it will take the Order status authorised payment as default status</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                            <sort_order>240</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </order_overpaid_status>
+                        <visible_type>
+                            <label>Visible in</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>mozg_payment/source_VisibleType</source_model>
+                            <sort_order>250</sort_order>
+                            <tooltip>Where do you want to show this payment method in the backend of Magento or in the frontend for the shoppers</tooltip>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </visible_type>
+                    </fields>
+                </mozg_payment_boleto>
+                <mozg_payment_eletronictransfer translate="label" module="mozg_payment">
+                    <label>Payment EletronicTransfer</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>8040</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_payment/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_payment_eletronictransfer/active</activity_path>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+                            <tooltip>Set the sequence number of this payment method in the checkout. Payment methods with a higher sort order number will be displayed lower in the list.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <allowspecific translate="label">
+                            <label>Payment from applicable countries</label>
+                            <frontend_type>allowspecific</frontend_type>
+                            <sort_order>40</sort_order>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific>
+                        <specificcountry translate="label">
+                            <label>Payment from specific countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>50</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><allowspecific>1</allowspecific></depends>
+                        </specificcountry>
+                        <heading_end translate="label">
+                            <label><![CDATA[<hr/>]]></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </heading_end>
+                        <delivery_days translate="label">
+                            <label>Days for Delivery</label>
+                            <tooltip>How many days to be added to the current date for delivery. Only whole numbers allowed.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </delivery_days>
+                        <eletronictransfertypes translate="label">
+                            <label>EletronicTransfer Types</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>mozg_payment/source_eletronictransferType</source_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </eletronictransfertypes>
+                        <use_taxvat>
+                            <label>Use taxvat for CPF or CNPJ</label>
+                            <tooltip>If you use taxvat for the CPF/CNPJ field you can then enable this option to auto fill in the Social Security Number</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </use_taxvat>
+                        <order_underpaid_status translate="label">
+                            <label>Order status underpaid</label>
+                            <tooltip>With EletronicTransfer it is possible to pay less than the full amount. Select here the status if this is the case. If you leave this empty it will take the Order status authorised payment as default status</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                            <sort_order>230</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </order_underpaid_status>
+                        <order_overpaid_status translate="label">
+                            <label>Order status overpaid</label>
+                            <tooltip>With EletronicTransfer it is possible to pay more than the total amount. Select here the status if this is the case. If you leave this empty it will take the Order status authorised payment as default status</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                            <sort_order>240</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </order_overpaid_status>
+                        <visible_type>
+                            <label>Visible in</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>mozg_payment/source_VisibleType</source_model>
+                            <sort_order>250</sort_order>
+                            <tooltip>Where do you want to show this payment method in the backend of Magento or in the frontend for the shoppers</tooltip>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </visible_type>
+                    </fields>
+                </mozg_payment_eletronictransfer>
+                <mozg_payment_pay_by_mail translate="label" module="mozg_payment">
+                    <label>Payment Pay By Mail</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>8060</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <frontend_model>mozg_payment/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>payment/mozg_payment_pay_by_mail/active</activity_path>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+            			    <tooltip>Set the sequence number of this payment method in the checkout. Payment methods with a higher sort order number will be displayed lower in the list.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <session_validity>
+                            <label>Session Validity</label>
+                            <tooltip>How many days do you want this payment page to be active</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </session_validity>
+                        <visible_type>
+                            <label>Visible in</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>mozg_payment/source_VisibleType</source_model>
+                            <sort_order>70</sort_order>
+                            <tooltip>Where do you want to show this payment method in the backend of Magento or in the frontend for the shoppers</tooltip>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </visible_type>
+                    </fields>
+                </mozg_payment_pay_by_mail>
+            </groups>
+        </payment>
+    </sections>-->
+</config>

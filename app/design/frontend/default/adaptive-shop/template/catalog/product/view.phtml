@@ -1,0 +1,219 @@
+<?php
+/** BANCADORAMON
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<script type="text/javascript">
+	var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+
+<form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+	
+	<div class="no-display">
+		<input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+		<input type="hidden" name="related_product" id="related-products-field" value="" />
+	</div>
+	
+	<div id="colunas6">
+		<?php echo $this->getChildHtml('media') ?>
+	</div>
+	
+	<div id="colunas6" class="product-info">
+		
+		<h1 class="cor fs-22 d-b bold"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+		
+		<br /><div class="h-r f-l d-b"></div>
+
+		<?php echo $this->getChildHtml('alert_urls') ?>
+
+		<?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+
+		<?php  
+		$newFromDate = Mage::getModel('catalog/product')->load($_product->getID())->getNewsFromDate();
+		$newToDate = Mage::getModel('catalog/product')->load($_product->getID())->getNewsToDate();
+		$now = date("Y-m-d");
+		if($newFromDate < $now && $newToDate >= $now): ?>
+		<p class="novo">novidade</p>
+	<?php endif; ?>
+
+	<div class="h-r d-b"></div><br />
+
+	<?php if ($_product->getShortDescription()):?>
+		<p class="fs-17 d-b txt f-l"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></p>
+		<br class="clear" /><div class="h-r d-b"></div><br />
+	<?php endif;?>
+	
+	<?php if ($_product->isSaleable() && $this->hasOptions()):?>
+		<?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+	<?php endif;?>
+	
+	<?php if ($_product->isSaleable() && $this->hasOptions()):?>
+		<?php echo $this->getChildChildHtml('container2', '', true, true) ?><br />
+		<div class="h-r f-l d-b"></div><br />
+	<?php endif;?>
+	
+	<?php if($_product->isSaleable()): ?>
+		<p class="fs-17 d-b txt f-l stq">Produto em estoque</p>
+	<?php else: ?>
+		<p class="fs-17 d-b txt f-l stq">Produto Esgotado</p> 
+	<?php endif; ?>
+	
+	<?php if($_product->isSaleable()): ?>
+		<p class="fs-14 f-r">Qtd Minima: <input name="qty" type="text" placeholder="1" class="input-text qty txt fs-14 op-i f-r" id="qty" style="width:25px;margin-left:5px;" maxlength="3" value="<?php echo $this->getMinimalQty($_product) ?>" /></p>
+	<?php else: ?>
+		<p class="fs-14 f-r">Qtd Minima: <input name="qty" type="text" disabled="disabled" class="input-text qty txt fs-14 op-i f-r" id="qty" style="width:25px;margin-left:5px;" maxlength="3" value="<?php echo $this->getMinimalQty($_product) ?>" /></p>
+	<?php endif; ?>
+
+	<div class="h-r f-l d-b"></div><br />
+	
+	<p class="fs-17 f-l d-b" style="margin: 15px 0 8px 0;width:100%;color:#816d58!important;">Consulte o frete e o prazo de entrega abaixo:</p>
+	<?php echo $this->getLayout()->getBlock('shipping.estimate.form')->toHtml()?>
+	
+	<div class="h-r f-l d-b"></div><br />
+	
+	<div id="colunas3" class="m-auto">
+		<br />
+
+		<?php
+		$specialprice = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialPrice(); 
+		$specialPriceFromDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialFromDate();  		 
+		$specialPriceToDate = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialToDate();    		 
+		$today =  time(); 
+		
+		if ($specialprice):
+			if($today >= strtotime( $specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >=
+				strtotime( $specialPriceFromDate) && is_null($specialPriceToDate)): ?>
+			<span class="promocao-preco fs-14">
+				De <?php echo Mage::helper('core')->currency($_product->getPrice(),true,false); ?><br />
+			</span>
+			<span class="price">
+				Por <?php echo Mage::helper('core')->currency($_product->getFinalPrice(),true,false); ?>
+				<?php 
+			endif; 
+			?>
+		</span>
+		<?php
+	else: 
+		?>
+		<span class="price">
+			<?php echo Mage::helper('core')->currency($_product->getPrice(),true,false); ?>
+		</span>
+	<?php endif; ?>
+
+	<p class="cor fs-23 bold">		 
+		<?php 
+		$Preco = $_product->getFinalPrice();				
+		if($Preco >= 100){ 
+			$Parcelamento = 2;
+			$Resultado = $Preco/ $Parcelamento;
+			echo $Parcelamento .'x '.number_format($Resultado, 2, ',', '').' sem juros';
+		} 
+		?>
+	</p>
+
+</div>
+
+<div id="product-price">
+	<br />
+	<?php if($_product->isSaleable()): ?>
+		<input type="submit" value="COMPRAR" class="bt-buy-nova cor-sec d-b fs-18 radius validation-passed" onclick="productAddToCartForm.submit(this); return false;">
+	<?php else: ?>
+		<input type="submit" disabled="disabled" value="COMPRAR" class="bt-buy-nova no-bt cor-sec d-b fs-18 radius">
+	<?php endif; ?>  
+</div>
+
+
+<!-- DONE: Colocar aviso em produtos que tenham categoria Vinhos #2 -->
+<?php $cats = $_product->getCategoryIds();
+foreach ($cats as $category_id) {
+	$_cat = Mage::getModel('catalog/category')->load($category_id) ;
+	if($category_id == 61){
+		echo "<div class='alert-vinhos'>";
+		echo "	Consultar safra via email <a href=\"mailto:contato@bancadoramon.com.br\">contato@bancadoramon.com.br</a>, chat ou televendas.";
+		echo "</div>";
+	}
+} 
+?>
+</div> 
+
+<div id="colunas12" class="product-info">
+	<h3 class="cor fs-20 d-b">Descri&ccedil;&atilde;o</h3>
+	<br/>
+	<h4> <?php echo $_product->getDescription(); ?> </h4>
+	<h4><?php echo $this->getChildHtml('upsell_products') ?></h4>  
+</div>  
+
+</form>
+
+<?php echo $this->getChildHtml('related') ?>
+
+<div id="anchor-c" class="f-l d-ib">&nbsp;</div>
+<?php echo $this->getChildHtml('reviews') ?>
+
+<script type="text/javascript">
+	//<![CDATA[
+	var productAddToCartForm = new VarienForm('product_addtocart_form');
+	productAddToCartForm.submit = function(button, url) {
+		if (this.validator.validate()) {
+			var form = this.form;
+			var oldUrl = form.action;
+
+			if (url) {
+				form.action = url;
+			}
+			var e = null;
+			try {
+				this.form.submit();
+			} catch (e) {
+			}
+			this.form.action = oldUrl;
+			if (e) {
+				throw e;
+			}
+
+/*
+			if (button && button != 'undefined') {
+				button.disabled = true;
+			}
+*/
+		}
+	}.bind(productAddToCartForm);
+	
+	productAddToCartForm.submitLight = function(button, url){
+		if(this.validator) {
+			var nv = Validation.methods;
+			delete Validation.methods['required-entry'];
+			delete Validation.methods['validate-one-required'];
+			delete Validation.methods['validate-one-required-by-name'];
+	            // Remove custom datetime validators
+	            for (var methodName in Validation.methods) {
+	            	if (methodName.match(/^validate-datetime-.*/i)) {
+	            		delete Validation.methods[methodName];
+	            	}
+	            }
+
+	            if (this.validator.validate()) {
+	            	if (url) {
+	            		this.form.action = url;
+	            	}
+	            	this.form.submit();
+	            }
+	            Object.extend(Validation.methods, nv);
+	        }
+	    }.bind(productAddToCartForm);
+	//]]>
+</script>
+
+</div> 
+</div>
+<div id="full" class="no-home">
+	<div id="wrapper">

@@ -1,0 +1,778 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+	font-family: "expressway";
+	src: url("fonts/expressway rg.eot"); /*somente para o IE*/
+	src: url("fonts/expressway rg.ttf") format("truetype"); /*para outros browsers*/
+}
+@font-face {
+	font-family: "Museo300-Regular";
+	src: url("fonts/Museo300-Regular.eot"); /*somente para o IE*/
+	src: url("fonts/Museo300-Regular.ttf") format("truetype"); /*para outros browsers*/
+}
+@font-face {
+	font-family: "Museo500-Regular";
+	src: url("fonts/Museo500-Regular.eot"); /*somente para o IE*/
+	src: url("fonts/Museo500-Regular.ttf") format("truetype"); /*para outros browsers*/
+}
+body {
+	background: url(images/bg.png);
+	font-family: "Myriad Pro", Arial, Tahoma;
+	color: #333333;
+}
+a:link, a:visited, a:active {
+	color: #57001D;
+	text-decoration: none;
+}
+a:hover {
+	color: #57001D;
+	text-decoration: underline;
+}
+#container {
+	width: 1265px;
+	height: auto;
+	margin: 0 auto;
+	height: 100%;
+	padding-bottom: -380px;
+	z-index: 1;
+}
+#logo {
+	width: 277px;
+	height: 337px;
+	margin: 70px auto auto 530px;
+	float: left;
+}
+#logo-l {
+	width: 277px;
+	height: 337px;
+	margin: 70px auto auto 90px;
+	float: left;
+}
+#header {
+	width: 1265px;
+	height: 480px;
+	margin: 0;
+	background: url(images/header.jpg) no-repeat;
+}
+#header-oferta {
+	width: 1265px;
+	height: 480px;
+	margin: 0;
+	background: url(images/header-ofertas.jpg) no-repeat;
+}
+#header-vinho {
+	width: 1265px;
+	height: 480px;
+	margin: 0;
+	background: url(images/header-vinhos.jpg) no-repeat;
+}
+#ofertas-full {
+	width: 1115px;
+	height: auto;
+	margin: auto;
+	display:table;
+}
+#oferta-once {
+	width: 345px;
+	height: 510px;
+	float: left; 
+	margin: auto 25px 20px auto;
+}
+#oferta-info-box {
+	background:url(images/bg-oferta-info.png) no-repeat;
+	float: left;
+	margin:0;
+	width: 345px;
+	height: 420px;
+}
+#oferta-info-box #preco {
+	float: right;
+	width: 95px;
+	height: 40px;
+	color: #fff;
+	margin: 5px;
+	text-align:right;
+	font-family:"Myriad Pro", Arial, Tahoma;
+}
+#oferta-info-box #preco .de{ font-size: 10px;}
+#oferta-info-box #preco .por{ font-size: 14px;}
+#oferta-info-box #imagem {
+	float: left;
+	width: 290px;
+	height: 240px;
+	margin: 2px auto auto;
+	text-align:center;
+}
+#oferta-info-box #descricao {
+	margin: 10px 10px auto;
+	width: 270px;
+	height: 120px;
+	font-family:"Myriad Pro", Arial, Tahoma;
+	color: #57031D;
+	clear:both;
+}
+#oferta-info-box #descricao .titulo {font-size:14px;}
+#oferta-info-box #descricao .txt {font-size:12px;}
+#oferta-info-button {
+	float: left;
+	margin:0;
+	width: 290px;
+	height: 90px;
+}
+#menu {
+	float: right;
+	position: absolute;
+	right: 0;
+	background: url(images/bg-menu.png);
+	width: 50%;
+	height: 36px;
+}
+#menu-2 {
+	float: right;
+	top: 444px;
+	position: absolute;
+	right: 0;
+	background: url(images/bg-menu.png);
+	width: 50%;
+	height: 36px;
+}
+#cssmenu ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	position: relative;
+	display: block;
+	height: 40px;
+	font-family: "Museo500-Regular", Arial, Tahoma;
+	font-size: 16px;
+	width: auto;
+}
+#cssmenu li {
+	display: block;
+	float: left;
+	margin: 0;
+	pading: 0;
+}
+#cssmenu li a {
+	display: block;
+	float: left;
+	color: #ffffff;
+	text-decoration: none;
+	padding: 6px 20px 0 20px;
+	height: 24px;
+	height: 40px;
+}
+#cssmenu li a:hover {
+	background: transparent url(images/bg-menu-hover.png) repeat-x top left;
+}
+#main {
+	margin: 0 auto 20px;
+	display: table;
+	width: 1090px;
+	height: auto;
+}
+#main-container {
+	width: 880px;
+	height: auto;
+	min-height: 500px;
+	float: left;
+	display: inline;
+}
+#main-container-full {
+	width: 1265px;
+	height: auto;
+	min-height: 500px;
+	float: left;
+	display: inline;
+}
+#main-container-full h1, #main-container h1 {
+	background: #55041D url(images/bg-h1.png) no-repeat right;
+	padding-right: 40px;
+	padding-left: 10px;
+	line-height: 50px;
+	vertical-align: middle;
+	color: #FFF;
+	font-family: "Museo500-Regular", Arial, Tahoma;
+	font-size: 24px;
+	height: 50px;
+	margin: 20px 0;
+	width: 450px;
+	clear: both;
+	float:left;
+}
+#videos {
+	margin: 0;
+	width: 880px;
+	height: 290px;
+	float: left;
+	background-color: #FFF;
+	border-bottom: #CCC 1px solid;
+	font-family: "Myriad Pro", Arial, Tahoma;
+	font-size: 14px;
+	font-weight: lighter;
+}
+#btn-acesse {
+	width: 160px;
+	height: 35px;
+	float:right;
+	margin-right: 10px;
+	margin-top: 50px;
+}
+#videos h2 a {
+	font-family: "Myriad Pro", Arial, Tahoma;
+	color: #2F4D10;
+	font-size: 16px;
+	text-decoration:none;
+}
+#videos h2 a:hover {text-decoration:underline;
+}
+.dica-vinho {
+	font-family: "Myriad Pro", Arial, Tahoma;
+	color: #57011D;
+	font-size: 14px;
+	font-weight: 500;
+}
+#video-l {
+	width: 440px;
+	height: 290px;
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+#video-r {
+	width: 440px;
+	height: 290px;
+	float: right;
+	margin: 0;
+	padding: 0;
+}
+.thumb-main {
+	width: 440px;
+	height: 290px;
+	overflow: hidden;
+}
+.thumb-main img {
+	width: auto;
+	height: 300px;
+}
+.info {
+	padding-left: 25px;
+	color: #304D11;
+	font-size: 11px;
+	font-family: "Myriad Pro", Arial, Tahoma;
+	line-height: 25px;
+	vertical-align: middle;
+}
+.fogao {
+	background: url(icons/fogao.png) left center no-repeat;
+}
+.forno {
+	background: url(icons/forno.png) left center no-repeat;
+}
+.tempo {
+	background: url(icons/tempo.png) left center no-repeat;
+}
+.serve {
+	background: url(icons/serve.png) left center no-repeat;
+}
+.content-main {
+	width: 400px;
+	height: 150px;
+	margin: 20px;
+}
+#vinho-main {
+	margin: 0;
+	width: 880px;
+	height: 300px;
+	float: left;
+	background: #FFF url(images/bg-vinho.png) repeat-y;
+	font-family: "Myriad Pro", Arial, Tahoma;
+	font-size: 14px;
+	font-weight: lighter;
+	margin-bottom: 10px;
+}
+#vinho-foto {
+	width: 430px;
+	height: 290px;
+	float: left;
+	vertical-align: middle;
+	text-align: center;
+	margin-top: 5px;
+}
+#vinho-info {
+	width: 430px;
+	height: 270px;
+	float: right;
+	margin-top: 20px;
+}
+#vinho-info .content {
+	width: 400px;
+	height: 270px;
+	margin: auto;
+	color: #333;
+	font-size: 14px;
+	text-align: left;
+}
+#vinho-info .content p {
+	margin: 10px;
+}
+#vinho-info .content .desc {
+	font-size: 11px;
+	color: #818181;
+}
+#vinho-info .content .btn {
+	float: right;
+}
+#vinho-info .content h2 {
+	padding-left: 30px;
+	font-family: "Myriad Pro", Arial, Tahoma;
+	color: #57011D;
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+.flag-africa {
+	background: url(images/regiao/small/africa-do-sul.gif) left center no-repeat;
+}
+.flag-alemanha {
+	background: url(images/regiao/small/alemanha.gif) left center no-repeat;
+}
+.flag-argentina {
+	background: url(images/regiao/small/argentina.gif) left center no-repeat;
+}
+.flag-australia {
+	background: url(images/regiao/small/australia.gif) left center no-repeat;
+}
+.flag-brasil {
+	background: url(images/regiao/small/brasil.gif) left center no-repeat;
+}
+.flag-chile {
+	background: url(images/regiao/small/chile.gif) left center no-repeat;
+}
+.flag-espanha {
+	background: url(images/regiao/small/espanha.gif) left center no-repeat;
+}
+.flag-franca {
+	background: url(images/regiao/small/franca.gif) left center no-repeat;
+}
+.flag-italia {
+	background: url(images/regiao/small/italia.gif) left center no-repeat;
+}
+.flag-portugal {
+	background: url(images/regiao/small/portugal.gif) left center no-repeat;
+}
+.branco {
+	border-top: #E4E464 14px solid;
+}
+.tinto {
+	border-top: #6B0505 14px solid;
+}
+.prosecco {
+	border-top: #FCF5C4 14px solid;
+}
+#main-container hr {
+	width: 880px;
+	height: 5px;
+	text-align: left; /* Para o IE */
+	margin: 20px 0; /* Para navegadores standard */
+	border-width: 0;
+	background: #55051E;
+	float: left;
+}
+#vinhos-l {
+	width: 430px;
+	height: 285px;
+	float: left;
+	background: url(images/bg-vinhos.png) no-repeat;
+}
+#vinhos-l .line {
+	margin: 20px auto 5px 40px;
+	width: 360px;
+	height: 65px;
+}
+#vinhos-l .line .flag {
+	float: left;
+	width: 60px;
+	height: 60px;
+	margin-right: 10px;
+}
+#vinhos-r {
+	width: 430px;
+	height: 285px;
+	float: right;
+	background: url(images/bg-vinhos.png) no-repeat;
+}
+#vinhos-r .line {
+	margin: 15px auto auto 25px;
+	height: 170px;
+}
+#vinhos-r .line .wine {
+	font-family: "Myriad Pro", Arial, Tahoma;
+	font-size: 12px;
+	color: #57011D;
+	width: 75px;
+	height: 170px;
+	text-align: center;
+	float: left;
+}
+#vinhos-l h3, #vinhos-r h3 {
+	font-family: "Myriad Pro", Arial, Tahoma;
+	font-size: 22px;
+	color: #57011D;
+	margin: 50px auto auto;
+	text-align: center;
+	font-weight: normal;
+}
+#sidebar {
+	width: 205px;
+	height: auto;
+	float: right;
+	display: inline;
+	background: url(images/bg-sidebar.png);
+	margin: -190px 0 0 0;
+	text-align: center;
+	font: "Myriad Pro", Arial, Tahoma;
+	color: #FFF;
+	font-size: 13px;
+}
+#sidebar .content {
+	width: 180px;
+	margin: auto auto 10px;
+}
+#sidebar p {
+	text-align: left;
+	margin-bottom: 10px;
+	font-size: 14px;
+	line-height: 14px;
+}
+#sidebar h1 {
+	font-family: "Museo500-Regular", Arial, Tahoma;
+	color: #FFF;
+	font-size: 24px;
+	margin: 10px auto;
+}
+#sidebar h1 span {
+	font-size: 18px;
+}
+#sidebar h3 {
+	font-size: 15px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+/*footer*/
+#footer {
+	clear: both;
+	position: relative;
+	bottom: 0;
+	background: #3d0312 url(images/bg-footer.gif) repeat-x;
+	width: 100%;
+	height: 420px;
+	z-index: 1;
+}
+.centering {
+	margin: auto;
+	width: 1000px;
+}
+.col {
+	float: left;
+	padding: 30px 0 0 35px;
+	width: 310px;
+}
+.col:first-child {
+	padding: 30px 0 0 0;
+}
+#footer h2 {
+	background: url(images/h2.png) no-repeat left center;
+	font-family: "Museo500-Regular", Arial, Tahoma;
+	color: #FFF;
+	float: left;
+	text-transform: uppercase;
+	padding: 5px 0 0 20px;
+	height: 33px;
+	width: 230px;
+	border-bottom: 1px solid #71082A;
+	margin-top: 20px;
+}
+#footer ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#footer ul li {
+	border-bottom: 1px solid #71082A;
+	float: left;
+	margin: 3px 0;
+	padding: 0;
+	width: 250px;
+}
+#footer ul li a {
+	font-family: "Museo500-Regular", Arial, Tahoma;
+	color: #FFF;
+	display: block;
+	float: left;
+	text-decoration: none;
+}
+#footer ul li:hover {
+	text-decoration: underline;
+}
+/*social footer*/
+#footer ul.social {
+	margin: 0;
+	width: 220px;
+	padding: 0;
+}
+#footer ul.social li {
+	border: none;
+	width: 37px;
+	height: 38px;
+	list-style: none;
+	display: inline;
+	margin: 10px 5px 0 0;
+}
+#footer ul.social li a {
+	float: left;
+}
+/*Página Receitas*/
+#content-full {
+	margin: 0;
+	width: 838px;
+	min-height: 400px;
+	float: left;
+	background-color: #FFF;
+	border-bottom: #CCC 1px solid;
+	font-family: "Myriad Pro", Arial, Tahoma;
+	color: #333;
+	font-size: 14px;
+	font-weight:100;
+}
+#receita {
+	width: 1090px;
+	height:auto;
+	background-color: #FFF;
+	clear:both;
+	display:table;
+}
+#receita-l {
+	width: 670px;
+	float:left;
+	display:table;
+}
+#receita-r {
+	width: 360px;
+	float:right;
+	display:table;
+	height:auto;
+}
+#receita-r .info {
+	padding-left: 40px;
+	color: #46021A;
+	font-size: 14px;
+	font-family: "Myriad Pro", Arial, Tahoma;
+	line-height: 40px;
+	vertical-align: middle;
+	font-weight:lighter;
+}
+.rforno {
+	background:url(icons/receita-forno.png) left center no-repeat;
+}
+.rtempo {
+	background: url(icons/receita-tempo.png) left center no-repeat;
+}
+.rserve {
+	background: url(icons/receita-serve.png) left center no-repeat;
+}
+.racompanha {
+	background: url(icons/receita-acompanha.png) left center no-repeat;
+}
+#recomendacao {
+	width: 1090px;
+	height:auto;
+	background-color: #FFF;
+	clear:both;
+	display:table;
+}
+#recomendacao #similar {
+	width: 260px;
+	height: 240px;
+	float:left;
+	margin: 10px 10px auto auto;
+}
+#recomendacao #similar .photo {
+	width: 260px;
+	height: 196px;
+	float:left;
+	background:#520115;
+}
+#recomendacao #similar a {
+	color: #3E4F0D;
+	font-size: 18px;
+	padding: 10px auto auto;
+	text-align:center;
+	font-family: "Myriad Pro", Arial, Tahoma;
+	text-decoration:none;
+}
+#recomendacao #similar a:hover {
+	text-decoration:underline;
+}
+#content-full p {
+	font-weight: lighter;
+	text-align: justify;
+	padding: 10px;
+}
+#content-full h2 {
+	color: #3E4F0D;
+	font-size: 36px;
+	padding: 10px;
+}
+#content-full .photo-destaque{
+	width: 838px;
+	height:470px;
+	padding: none;
+	clear:both;
+}
+#content-full h3, #receita h3 {
+	color: #3E4F0D;
+	font-size: 26px;
+	padding: 10px;
+}
+#receita h4, #recomendacao h4 {
+	color: #47031B;
+	font-size: 26px;
+	padding: 10px;
+}
+#receita h5 {
+	color: #47031B;
+	font-size: 18px;
+	padding: 10px;
+	padding-left: 30px;
+}
+.passos {
+	background-color: #EBEFEB;
+	width: 660px;;
+	padding: 5px;
+	margin-bottom: 5px;
+	color: #324E00;
+	font-size: 16px;
+	padding: none;
+	line-height: 20px;
+	vertical-align:middle;
+	font-weight:lighter;
+}
+#leitores {
+	width: 350px;
+	float: left;
+}
+.photo-leitor {
+	width: 90px;
+	height: 90px;
+	margin: 10px;
+	float:left;
+	background-color: #CCC;
+}
+.botoes {
+	clear: both;
+	height: 23px;
+}
+.botoes .put, .botoes .share{
+	margin-left: 10px;
+	float: left;
+}
+.botoes .share{
+	margin-left: 35px;
+}
+#bebida {
+	background:#FFF;
+	width: 720px;
+	float: right;
+}
+#bebida  .infos{
+	font-size:11px;
+	color: #7F7F7F;
+}
+#head-vinho {
+	width: 1265px;
+	height: 250px;
+	margin: 10px auto;
+}
+#head-vinho #left {
+	width: 350px;
+	height: 250px; 
+	float:left;
+	text-align:center;
+}
+#head-vinho #left h2{
+	text-align:center;
+	font-family: "Myriad Pro", Arial, Tahoma;
+	color: #57011D;
+	font-size:36px;
+}
+#bandeira-regiao {
+	width: 130px;
+	height: 160px; 
+	margin: 35px auto auto 110px;
+}
+#head-vinho #right {
+	width: 760px;
+	height: 250px; 
+	float:right;
+}
+#desc-regiao {
+	width: 675px;
+	height: 210px; 
+	float:left;
+	margin: 20px 70px auto auto;
+	background: #fff url(images/bg-vinho-txt.png) top no-repeat;
+	box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
+}
+#desc-regiao p {
+	font-family: "Myriad Pro", Arial, Tahoma;
+	color:#57011D;
+	font-size:16px;
+	margin: 50px;
+}
+#regioes {
+	float: right;
+	width: 750px;
+	height: 65px;
+	margin: 15px auto auto;
+}
+#regioes .flag{
+	float: left;
+	width: 60px;
+	height: 60px;
+	margin-right: 7px;
+}
+#clear {
+	width: 100%;
+	height: 10px;
+	clear:both;
+}
+#vinho-full {
+	width: 390px;
+	height: 390px;
+	float:left;
+	margin: auto 30px 20px auto ;
+	
+}
+#vinho-full h3 { 
+	font-family: "Museo300-Regular", "Myriad Pro", Arial, Tahoma; 
+	border: none;
+	font-size:14px;
+	font-weight:500;
+	margin-bottom: 10px;
+}
+#vinho-full h3.tinto{ color: #6b0505; }
+#vinho-full h3.branco{ color: #6D7232; }
+#vinho-full h3.prosecco { color: #F1D50C; }
+#box-vinho {
+	width: 340px;
+	height: 340px;
+	float: left;
+	background-color:#FFF;
+	box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
+}
+#box-vinho img { margin: 30px auto auto 30px;}

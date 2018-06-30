@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<layout>
+
+    <!-- https://www.atwix.com/magento/column-to-orders-grid/ -->
+
+    <!-- adding sales mozg status column on sales grid -->
+    <add_order_grid_column_handle>
+        <reference name="sales_order.grid">
+            <action method="addColumnAfter">
+                <columnId>mozg_event_code</columnId>
+                <arguments>
+                    <header>Evento do Método de Pagamento</header>
+                    <index>mozg_event_code</index>
+                    <filter_index>main_table.mozg_event_code</filter_index>
+                    <width>50px</width>
+                    <type>options</type>
+                    <filter>mozg_payment/adminhtml_sales_order_filter_mozg</filter>
+                    <renderer>mozg_payment/adminhtml_sales_order_renderer_mozg</renderer>
+                </arguments>
+                <after>status</after>
+            </action>
+            <action method="addColumnAfter">
+                <columnId>mozg_psp_reference</columnId>
+                <arguments>
+                    <header>Referência do Método do Pagamento</header>
+                    <index>mozg_psp_reference</index>
+                    <width>50px</width>
+                    <renderer>mozg_payment/adminhtml_sales_order_renderer_mozg</renderer>
+                </arguments>
+                <after>status</after>
+            </action>
+            <action method="addColumnAfter" ifconfig="customordergrid/configure/enabled">
+                <columnId>method_name</columnId>
+                <arguments>
+                    <header>ID do Método de Pagamento</header>
+                    <index>method</index>
+                    <filter_index>payment_method.method</filter_index>
+                    <width>50px</width>
+                </arguments>
+                <after>status</after>
+            </action>
+            <action method="addColumnAfter" ifconfig="customordergrid/configure/enabled">
+                <columnId>mozg_status_transaction</columnId>
+                <arguments>
+                    <header>Status da Transacão</header>
+                    <index>mozg_status_transaction</index>
+                    <width>50px</width>
+                    <renderer>mozg_payment/adminhtml_sales_order_renderer_mozg</renderer>
+                    <type>text</type>
+                    <filter_index>0</filter_index>
+                    <filter>mozg_payment/adminhtml_sales_order_filter_mozg</filter>
+                </arguments>
+                <after>method_name</after>
+            </action>
+        </reference>
+    </add_order_grid_column_handle>
+
+    <!-- order grid action -->
+    <adminhtml_sales_order_grid>
+    <!-- apply the layout handle defined above -->
+        <update handle="add_order_grid_column_handle" />
+    </adminhtml_sales_order_grid>
+
+    <!-- order grid view action -->
+    <adminhtml_sales_order_index>
+        <!-- apply the layout handle defined above -->
+        <update handle="add_order_grid_column_handle" />
+    </adminhtml_sales_order_index>
+
+    <!-- /index.php/admin/mozg_payment_event_queue/ -->
+
+    <adminhtml_mozg_payment_event_queue_index>
+        <reference name="content">
+            <block type="mozg_payment/adminhtml_mozg_payment_event_queue" name="mozg.payment.event.queue.grid.index"/>
+        </reference>
+    </adminhtml_mozg_payment_event_queue_index>
+
+    <adminhtml_mozg_payment_event_queue_grid>
+        <remove name="root"/>
+        <block type="mozg_payment/adminhtml_mozg_payment_event_queue_grid" name="mozg.payment.event.queue.grid" output="toHtml"/>
+    </adminhtml_mozg_payment_event_queue_grid>
+
+    <adminhtml_sales_order_create_index>
+        <reference name="head">
+            <action method="addJs">
+                <script>mozg_payment/adminhtml/sales.js</script>
+                <params><![CDATA[name=""]]></params>
+            </action>
+        </reference>
+    </adminhtml_sales_order_create_index>
+
+</layout>

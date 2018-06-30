@@ -1,0 +1,31 @@
+<?php
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php
+/**
+ * @see Mozg_Base_Block_Adminhtml_System_Config_ExportSettings
+ */
+?>
+<div class="pp-buttons-container">
+    <button id="mozg-export-settings">
+        <span><span><span><?php echo $this->escapeHtml($this->getButtonLabel()); ?></span></span></span>
+    </button>
+</div>
+
+<script type="text/javascript">
+    //<![CDATA[
+    $('mozg-export-settings').observe('click', function(event) {
+
+        var baseUrl = "<?php echo $this->getUrlExportSettings(); ?>";
+
+        console.log(baseUrl);
+
+        location.href=baseUrl;
+
+        event.preventDefault();
+    });
+    //]]>
+</script>

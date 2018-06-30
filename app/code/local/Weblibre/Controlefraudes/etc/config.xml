@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Weblibre_Controlefraudes>
+            <version>0.9.8</version>
+        </Weblibre_Controlefraudes>
+    </modules>
+    <global>
+        <models>
+            <controlefraudes>
+                <class>Weblibre_Controlefraudes_Model</class>
+            </controlefraudes>
+        </models>
+
+        <resources>
+            <controlefraudes_setup>
+                <setup>
+                    <module>Weblibre_Controlefraudes</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </controlefraudes_setup>
+        </resources>
+
+        <blocks>
+            <controlefraudes>
+                <class>Weblibre_Controlefraudes_Block</class>
+            </controlefraudes>
+        </blocks>
+		
+        <helpers>
+            <controlefraudes>
+                <class>Weblibre_Controlefraudes_Helper</class>
+            </controlefraudes>
+        </helpers>
+        <events>
+            <checkout_onepage_controller_success_action>
+                <observers>
+                    <controlefraudes_order_observer>
+                        <class>controlefraudes/observer</class>
+                        <method>consultaClearSale</method>
+                    </controlefraudes_order_observer>
+                </observers>
+            </checkout_onepage_controller_success_action>           
+        </events>
+    </global>
+
+    <frontend>
+        <secure_url>
+            <controlefraudes>/controlefraudes/</controlefraudes>
+        </secure_url>
+        <routers>
+            <Weblibre_Controlefraudes>
+                <use>standard</use>
+                <args>
+                    <module>Weblibre_Controlefraudes</module>
+                    <frontName>controlefraudes</frontName>
+                </args>
+            </Weblibre_Controlefraudes>
+        </routers>
+        <translate>
+            <modules>
+                <Weblibre_Controlefraudes>
+                    <files>
+                        <default>Weblibre_Controlefraudes.csv</default>
+                    </files>
+                </Weblibre_Controlefraudes>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <controlefraudes>
+                    <file>controlefraudes.xml</file>
+                </controlefraudes>
+            </updates>
+        </layout>
+    </frontend>
+	
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <weblibre_controlefraudes>
+                                            <title>Controle de Fraudes</title>
+                                        </weblibre_controlefraudes>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <translate>
+            <modules>
+                <Weblibre_Controlefraudes>
+                    <files>
+                        <default>Weblibre_Controlefraudes.csv</default>
+                    </files>
+                </Weblibre_Controlefraudes>
+            </modules>
+        </translate>
+		
+        <layout>
+            <updates>
+                <controlefraudes>
+                    <file>consulta.xml</file>
+                </controlefraudes>
+            </updates>
+        </layout>
+		
+    </adminhtml>
+	
+    <default>
+        <weblibre_controlefraudes>
+            <controlefraudes>
+                <enabled>false</enabled>
+                <limite_produto>true</limite_produto>
+                <debug>1</debug>
+            </controlefraudes>
+        </weblibre_controlefraudes>
+    </default>
+
+</config>

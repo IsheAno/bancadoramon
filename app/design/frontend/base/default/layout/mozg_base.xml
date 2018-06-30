@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<layout version="0.1.0">
+
+    <default>
+        <reference name="head">
+            <!-- Default -->
+            <action method="addJs">
+                <script>prototype/window.js</script>
+                <params><![CDATA[name=""]]></params>
+            </action>
+            <action method="addItem">
+                <type>js_css</type>
+                <name>prototype/windows/themes/default.css</name>
+                <params><![CDATA[name=""]]></params>
+            </action>
+            <action method="addCss">
+                <css>lib/prototype/windows/themes/magento.css</css>
+                <params><![CDATA[name=""]]></params>
+            </action>
+            <!--<action method="addJs">
+                <script>mozg_base/utils.js</script>
+                <params><![CDATA[name=""]]></params>
+            </action>-->
+            <action method="addJs">
+                <script>mozg_base/validation.js</script>
+                <params><![CDATA[name=""]]></params>
+            </action>
+            <action method="addJs">
+                <script>mozg_base/script.js</script>
+                <params><![CDATA[name=""]]></params>
+            </action>
+            <action method="addJs">
+                <script>mozg_base/ie.lteIE9.js</script>
+                <params><![CDATA[name=""]]></params>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/mozg_base/style.css</stylesheet>
+            </action>
+        </reference>
+
+        <update handle="handle_mozg_bundle_js"/>
+    </default>
+
+    <handle_mozg_bundle_js>
+        <reference name="head">
+            <action method="addJs">
+                <script>mozg_base/bundle.js</script>
+                <params><![CDATA[name=""]]></params>
+            </action>
+            <block type="core/text" name="mozg.base.include.script">
+                <action method="setText">
+                    <text><![CDATA[
+                    <script>
+                    console.log(require);
+                    </script>
+                    ]]>
+                    </text>
+                </action>
+            </block>
+        </reference>
+        <reference name="head">
+            <block type="core/text" name="mozg.base.include.script.head.1">
+                <action method="setText">
+                <text><![CDATA[
+<script type="text/javascript">
+    console.log('head');
+</script>
+                ]]></text>
+                </action>
+            </block>
+        </reference>
+        <!--<reference name="head">
+            <block type="core/text" name="mozg.base.include.script.head.2">
+                <action method="setText">
+                <text><![CDATA[
+<script type="text/javascript">
+    /* Como no IE não é exibido os objetos no console do Browser podemos usar essa alternativa */
+</script>
+<script type="text/javascript" src="https://getfirebug.com/firebug-lite-debug.js"></script>
+                ]]></text>
+                </action>
+            </block>
+        </reference>-->
+        <reference name="after_body_start">
+            <block type="core/text" name="mozg.base.include.script.after_body_start">
+                <action method="setText">
+                    <text><![CDATA[<script type="text/javascript">console.log('after_body_start');</script>]]>
+                    </text>
+                </action>
+            </block>
+        </reference>
+    </handle_mozg_bundle_js>
+
+    <!--<catalog_product_view>
+        <update handle="handle_mozg_bundle_js"/>
+    </catalog_product_view>
+
+    <customer_account_create>
+        <update handle="handle_mozg_bundle_js"/>
+    </customer_account_create>
+
+    <customer_account_edit translate="label">
+        <update handle="handle_mozg_bundle_js"/>
+    </customer_account_edit>
+
+    <customer_address_form translate="label">
+        <update handle="handle_mozg_bundle_js"/>
+    </customer_address_form>
+
+    <checkout_onepage_index>
+        <update handle="handle_mozg_bundle_js"/>
+    </checkout_onepage_index>
+
+    <checkout_multishipping_billing>
+        <update handle="handle_mozg_bundle_js"/>
+    </checkout_multishipping_billing>
+
+    <onestepcheckout_index_index>
+        <update handle="handle_mozg_bundle_js"/>
+    </onestepcheckout_index_index>
+
+    <opc_index_index>
+        <update handle="handle_mozg_bundle_js"/>
+    </opc_index_index>
+
+    <checkout_onepage_success translate="label">
+        <update handle="handle_mozg_bundle_js"/>
+    </checkout_onepage_success>
+
+    <checkout_multishipping_success translate="label">
+        <update handle="handle_mozg_bundle_js"/>
+    </checkout_multishipping_success>
+
+    <onestepcheckout_index_success translate="label">
+        <update handle="handle_mozg_bundle_js"/>
+    </onestepcheckout_index_success>-->
+
+</layout>

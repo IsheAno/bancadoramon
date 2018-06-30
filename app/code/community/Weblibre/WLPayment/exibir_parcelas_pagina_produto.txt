@@ -1,0 +1,38 @@
+Para exibir as parcelas na página do produto, deve-se instalar o módulo Weblibre_WLPayment_Parcelas. Em seguida, siga as instruções abaixo.
+
+- No arquivo de template onde as parcelas devem aparecer, insira o código abaixo:
+
+	$blockParcelas = $this->getLayout()->createBlock('wlpayment/parcelas');
+	echo $this->getLayout()->createBlock('wlpayment/parcelas')->showHtml(<valor>, <maxParcelas>, <valorMínimo>, <taxaJuros>, <parcelasSemJuros>); 
+	
+	* onde: <valor> é o valor base para o cálculo das parcelas
+			<maxParcelas> é o número máximo de parcelas a serem calculadas.
+			<valorMínimo> é o valor mínimo permitido para cada parcela. 
+			<taxaJuros> é a taxa de juros a ser aplicada no cálculo das parcelas.
+	
+- Para exibir na página de detalhes do produto, insira o código no arquivo de template catalog/product/view.phtml
+	Por exemplo:
+	* Por volta da linha 60, logo após o código <?php echo $this->getTierPriceHtml() ?>
+	<?php 
+		$blockParcelas = $this->getLayout()->createBlock('wlpayment/parcelas');
+		echo $this->getLayout()->createBlock('wlpayment/parcelas')->showHtml($_product->getFinalPrice(), 10, 5, 0.99, 10); 
+	?>	
+	* Importante. Este exemplo foi baseado no arquivo do tema padrão do magento.
+
+* Obs.: Verificar qual método de pagamento está ativo.
+	- O arquivo que imprime o template no momento, parcelas.phtml, verifica se o ccsave está ativo, então modificar conforme as formas de pagamento
+
+- O arquivo de template referente ao bloco que exibe as parcelas pode ser encontrado em:
+	app/design/frontend/default/default/template/wlpayment/parcelas.phtml
+	
+	Para alterar a aparência das parcelas, altere o arquivo citado acima.
+	
+	O código CSS sugerido é:
+	
+	<style type="text/css">
+		.parcelamento-info {clear: both; margin-top: 20px; margin-bottom: 16px}
+		.parcelamento-info .parcelamento-title {border-bottom: 1px dashed #d9dde3}
+		.parcelamento-info .valor-parcela {font-weight: bold}
+		.parcelamento-info .parcelas-grid {width: 100%; margin: 6px;}
+		.parcelamento-info .parcelamento-obs {margin-top: 8px; border-bottom: 1px dashed #d9dde3; border-top: 1px dashed #d9dde3; font-size: 12px}
+	</style>

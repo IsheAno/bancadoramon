@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <mozg_general translate="title">
+                                        <title>General</title>
+                                    </mozg_general>
+                                    <!--<mozg_anti_fraud translate="title">
+                                        <title>Anti-Fraud Methods</title>
+                                    </mozg_anti_fraud>-->
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <mozg_base translate="title">
+                        <title>MOZG ∞</title>
+                        <sort_order>100</sort_order>
+                        <children>
+                            <mozg_general>
+                                <title>Geral</title>
+                                <sort_order>10</sort_order>
+                             </mozg_general>
+                            <!--<customer>
+                                <title>Customer Configuration</title>
+                                <sort_order>20</sort_order>
+                            </customer>
+                            <shipping>
+                                <title>Shipping Methods</title>
+                                <sort_order>30</sort_order>
+                            </shipping>
+                            <payment>
+                                <title>Payment Methods</title>
+                                <sort_order>40</sort_order>
+                            </payment>
+                            <mozg_anti_fraud>
+                                <title>Anti-Fraud Methods</title>
+                                <sort_order>50</sort_order>
+                            </mozg_anti_fraud>-->
+                        </children>
+                    </mozg_base>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <mozg_base translate="title">
+            <title>∞ MOZG ∞</title>
+            <sort_order>100</sort_order>
+            <depends>
+                <module>Mozg_Base</module>
+            </depends>
+            <children>
+                <mozg_general>
+                    <title>General</title>
+                    <action>adminhtml/system_config/edit/section/mozg_general</action>
+                    <sort_order>10</sort_order>
+                    <children>
+                    </children>
+                </mozg_general>
+                <!--<customer>
+                    <title>Customer Configuration</title>
+                    <action>adminhtml/system_config/edit/section/customer</action>
+                    <sort_order>20</sort_order>
+                    <children>
+                    </children>
+                </customer>
+                <shipping translate="title" module="mozg_base">
+                    <title>Shipping Methods</title>
+                    <action>adminhtml/system_config/edit/section/carriers</action>
+                    <sort_order>30</sort_order>
+                    <children>
+                    </children>
+                </shipping>
+                <payment translate="title">
+                    <title>Payment Methods</title>
+                    <action>adminhtml/system_config/edit/section/payment</action>
+                    <sort_order>40</sort_order>
+                    <children>  
+                    </children>
+                </payment>
+                <mozg_anti_fraud>
+                    <title>Anti-Fraud Methods</title>
+                    <action>adminhtml/system_config/edit/section/mozg_anti_fraud</action>
+                    <sort_order>50</sort_order>
+                </mozg_anti_fraud>-->
+            </children>
+        </mozg_base>
+    </menu>
+</config>

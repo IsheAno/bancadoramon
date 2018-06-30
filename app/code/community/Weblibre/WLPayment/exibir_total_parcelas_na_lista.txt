@@ -1,0 +1,24 @@
+Para exibir o total de parcelas, deve-se instalar o módulo Weblibre_WLPayment_Parcelas. Em seguida, siga as instruções abaixo.
+
+- No arquivo de template onde as parcelas devem aparecer, insira o código abaixo:
+
+	$blockParcelas = $this->getLayout()->createBlock('wlpayment/parcelas');
+	echo $this->getLayout()->createBlock('wlpayment/parcelas')->showTotalParcelas(<valor>, <maxParcelas>, <valorMínimo>, <taxaJuros>, <parcelasSemJuros>); 
+	
+	* onde: <valor> é o valor base para o cálculo das parcelas, o valor final do produto.
+			<maxParcelas> é o número máximo de parcelas a serem calculadas.
+			<valorMínimo> é o valor mínimo permitido para cada parcela. 
+			<taxaJuros> é a taxa de juros a ser aplicada no cálculo das parcelas.
+			<parcelasSemJuros> é o número de parcelas sem juros.
+	
+- Por exemplo, para exibir na página de listagem dos produtos, insira o código no arquivo de template catalog/product/list.phtml
+	* Por volta da linha 100, logo após o código <?php echo $this->getPriceHtml($_product, true) ?>
+	<?php 
+		$blockParcelas = $this->getLayout()->createBlock('wlpayment/parcelas');
+		echo $this->getLayout()->createBlock('wlpayment/parcelas')->showTotalParcelas($_product->getFinalPrice(), 10, 5, 0.99, 10); 
+	?>
+	* Importante. Este exemplo foi baseado no arquivo do tema padrão do magento utilizando a exibição dos produtos no modo grid.
+
+- O arquivo de template referente ao bloco que exibe as parcelas pode ser encontrado em:
+	app/design/frontend/default/default/template/wlpayment/parcelasTotal.phtml
+	- Este arquivo é referente apenas a exibição do texto e das parcelas.

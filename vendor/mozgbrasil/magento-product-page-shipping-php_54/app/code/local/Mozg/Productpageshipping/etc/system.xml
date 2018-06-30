@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Mozg. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config>
+    <sections>
+        <mozg_general>
+            <groups>
+                <mozg_product_page_shipping translate="label" module="mozg_productpageshipping">
+                    <header_css>header-section-tab_mozg</header_css>
+                    <class>separator-top section-tab_mozg</class>
+                    <tab>tab_mozg_base</tab>
+                    <label>Visualização dos métodos de entrega na página do produto</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <frontend_model>mozg_base/adminhtml_system_config_fieldset_method</frontend_model>
+                    <activity_path>mozg_general/mozg_product_page_shipping/active</activity_path>
+                    <comment>
+                          <![CDATA[<div style="padding:10px;background-color:#fff;border:1px solid #ddd;margin-bottom:7px;"><p><a href="https://github.com/mozgbrasil/magento-product-page-shipping-php_54#mozgproductpageshipping" target="_blank">Clique aqui</a> para obter as informações do módulo</p></div>]]>
+                    </comment>   
+                    <fields>
+                        <mozg_product_page_shipping_license type="group" translate="label comment tooltip" module="mozg_productpageshipping">
+                            <label>Licenciamento</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>10</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <license translate="label">
+                                    <label>Licença para uso comercial</label>
+                                    <comment></comment>
+                                    <frontend_type>textarea</frontend_type>
+                                    <config_path>mozg_general/mozg_product_page_shipping/license</config_path>
+                                    <sort_order>8</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </license>
+                                <license_output translate="label">
+                                    <label></label>
+                                    <comment></comment>
+                                    <license_config_path>mozg_general/mozg_product_page_shipping/license</license_config_path>
+                                    <method_id>mozg_product_page_shipping</method_id>
+                                    <frontend_type>text</frontend_type>
+                                    <frontend_model>mozg_base/adminhtml_system_config_form_field_license</frontend_model>
+                                    <sort_order>9</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </license_output>
+                            </fields>
+                        </mozg_product_page_shipping_license>
+                        <mozg_product_page_shipping_required_settings type="group" translate="label comment tooltip" module="mozg_productpageshipping">
+                            <label>Required Settings</label>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>20</sort_order>
+                            <frontend_model>mozg_base/adminhtml_system_config_fieldset_expanded</frontend_model>
+                            <fields>
+                                <active translate="label">
+                                    <label>Enabled</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-product-page-shipping-php_54#-ativar" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>mozg_general/mozg_product_page_shipping/active</config_path>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </active>
+                                <debug translate="label">
+                                    <label>Debug</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-product-page-shipping-php_54#-debug" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>mozg_general/mozg_product_page_shipping/debug</config_path>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </debug>
+                                <block_name translate="label">
+                                    <label>Block Name</label>
+                                    <comment><![CDATA[<a href="https://github.com/mozgbrasil/magento-product-page-shipping-php_54#-nome-do-bloco" target="_blank">__?__</a>]]></comment>
+                                    <frontend_type>text</frontend_type>
+                                    <config_path>mozg_general/mozg_product_page_shipping/block_name</config_path>
+                                    <sort_order>30</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </block_name>
+                                <use_country translate="label">
+                                    <label>Display Country Dropdown</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>mozg_general/mozg_product_page_shipping/use_country</config_path>
+                                    <sort_order>100</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </use_country>
+                                <use_region translate="label">
+                                    <label>Display Region Field</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>mozg_general/mozg_product_page_shipping/use_region</config_path>
+                                    <sort_order>110</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </use_region>
+                                <use_city translate="label">
+                                    <label>Display City Field</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>mozg_general/mozg_product_page_shipping/use_city</config_path>
+                                    <sort_order>120</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </use_city>
+                                <validate_mask_zipcode translate="label">
+                                    <label>Validation and mask for the Zip/Postal Code field</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <config_path>mozg_general/mozg_product_page_shipping/validate_mask_zipcode</config_path>
+                                    <sort_order>130</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                </validate_mask_zipcode>
+                            </fields>
+                        </mozg_product_page_shipping_required_settings>        
+                    </fields>
+                </mozg_product_page_shipping>
+            </groups>
+        </mozg_general>
+    </sections>
+</config>

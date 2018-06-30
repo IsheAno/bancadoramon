@@ -1,0 +1,54 @@
+<?php
+/**
+ */
+?>
+<footer>
+	<div id="full" class="footer-bg">
+		<div id="wrapper">
+
+			<div id="colunas3">
+				<h3 class="footer-h cor-sec info">Informa&ccedil;&otilde;es</h3>
+				<?php echo $this->getChildHtml('footer_links-top') ?>
+			</div>
+
+			<div id="colunas3">
+				<h3 class="footer-h cor-sec pag">Formas de pagamento</h3>
+				<ul id="menu-footer-flag">
+					<li class="trans opacity-1-5 c-visa"></li>
+					<li class="trans opacity-1-5 c-master"></li>
+					<li class="trans opacity-1-5 c-boleto"></li>
+					<li class="trans opacity-1-5 c-bradesco"></li>
+					<li class="trans opacity-1-5 c-itau"></li>
+					<li class="trans opacity-1-5 c-bb"></li>
+					<li class="trans opacity-1-5 c-amex"></li>
+					<li class="trans opacity-1-5 c-bcash"></li>
+					<li class="trans opacity-1-5 c-pagseguro"></li>
+				</ul>
+			</div>
+			
+			<div id="colunas3" class="fb">
+				<h3 class="footer-h cor-sec social">Redes Sociais</h3>
+				<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fmucciestudio%3Ffref%3Dts&amp;width=218&amp;height=590&amp;show_faces=false&amp;colorscheme=light&amp;stream=false&amp;border_color&amp;header=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:170px; height:75px;" allowtransparency="true"></iframe>
+			</div>
+			
+			<div id="colunas3">
+				<h3 class="footer-h cor-sec news">Assine a nossa newsletter</h3>
+				<p class="cor-sec fs-12" style="margin-top:10px;">Receba promo&ccedil;&otilde;es e ofertas exclusivas!</p>
+				<?php echo $this->getChildHtml('footer.newsletter') ?>
+			</div>
+						
+		</div><!-- end wrapper -->
+	</div>
+
+	<div id="full" class="foot-bg">
+		<div id="wrapper">
+			<div class="ta-c cor-sec fs-12">
+				&copy; <?php echo $today = date("Y"); ?> <?php echo $this->getCopyright(); ?><br />
+				Desenvolvido por <a class="td-u" target="_blank" href="http://www.mucciestudio.com.br">Mucci Est&uacute;dio</a>.
+				<div id="dispositivos"></div>
+				<div id="mucci"><a target="_blank" href="http://www.mucciestudio.com.br" class="trans opacity-1-5"></a></div>
+
+			</div>		
+		</div><!-- end wrapper -->
+	</div>
+</footer>

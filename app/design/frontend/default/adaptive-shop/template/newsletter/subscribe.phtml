@@ -1,0 +1,21 @@
+<?php
+/**
+ */
+?>
+<div id="colunas4" class="news-box no-bottom">
+	<p class="bold f-l">ASSINE NOSSA NEWSLETTER<br /><span>Ofertas, promo&ccedil;&otilde;es e dicas no seu e-mail!</span></p>
+</div>
+
+<div id="colunas8" class="news-box">
+	<div class="form-news d-b">
+    	<form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail">
+           	<input type="text" name="email" id="newsletter" value="" class="f-l news-i txt italic fs-14 d-b input-text required-entry validate-email" autocomplete="off" placeholder="Escreva seu endereço de e-mail aqui" maxlength="100">
+            <input type="submit" value="assinar" class="fs-16 d-b bt-n f-l cor-sec bold news-b">
+        </form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+    //]]>
+    </script>
+	</div>
+</div>

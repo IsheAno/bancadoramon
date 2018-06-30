@@ -1,0 +1,186 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php if($this->getResultCount()): ?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div id="colunas9">
+    <?php if ($this->helper('rss/catalog')->getTagFeedUrl()): ?>
+        <a href="<?php echo $this->helper('rss/catalog')->getTagFeedUrl() ?>" class="nobr link-rss"><?php echo $this->__('Subscribe to Feed') ?></a>
+    <?php endif; ?>
+    <h1 class="cor bold"><?php echo ($this->getHeaderText() || $this->getHeaderText() === false) ? $this->getHeaderText() : $this->__("Search results for '%s'", $this->helper('catalogsearch')->getEscapedQueryText()) ?></h1>
+</div>
+    <?php if ($messages = $this->getNoteMessages()):?>
+    <p class="note-msg">
+        <?php foreach ($messages as $message):?>
+            <?php echo $message?><br />
+        <?php endforeach;?>
+    </p>
+    <?php endif; ?>
+    <?php echo $this->getProductListHtml() ?>
+<?php else: ?>
+
+<?php 
+/**
+ * Header SEO
+ * SET Header 404 
+ * Busca Vazia
+ */
+ ?>
+<?php header("Status: 404 Not Found"); ?>
+<link rel="stylesheet" type="text/css" href="https://www.bancadoramon.com.br/js/owl-carousel/owl.carousel.css" asycn defer />
+<link rel="stylesheet" type="text/css" href="https://www.bancadoramon.com.br/js/owl-carousel/owl.theme.css" asycn defer/>
+<link rel="stylesheet" type="text/css" href="https://www.bancadoramon.com.br/js/owl-carousel/owl.transitions.css" asycn defer/>
+<script type="text/javascript" asycn defer src="https://www.bancadoramon.com.br/js/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript">
+    jQuery.noConflict();
+    jQuery(document).ready(function() {
+        jQuery('#carousel-home .grid-produtos').owlCarousel({
+            navigation: true,
+            pagination: true,
+            items: 3,
+            itemsMobile : [767,2]
+        });
+    });
+</script>
+<div id="colunas9" class="search-result">
+    <h1 class="cor bold">OPS!</h1>
+    <p class="fs-25">
+        Nenhum produto encontrado!
+        <?php //echo ($this->getNoResultText()) ? $this->getNoResultText() : $this->__('Your search returns no results.') ?>
+        <?php if ($messages = $this->getNoteMessages()):?>
+            <?php foreach ($messages as $message):?>
+            <br /><?php echo $message?>
+            <?php endforeach;?>
+        <?php endif; ?>
+    </p>
+    <p class="cor fs-16">Verifique se o termo pesquisado foi digitado corretamente.</p>
+    <p class="cor bold fs-16">Por favor, tente com outras palavras!</p>
+</div>
+<br>
+<br>
+<div id="colunas9">
+    <div id="carousel-home">
+        <div class="title_carousel">
+            <h1>Ofertas</h1>
+        </div>
+        <div class="carousel_prod">
+        <?php
+        $_productCollection=Mage::getSingleton('catalog/category')->load(18)->getProductCollection()
+            ->addAttributeToSelect('*');
+        $_helper = $this->helper('catalog/output');
+        $this->_reviewsHelperBlock = $this->getLayout()->createBlock('review/helper');
+        ?>
+
+        <div class="grid-produtos">
+
+            <?php if(!$_productCollection->count()): ?>
+
+                <div id="colunas9">
+                    <br />
+                    <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+                </div>
+
+            <?php else: ?>
+
+            <?php $_collectionSize = $_productCollection->count() ?>
+            <?php $_columnCount = 3; ?>
+            <?php $i=0; foreach ($_productCollection as $_product): $reqProductId = $_product->getId(); ?>
+                <div id="colunas3" class=" prod <?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+                    <div class="nova-h">
+                        <div class="tag-label">
+                            <?php
+                            $newFromDate = Mage::getModel('catalog/product')->load($_product->getID())->getNewsFromDate();
+                            $newToDate = Mage::getModel('catalog/product')->load($_product->getID())->getNewsToDate();
+                            $now = date("Y-m-d");
+
+                            if($newFromDate < $now && $newToDate >= $now): ?>
+                                <p class="novo">novidade</p>
+                            <?php endif; ?>
+
+                            <?php if($_product->isSaleable()): ?>
+                            <?php else: ?>
+                                <p class="novo">esgotado</p>
+                            <?php endif; ?>
+                        </div>
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                            <picture>
+                                <img class="img-prod" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(260)->setQuality(70); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" width="263" heigth="263">
+                            </picture>
+                        </a>
+                        <div id="info-prod">
+                            <div class="mob">
+                                <div class="list-rating"><?php echo $this->_reviewsHelperBlock->getSummaryHtml($_product, false, false); ?></div>
+                            </div>
+                            <a class="fs-18 txt d-b" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>">
+                                <h2><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h2>
+                            </a>
+                            <div class="mob">
+                                <?php echo $this->getPriceHtml($_product, true) ?>
+
+                                    <?php
+                                    $Preco = $_product->getFinalPrice();
+                                    if($Preco >= 100){
+                                        $Parcelamento = 2;
+                                        $Resultado = $Preco/ $Parcelamento;
+                                        echo '<p class="cor fs-15 bold">' . $Parcelamento .'x '.number_format($Resultado, 2, ',', '').' sem juros'. '</p>';
+                                    }
+                                    ?>
+
+                                <form action="<?php echo $this->helper('checkout/cart')->getAddUrl($_product)?>" method="post" id="product_addtocart_form_<?php echo $_product->getId()?>"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+                                    <div class="list-qtd">
+                                        <span class="qtd-text">Qtd Minima:</span>
+                                        <?php 
+                                            $loadProduct = Mage::getModel('catalog/product')->load( $_product->getId() );
+                                            $productQuantity = Mage::getModel("cataloginventory/stock_item")->loadByProduct($_product->getId()); 
+                                        ?>
+                                        <?php if($_product->isSaleable()): ?>
+                                            <input style="text-align:center;" class="op-i" type="text" name="qty" id="qty" maxlength="5" value="<?php echo $productQuantity->getMinSaleQty()?>" />
+                                        <?php else: ?>
+                                            <input style="text-align:center;" class="op-i" type="text" name="qty" id="qty" disabled="disabled" maxlength="5" value="<?php echo $productQuantity->getMinSaleQty();?>" />
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="bt-nova">
+                                       <button title="Comprar" onclick="document.getElementById('product_addtocart_form_<?php echo $_product->getId()?>').submit(); return false">Adicionar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php $i++ ?>
+                <?php if ($i == 8) break; ?>
+            <?php endforeach ?>
+            <?php endif; ?>
+        </div>
+
+        </div>
+        <div id="veja_mais">
+            <a href="/ofertas-promocoes">Veja mais Produtos</a>
+        </div>
+    </div>
+</div>
+
+<?php endif; ?>

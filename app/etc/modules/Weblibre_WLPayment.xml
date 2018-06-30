@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Weblibre_WLPayment>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Weblibre_WLPayment>
+    </modules>
+</config> 

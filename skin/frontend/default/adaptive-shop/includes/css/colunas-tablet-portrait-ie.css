@@ -1,0 +1,55 @@
+/* Tablet Portrait IE
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+#wrapper{padding:0 6px;width:756px;}
+#colunas12,
+#wrapper-colunas9,
+#colunas9,
+#wrapper-colunas8,
+#colunas8,
+#colunas6,
+#colunas4,
+#colunas3{margin:0 10px 20px;}
+#colunas12{width:736px;}
+#wrapper-colunas9{margin:0 0 0px!important;width:567px;}
+#colunas9{width:547px}
+#wrapper-colunas8{margin:0 0 0px!important;width:504px;}
+#colunas8{width:484px}
+#colunas6{width:358px;}
+#colunas4{width:232px;}
+#colunas3{width:169px;}
+.footer-h{font-size:11px;}
+.news-i{width:355px;}
+#dispositivos{background-position:center -30px;float:right;margin:0 28px 0 0;}
+#mucci{display:inline;float:right;margin-bottom:0;margin-top:12px;}
+#gallery,
+#slide-images{height:269px!important;}
+.product-image-zoom a,
+.product-image-zoom a img,
+.product-image-zoom .mousetrap{width:358px!important;height:358px!important;}
+.form-search > .search{width:450px;}
+.cart-success1{height:95px;}
+.cart-success2{height:160px;}
+.cart-empty1{height:55px;}
+.cart-empty2{height:120px;}
+#nav-top .no-p a{padding:18px 6px;}
+#menu li a span{padding:0 5px 0 20px;margin:0;font-size:14px;display:block;}
+.news-box p span{font-size:12px;}
+.n-atend2 p{margin-left:18px;}
+.box-related{width:558px;}
+.box-cc p,
+.box-bd p{width:48%;}
+#menu{width:229px;}
+#menu li:hover ul{display:block;}
+#menu li ul{left:229px;width:503px;}
+#menu li ul li{width:21%;}
+#menu li ul li a span{font-size:14px;}
+#nav-top li:hover .box-hover2{display:block;}
+.logotipo .title-l{left:0;}
+.logotipo .title-r{left:62%;padding:0 5px 12px 0;}
+.logotipo .title-l,
+.logotipo .title-r,
+.cacc{display:block!important;}
+.banner_left{display:block;}
+.product-info #product-price{float:right;}
+.news-box p{font-size:16px;}

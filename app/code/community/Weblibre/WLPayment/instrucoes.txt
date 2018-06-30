@@ -1,0 +1,9 @@
+Como instalar o Módulo
+1- copie os arquivos para o diretório raíz do Magento
+2- atualize o cache
+
+==================
+Como usar o F-Control
+1- Clique na opção Controle de Fraudes do Menu Weblibre
+2- Clique no botão "Novo" e em seguida entre com os seus dados de acesso ao F-Control
+3- Para verificar o funcionamento, entre na página do pedido e veja se aparece a figura referente à análise do F-Control   
