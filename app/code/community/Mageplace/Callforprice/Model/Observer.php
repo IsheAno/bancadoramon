@@ -125,7 +125,7 @@ class Mageplace_Callforprice_Model_Observer
         $processor->load($html);
 
         if ($helper->isGlobalEnabled()) {
-            $processor->replace($helper->getCssSelector('product_list_price'), $helper->prepareReplacement());
+            $processor->replace($helper->getCssSelector('product_list_price'), $helper->prepareReplacementList());
             $processor->remove($helper->getCssSelector('product_list_addtocart'));
             return $processor->getHtml();
         }
@@ -134,7 +134,7 @@ class Mageplace_Callforprice_Model_Observer
         $parent = $block->getParentBlock();
         if ($parent instanceof Mage_Catalog_Block_Category_View && ($category = $parent->getCurrentCategory())) {
             if ($helper->isEnabledForCategory($category)) {
-                $processor->replace($helper->getCssSelector('product_list_price'), $helper->prepareReplacement());
+                $processor->replace($helper->getCssSelector('product_list_price'), $helper->prepareReplacementList());
                 return $processor->getHtml();
             }
         }
@@ -194,7 +194,7 @@ class Mageplace_Callforprice_Model_Observer
         $processor->load($html);
 
         if ($helper->isGlobalEnabled()) {
-            $processor->replace($helper->getCssSelector('upsell_product_price'), $helper->prepareReplacement());
+            $processor->replace($helper->getCssSelector('upsell_product_price'), $helper->prepareReplacementList());
             return $processor->getHtml();
         }
 
@@ -219,7 +219,7 @@ class Mageplace_Callforprice_Model_Observer
         $processor->load($html);
 
         if ($helper->isGlobalEnabled()) {
-            $processor->replace($helper->getCssSelector('upsell_product_price'), $helper->prepareReplacement());
+            $processor->replace($helper->getCssSelector('upsell_product_price'), $helper->prepareReplacementList());
             return $processor->getHtml();
         }
 
@@ -244,7 +244,7 @@ class Mageplace_Callforprice_Model_Observer
         $processor->load($html);
 
         if ($helper->isGlobalEnabled()) {
-            $processor->replace($helper->getCssSelector('compare_product_price'), $helper->prepareReplacement());
+            $processor->replace($helper->getCssSelector('compare_product_price'), $helper->prepareReplacementList());
             $processor->remove($helper->getCssSelector('compare_product_addtocart'));
             return $processor->getHtml();
         }
@@ -270,7 +270,7 @@ class Mageplace_Callforprice_Model_Observer
         $processor->load($html);
 
         if ($helper->isGlobalEnabled()) {
-            $processor->replace($helper->getCssSelector('viewed_product_price'), $helper->prepareReplacement());
+            $processor->replace($helper->getCssSelector('viewed_product_price'), $helper->prepareReplacementList());
             return $processor->getHtml();
         }
 
@@ -295,7 +295,7 @@ class Mageplace_Callforprice_Model_Observer
         $processor->load($html);
 
         if ($helper->isGlobalEnabled()) {
-            $processor->replace($helper->getCssSelector('wishlist_product_price'), $helper->prepareReplacement());
+            $processor->replace($helper->getCssSelector('wishlist_product_price'), $helper->prepareReplacementList());
             $processor->remove($helper->getCssSelector('wishlist_product_addtocart'));
             $processor->remove($helper->getCssSelector('wishlist_product_all_addtocart'));
             return $processor->getHtml();
@@ -322,7 +322,7 @@ class Mageplace_Callforprice_Model_Observer
         $processor->load($html);
 
         if ($helper->isGlobalEnabled()) {
-            $processor->replace($helper->getCssSelector('my_wishlist_product_price'), $helper->prepareReplacement());
+            $processor->replace($helper->getCssSelector('my_wishlist_product_price'), $helper->prepareReplacementList());
             $processor->remove($helper->getCssSelector('my_wishlist_product_addtocart'));
             return $processor->getHtml();
         }
@@ -348,7 +348,7 @@ class Mageplace_Callforprice_Model_Observer
         $processor->load($html);
 
         if ($helper->isGlobalEnabled()) {
-            $processor->replace($helper->getCssSelector('new_product_price'), $helper->prepareReplacement());
+            $processor->replace($helper->getCssSelector('new_product_price'), $helper->prepareReplacementList());
             $processor->remove($helper->getCssSelector('new_product_addtocart'));
             return $processor->getHtml();
         }

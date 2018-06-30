@@ -59,7 +59,7 @@ class Mageplace_Callforprice_Model_Htmlprocessor_Zendquery_Productlist
 
         $processor->replace(
             $helper->getCssSelector('product_list_price'),
-            $this->_getHelper()->prepareReplacement(),
+            $this->_getHelper()->prepareReplacementList(),
             $positions,
             $helper->getCssSelector('product_list_cell')
         );

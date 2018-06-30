@@ -5249,3 +5249,101 @@ body.cms-page-view {
         max-width: calc(100% - 20px) !important;
     }
 }
+
+// Nós ligamos para vocês
+#contact .content {
+    width: 258px;
+    padding: 20px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#contact .content span, 
+#contact .content a {
+    display: block;
+}
+
+#contact .contact-title {
+    margin-bottom: 20px;
+}
+
+#contact a.whatsapp {
+    background: url("../images/whatsapp.svg") 5px center no-repeat;
+}
+
+#contact a.wecall {
+    background: url("../images/ligamos.svg") 5px center no-repeat;
+    width: 100%;
+}
+
+#contact a.button {
+    display: inline-block;
+    font-size: 14px;
+    background-color: #3c2806;
+    border-radius: 3px;
+    padding: 10px;
+    padding-left: 30px;
+    color: #ffffff;
+    margin-bottom: 15px;
+    -webkit-box-shadow: 0px 2px 0px 0px #0a0701;
+    -moz-box-shadow: 0px 2px 0px 0px #0a0701;
+    box-shadow: 0px 2px 0px 0px #0a0701;
+
+    &:hover {
+        opacity: .8;
+    }
+}
+
+
+#contact .contact-item:not(.button) {
+    margin-bottom: 15px;
+    padding: 5px 0 0 40px;
+}
+
+#contact .contact-item.email {
+    background: url("../images/email-icon.svg") 0 center no-repeat;
+    width: 100%;
+}
+
+#contact .contact-item.tel {
+    background: url("../images/tel-icon.svg") 0 center no-repeat;
+    width: 100%;
+}
+
+.ligue-para-mim {
+    width: 100%;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.ligue-para-mim span {
+    display: inline-block;
+    font-size: 14px;
+    width: 100%;
+}
+
+.ligue-para-mim a {
+    display: inline-block;
+    font-weight: 900;
+    text-decoration: none;
+    -moz-transition: all 250ms linear;
+    -ms-transition: all 250ms linear;
+    -o-transition: all 250ms linear;
+    transition: all 250ms linear;
+}
+
+.ligue-para-mim a:hover {
+    opacity: .8;
+}
+
+.ligue-para-mim .contact-item.tel a, 
+.ligue-para-mim .contact-item.email {
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #3B2706;
+}
+
+.ligue-para-mim .contact-item:not(.button) {
+    padding: 7px 0 0 40px;
+}

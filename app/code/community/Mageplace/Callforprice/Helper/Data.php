@@ -72,14 +72,37 @@ class Mageplace_Callforprice_Helper_Data extends Mage_Core_Helper_Abstract
         if (strlen($href)) {
             $href = "href='" . $href . "'";
         }
-
-        $replacement = "<div><a class='callforprice' " . $href
-            . ">" . $message
-            . "</a></div>";
+        
+		$replacement  = "<div id='contact' class='ligue-para-mim'>";
+		$replacement .= "<span class='contact-title'>";
+		$replacement .= "<strong>Produto sob consulta</strong><br/>";
+		$replacement .= 	"Entre em contato conosco para fazer o seu pedido.";
+		$replacement .= "</span>";
+		$replacement .= "<a href='#' class='contact-item whatsapp button'>WhatsApp</a>";
+		$replacement .= "<a href='mailto:atendimento@bancadoramon.com.br' class='contact-item email'>atendimento@bancadoramon.com.br</a>";
+		$replacement .= "<div class='contact-item tel'><a href='tel:.551132281377'>(11)3228-1377</a><br/><a href='tel:551133299300'>(11)3329-9300</a></div>";
+		$replacement .= "</div>";
 
         return $replacement;
     }
 
+    /**
+     * Return prepared message for list products
+     * @return string
+     */
+    public function prepareReplacementList()
+    {
+	    
+		$replacement  = "<div id='contact' class='ligue-para-mim list-ligue ta-c'>";
+		$replacement .= "<span class='contact-title fs-13'>";
+		$replacement .= "<strong class='fs-13 txt d-b bold'>Produto sob consulta</strong>";
+		$replacement .= 	"Entre em contato conosco<br/> para fazer o seu pedido.";
+		$replacement .= "</span>";
+		$replacement .= "</div>";
+
+        return $replacement;
+    }
+    
     /**
      * Is enabled for product
      * @param $product
