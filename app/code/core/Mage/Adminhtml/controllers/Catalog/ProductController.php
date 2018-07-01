@@ -723,7 +723,7 @@ class Mage_Adminhtml_Catalog_ProductController extends Mage_Adminhtml_Controller
             $this->_filterStockData($data['product']['stock_data']);
 
             $product = $this->_initProductSave();
-			// check sku attribute
+            // check sku attribute
             $productSku = $product->getSku();
             if ($productSku && $productSku != Mage::helper('core')->stripTags($productSku)) {
                 $this->_getSession()->addError($this->__('HTML tags are not allowed in SKU attribute.'));
@@ -733,7 +733,9 @@ class Mage_Adminhtml_Catalog_ProductController extends Mage_Adminhtml_Controller
                 ));
                 return;
             }
+
             try {
+                $product->validate();
                 $product->save();
                 $productId = $product->getId();
 

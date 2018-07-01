@@ -161,7 +161,7 @@ class Mage_Adminhtml_Model_System_Store extends Varien_Object
                         $values    = array();
                     }
                     $values[] = array(
-                         'label' => str_repeat($nonEscapableNbspChar, 4) .
+                        'label' => str_repeat($nonEscapableNbspChar, 4) .
                             Mage::helper('core')->escapeHtml($store->getName()),
                         'value' => $store->getId()
                     );
