@@ -59,6 +59,7 @@
                <h2><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h2>
             </a>
             <div class="mob">
+                <div class="price-box">
 	            <?php echo $this->getPriceHtml($_product, true) ?>
                 <?php
                 $Preco = $_product->getFinalPrice();
@@ -68,6 +69,7 @@
                     echo '<p class="cor fs-15 bold">' . $Parcelamento .'x '.number_format($Resultado, 2, ',', '').' sem juros'. '</p>';
                 }
                 ?>
+                </div>
 				 <div class="form-list-product" id="product_addtocart_form_<?php echo $_product->getId()?>"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
 					<div class="list-qtd">
 						<span class="qtd-text">Qtd Minima:</span>

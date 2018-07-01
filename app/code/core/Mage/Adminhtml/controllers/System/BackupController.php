@@ -33,7 +33,7 @@
  */
 class Mage_Adminhtml_System_BackupController extends Mage_Adminhtml_Controller_Action
 {
-	/**
+    /**
      * Controller predispatch method
      *
      * @return Mage_Adminhtml_Controller_Action
@@ -43,6 +43,7 @@ class Mage_Adminhtml_System_BackupController extends Mage_Adminhtml_Controller_A
         $this->_setForcedFormKeyActions('create');
         return parent::preDispatch();
     }
+
     /**
      * Backup list action
      */
