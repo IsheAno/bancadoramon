@@ -227,7 +227,8 @@ class Mage_ImportExport_Model_Import_Entity_Product extends Mage_ImportExport_Mo
      * Error - super products sku not found
      */
     const ERROR_SUPER_PRODUCTS_SKU_NOT_FOUND = 'superProductsSkuNotFound';
-	/**
+
+    /**
      * Error - invalid product sku
      */
     const ERROR_INVALID_PRODUCT_SKU          = 'invalidSku';
@@ -793,7 +794,8 @@ class Mage_ImportExport_Model_Import_Entity_Product extends Mage_ImportExport_Mo
         }
         return true;
     }
-	 /**
+
+    /**
      * Check product sku data.
      *
      * @param array $rowData
@@ -808,6 +810,7 @@ class Mage_ImportExport_Model_Import_Entity_Product extends Mage_ImportExport_Mo
         }
         return true;
     }
+
     /**
      * Custom options save.
      *
@@ -2132,7 +2135,7 @@ class Mage_ImportExport_Model_Import_Entity_Product extends Mage_ImportExport_Mo
         $this->_isTierPriceValid($rowData, $rowNum);
         $this->_isGroupPriceValid($rowData, $rowNum);
         $this->_isSuperProductsSkuValid($rowData, $rowNum);
-		$this->_isProductSkuValid($rowData, $rowNum);
+        $this->_isProductSkuValid($rowData, $rowNum);
     }
 
     /**

@@ -114,7 +114,8 @@
                             selectOnFocus:true,
                             cls:'folder'
                         });
-						this.ge.completeEdit = function(remainVisible) {
+
+                        this.ge.completeEdit = function(remainVisible) {
                             if (!this.editing) {
                                 return;
                             }
@@ -130,6 +131,7 @@
                             this.editNode = node;
                             this.startEdit(node.ui.textNode, node.text);
                         };
+
                         this.root.addListener('beforeinsert', editSet.leftBeforeInsert);
                         this.root.addListener('beforeappend', editSet.leftBeforeInsert);
 
@@ -209,7 +211,7 @@
                 if (!config) return null;
                 if (parent && config && config.length){
                     for (var i = 0; i < config.length; i++) {
-						config[i].input = config[i].text;
+                        config[i].input = config[i].text;
                         config[i].text = config[i].text.escapeHTML();
                         var node = new Ext.tree.TreeNode(config[i]);
                         parent.appendChild(node);
@@ -312,7 +314,7 @@
 
                             var newNode = new Ext.tree.TreeNode({
                                     text : group_name.escapeHTML(),
-									input: group_name,
+                                    input: group_name,
                                     cls : 'folder',
                                     allowDrop : true,
                                     allowDrag : true

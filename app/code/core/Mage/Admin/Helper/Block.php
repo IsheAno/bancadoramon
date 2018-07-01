@@ -56,7 +56,8 @@ class Mage_Admin_Helper_Block
     {
         return isset($this->_allowedTypes[$type]);
     }
-	/**
+
+    /**
      *  Get disallowed names for block
      *
      * @return bool

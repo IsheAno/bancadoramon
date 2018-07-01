@@ -53,7 +53,7 @@ class Mage_Admin_Model_Block extends Mage_Core_Model_Abstract
         if (!Zend_Validate::is($this->getBlockName(), 'NotEmpty')) {
             $errors[] = Mage::helper('adminhtml')->__('Block Name is required field.');
         }
-		 $disallowedBlockNames = Mage::helper('admin/block')->getDisallowedBlockNames();
+        $disallowedBlockNames = Mage::helper('admin/block')->getDisallowedBlockNames();
         if (in_array($this->getBlockName(), $disallowedBlockNames)) {
             $errors[] = Mage::helper('adminhtml')->__('Block Name is disallowed.');
         }

@@ -118,20 +118,21 @@ class Zend_Mail_Transport_Sendmail extends Zend_Mail_Transport_Abstract
                     'Parameters were set but are not a string'
                 );
             }
-			$fromEmailHeader = str_replace(' ', '', $this->parameters);
-             // Sanitize the From header
-             if (!Zend_Validate::is($fromEmailHeader, 'EmailAddress')) {
-                 throw new Zend_Mail_Transport_Exception('Potential code injection in From header');
-             } else {
-                 set_error_handler(array($this, '_handleMailErrors'));
-			 }
-            $result = mail(
-                $this->recipients,
-                $this->_mail->getSubject(),
-                $this->body,
-                $this->header,
-                $fromEmailHeader);
-            restore_error_handler();
+
+            $fromEmailHeader = str_replace(' ', '', $this->parameters);
+            // Sanitize the From header
+            if (!Zend_Validate::is($fromEmailHeader, 'EmailAddress')) {
+                throw new Zend_Mail_Transport_Exception('Potential code injection in From header');
+            } else {
+                set_error_handler(array($this, '_handleMailErrors'));
+                $result = mail(
+                    $this->recipients,
+                    $this->_mail->getSubject(),
+                    $this->body,
+                    $this->header,
+                    $fromEmailHeader);
+                restore_error_handler();
+            }
         }
 
         if ($this->_errstr !== null || !$result) {

@@ -35,29 +35,23 @@ if (!Mage::isInstalled()) {
     exit;
 }
 
-try {
-   $myFile = "cronlog.txt";
-   $fh = fopen($myFile, 'w');
-   $stringData = date('l jS \of F Y h:i:s A');
-   fwrite($fh, $stringData);
-   fclose($fh);
-} catch (Exception $e) {
-   Mage::printException($e);
-}
-
 // Only for urls
 // Don't remove this
 $_SERVER['SCRIPT_NAME'] = str_replace(basename(__FILE__), 'index.php', $_SERVER['SCRIPT_NAME']);
 $_SERVER['SCRIPT_FILENAME'] = str_replace(basename(__FILE__), 'index.php', $_SERVER['SCRIPT_FILENAME']);
 
-Mage::app('admin')->setUseSessionInUrl(false);
+try {
+    Mage::app('admin')->setUseSessionInUrl(false);
+} catch (Exception $e) {
+    Mage::printException($e);
+    exit;
+}
 
 umask(0);
 
 $disabledFuncs = explode(',', ini_get('disable_functions'));
 $isShellDisabled = is_array($disabledFuncs) ? in_array('shell_exec', $disabledFuncs) : true;
 $isShellDisabled = (stripos(PHP_OS, 'win') === false) ? $isShellDisabled : true;
-$isShellDisabled = true;
 
 try {
     if (stripos(PHP_OS, 'win') === false) {
