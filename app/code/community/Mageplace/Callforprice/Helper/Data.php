@@ -78,7 +78,7 @@ class Mageplace_Callforprice_Helper_Data extends Mage_Core_Helper_Abstract
 		$replacement .= "<strong>Produto sob consulta</strong><br/>";
 		$replacement .= 	"Entre em contato conosco para fazer o seu pedido.";
 		$replacement .= "</span>";
-		$replacement .= "<a href='#' class='contact-item whatsapp button'>WhatsApp</a>";
+		$replacement .= "<a href='https://goo.gl/UknDyN' class='contact-item whatsapp button'>WhatsApp</a>";
 		$replacement .= "<a href='mailto:atendimento@bancadoramon.com.br' class='contact-item email'>atendimento@bancadoramon.com.br</a>";
 		$replacement .= "<div class='contact-item tel'><a href='tel:.551132281377'>(11)3228-1377</a><br/><a href='tel:551133299300'>(11)3329-9300</a></div>";
 		$replacement .= "</div>";
