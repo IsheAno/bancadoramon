@@ -75,7 +75,7 @@
                         <notification_email_template translate="label">
                             <label>Email Template</label>
                             <frontend_type>editor</frontend_type>
-                            <frontend_model>stocknotification/adminhtml_system_config_editor</frontend_model>
+                            <!-- <frontend_model>stocknotification/adminhtml_system_config_editor</frontend_model> -->
                             <sort_order>5</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
