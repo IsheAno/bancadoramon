@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <myconf translate="label" module="lowstock">
+            <label>INT Web Solutions</label>
+            <sort_order>192</sort_order>
+            <class>myconf</class>
+        </myconf>
+    </tabs>
+    <sections>
+        <lowstock translate="label" module="lowstock">
+            <label>Low Stock Notification</label>
+            <tab>myconf</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>15</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <group_lowstock translate="label">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <status_select translate="label">
+                            <label>Enable Low Stock Notification</label>
+                            <comment>Enable/Disable Low Stock Notification Extension.</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </status_select>
+                    </fields>
+                </group_lowstock>
+                <group_notificationsetting translate="label">
+                    <label>Notification Email Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>101</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <minstock_text_field translate="label">
+                            <label>Minimum Stock QTY</label>
+                            <comment>Insert qty when you want to be alert. For Example: If you insert 2 then you will notify when product qty is 2 or less.</comment> 
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </minstock_text_field>
+                        <senderemail_text_field translate="label">
+                            <label>Sender Email</label>
+                            <comment>Insert sender email address.</comment> 
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </senderemail_text_field>
+                        <receiveremail_text_field translate="label">
+                            <label>Receiver  Email</label>
+                            <comment>Insert receiver email address.</comment> 
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </receiveremail_text_field>
+                        <notification_email_template translate="label">
+                            <label>Email Template</label>
+                            <frontend_type>editor</frontend_type>
+                            <frontend_model>stocknotification/adminhtml_system_config_editor</frontend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>This template use when product stock is Low.</comment>
+                        </notification_email_template>
+                    </fields>
+                </group_notificationsetting>
+            </groups>
+        </lowstock>
+    </sections>
+</config>
