@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /*
  * Reset
  */
@@ -142,6 +143,7 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
 
 /*
  * Mobile
@@ -310,6 +312,7 @@ div#info-prod {
         height: 32px !important;
     }
 }
+
 
 /*
  * Geral
@@ -3070,6 +3073,11 @@ li.liclickmenu {
     background-image: url(../images/banners/bancadoramon-festajunina-mobile.jpg);
 }
 
+.banner-compre-e-ganhe a {
+    background-image: url(../images/banners/bancadoramon-kitvinhos-mobile.gif);
+}
+
+
 /*
  * Banners CMS
  */
@@ -3277,6 +3285,7 @@ ul.avaliacao-form {
         color: #FFF;
     }
 }
+
 
 /******************************************************************
 Acoes
@@ -3606,6 +3615,7 @@ strong {
     background-color: #3B2705;
 }
 
+
 /*
  * Tablet Portrait
  */
@@ -3882,7 +3892,9 @@ strong {
     .banner-festa-junina a {
         background-image: url(../images/banners/bancadoramon-festajunina-desktop.jpg);
     }
-
+    .banner-compre-e-ganhe a {
+        background-image: url(../images/banners/bancadoramon-kitvinhos-desktop.jpg);
+    }
     /*
    * Banners CMS
    */
@@ -3917,6 +3929,7 @@ strong {
         }
     }
 }
+
 
 /*
  * Tablet Landscape
@@ -4067,6 +4080,7 @@ strong {
     }
 }
 
+
 /*
  * Desktop
  */
@@ -4174,6 +4188,7 @@ strong {
     }
 }
 
+
 /*
  * Tablet Landscape
  */
@@ -4192,6 +4207,7 @@ strong {
         display: none;
     }
 }
+
 
 /*
  * Retina
@@ -4312,6 +4328,7 @@ strong {
         background-size: 235px 51px;
     }
 }
+
 
 /*
  * Edições
@@ -4754,6 +4771,7 @@ span.qtd-text {
     }
 }
 
+
 /*
  * Redes Sociais - Lateral
  */
@@ -4771,6 +4789,7 @@ span.qtd-text {
     }
 }
 
+
 /*
  * Página de Login
  */
@@ -4786,6 +4805,7 @@ span.qtd-text {
         display: inline-block;
     }
 }
+
 
 /*
  * Página de Produto
@@ -4823,6 +4843,7 @@ span.qtd-text {
         text-decoration: underline;
     }
 }
+
 
 /*
  * Página de Carrinho
@@ -4869,6 +4890,7 @@ span.qtd-text {
     margin-left: 15px;
 }
 
+
 /*
  * Mozg Checkout
  */
@@ -4907,6 +4929,7 @@ img.mozg-payment-method-icon {
     display: none;
 }
 
+
 /*
  * Grid
  */
@@ -4930,6 +4953,7 @@ img.mozg-payment-method-icon {
         text-align: center;
     }
 }
+
 
 /*
  * Page Home
@@ -4979,7 +5003,7 @@ img.mozg-payment-method-icon {
     }
     .owl-prev {
         left: 0px;
-        position: absolute; 
+        position: absolute;
         font-size: 0px;
         background: url("../images/ico_prev_carousel.svg") no-repeat;
         width: 13px;
@@ -5037,6 +5061,7 @@ img.mozg-payment-method-icon {
         right: 0px !important;
     }
 }
+
 
 /*
  * Pages CMS
@@ -5240,6 +5265,7 @@ body.cms-page-view {
     }
 }
 
+
 /*
  * Improvements Cart
  */
@@ -5258,7 +5284,7 @@ body.cms-page-view {
     font-weight: 700;
 }
 
-#contact .content span, 
+#contact .content span,
 #contact .content a {
     display: block;
 }
@@ -5288,12 +5314,10 @@ body.cms-page-view {
     -webkit-box-shadow: 0px 2px 0px 0px #0a0701;
     -moz-box-shadow: 0px 2px 0px 0px #0a0701;
     box-shadow: 0px 2px 0px 0px #0a0701;
-
     &:hover {
         opacity: .8;
     }
 }
-
 
 #contact .contact-item:not(.button) {
     margin-bottom: 15px;
@@ -5336,7 +5360,7 @@ body.cms-page-view {
     opacity: .8;
 }
 
-.ligue-para-mim .contact-item.tel a, 
+.ligue-para-mim .contact-item.tel a,
 .ligue-para-mim .contact-item.email {
     font-size: 16px;
     font-weight: 700;
