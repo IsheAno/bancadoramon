@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Core
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2018 Magento, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -212,7 +212,7 @@ class Mage_Core_Block_Template extends Mage_Core_Block_Abstract
 
         // EXTR_SKIP protects from overriding
         // already defined variables
-        extract ($this->_viewVars, EXTR_SKIP);
+        extract($this->_viewVars, EXTR_SKIP);
         $do = $this->getDirectOutput();
 
         if (!$do) {
@@ -237,17 +237,11 @@ HTML;
 
         try {
             $includeFilePath = realpath($this->_viewDir . DS . $fileName);
-               if (strpos($includeFilePath, realpath($this->_viewDir)) === 0 || $this->_getAllowSymlinks()) {
-        if (empty($includeFilePath)) {
-            Mage::Log("Cannot set emptt filename" . $fileName . " on a " . get_class($this) );
-            //Mage::log(Mage::printDebugBacktrace(), null, 'backtrace.log'); //or you can even log the backtrace
-            include $includeFilePath;
-        } else {
-            include $includeFilePath;
-        }
-    } else {
-        Mage::log('Not valid template file:'.$fileName, Zend_Log::CRIT, null, null, true);
-    }
+            if (strpos($includeFilePath, realpath($this->_viewDir)) === 0 || $this->_getAllowSymlinks()) {
+                include $includeFilePath;
+            } else {
+                Mage::log('Not valid template file:'.$fileName, Zend_Log::CRIT, null, null, true);
+            }
 
         } catch (Exception $e) {
             ob_get_clean();

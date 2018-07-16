@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Eav
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2018 Magento, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -808,13 +808,13 @@ abstract class Mage_Eav_Model_Entity_Abstract extends Mage_Core_Model_Resource_A
      *
      * @see Mage_Eav_Model_Entity_Abstract::getAttribute for $attribute format
      * @param integer|string|Mage_Eav_Model_Entity_Attribute_Abstract $attribute
+     *
      * @return boolean
      */
     public function isAttributeStatic($attribute)
     {
-        $attrInstance       = $this->getAttribute($attribute);
-        $attrBackendStatic  = $attrInstance->getBackend()->isStatic();
-        return $attrInstance && $attrBackendStatic;
+        $attrInstance = $this->getAttribute($attribute);
+        return $attrInstance && $attrInstance->getBackend()->isStatic();
     }
 
     /**
@@ -1309,9 +1309,8 @@ abstract class Mage_Eav_Model_Entity_Abstract extends Mage_Core_Model_Resource_A
         $this->_attributeValuesToSave   = array();
         $this->_attributeValuesToDelete = array();
 
-        extract($saveData);
         /**
-         * Import variables into the current symbol table from save data array
+         * Import variables from save data array
          *
          * @see Mage_Eav_Model_Entity_Attribute_Abstract::_collectSaveData()
          *
@@ -1321,6 +1320,12 @@ abstract class Mage_Eav_Model_Entity_Abstract extends Mage_Core_Model_Resource_A
          * @var array $update
          * @var array $delete
          */
+        $newObject = $saveData['newObject'];
+        $entityRow = $saveData['entityRow'];
+        $insert    = $saveData['insert'];
+        $update    = $saveData['update'];
+        $delete    = $saveData['delete'];
+
         $adapter        = $this->_getWriteAdapter();
         $insertEntity   = true;
         $entityTable    = $this->getEntityTable();
@@ -1544,57 +1549,51 @@ abstract class Mage_Eav_Model_Entity_Abstract extends Mage_Core_Model_Resource_A
         $this->_attributeValuesToSave   = array();
         $this->_attributeValuesToDelete = array();
 
-		Mage::log("Atribute with error" .  $attributeCode);
-		
-		if($attributeCode != "password_created_at"){
-			
-		
-	        $attribute      = $this->getAttribute($attributeCode);
-	        $backend        = $attribute->getBackend();
-	        $table          = $backend->getTable();
-	        $entity         = $attribute->getEntity();
-	        $entityIdField  = $entity->getEntityIdField();
-	        $adapter        = $this->_getWriteAdapter();
-	
-	        $row = array(
-	            'entity_type_id' => $entity->getTypeId(),
-	            'attribute_id'   => $attribute->getId(),
-	            $entityIdField   => $object->getData($entityIdField),
-	        );
-	
-	        $newValue = $object->getData($attributeCode);
-	        if ($attribute->isValueEmpty($newValue)) {
-	            $newValue = null;
-	        }
-	
-	        $whereArr = array();
-	        foreach ($row as $field => $value) {
-	            $whereArr[] = $adapter->quoteInto($field . '=?', $value);
-	        }
-	        $where = implode(' AND ', $whereArr);
-	
-	        $adapter->beginTransaction();
-	
-	        try {
-	            $select = $adapter->select()
-	                ->from($table, 'value_id')
-	                ->where($where);
-	            $origValueId = $adapter->fetchOne($select);
-	
-	            if ($origValueId === false && ($newValue !== null)) {
-	                $this->_insertAttribute($object, $attribute, $newValue);
-	            } elseif ($origValueId !== false && ($newValue !== null)) {
-	                $this->_updateAttribute($object, $attribute, $origValueId, $newValue);
-	            } elseif ($origValueId !== false && ($newValue === null)) {
-	                $adapter->delete($table, $where);
-	            }
-	            $this->_processAttributeValues();
-	            $adapter->commit();
-	        } catch (Exception $e) {
-	            $adapter->rollback();
-	            throw $e;
-	        }
-	    }
+        $attribute      = $this->getAttribute($attributeCode);
+        $backend        = $attribute->getBackend();
+        $table          = $backend->getTable();
+        $entity         = $attribute->getEntity();
+        $entityIdField  = $entity->getEntityIdField();
+        $adapter        = $this->_getWriteAdapter();
+
+        $row = array(
+            'entity_type_id' => $entity->getTypeId(),
+            'attribute_id'   => $attribute->getId(),
+            $entityIdField   => $object->getData($entityIdField),
+        );
+
+        $newValue = $object->getData($attributeCode);
+        if ($attribute->isValueEmpty($newValue)) {
+            $newValue = null;
+        }
+
+        $whereArr = array();
+        foreach ($row as $field => $value) {
+            $whereArr[] = $adapter->quoteInto($field . '=?', $value);
+        }
+        $where = implode(' AND ', $whereArr);
+
+        $adapter->beginTransaction();
+
+        try {
+            $select = $adapter->select()
+                ->from($table, 'value_id')
+                ->where($where);
+            $origValueId = $adapter->fetchOne($select);
+
+            if ($origValueId === false && ($newValue !== null)) {
+                $this->_insertAttribute($object, $attribute, $newValue);
+            } elseif ($origValueId !== false && ($newValue !== null)) {
+                $this->_updateAttribute($object, $attribute, $origValueId, $newValue);
+            } elseif ($origValueId !== false && ($newValue === null)) {
+                $adapter->delete($table, $where);
+            }
+            $this->_processAttributeValues();
+            $adapter->commit();
+        } catch (Exception $e) {
+            $adapter->rollback();
+            throw $e;
+        }
 
         return $this;
     }

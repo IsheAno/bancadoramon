@@ -1336,7 +1336,7 @@ class Zend_Locale_Format
         if (PHP_VERSION_ID < 50600) {
             iconv_set_encoding('internal_encoding', $encoding);
         } else {
-           // ini_set('default_charset', $encoding);
+            ini_set('default_charset', $encoding);
         }
     }
 }
