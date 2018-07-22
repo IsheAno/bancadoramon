@@ -114,7 +114,7 @@
                     <flush_events>
                         <core_session_abstract_add_message/>
                     </flush_events>
-<!--                     <only_cache_if>no_text</only_cache_if> -->
+                    <only_cache_if>no_text</only_cache_if>
                 </params>
             </action>
         </reference>
@@ -125,7 +125,7 @@
                     <flush_events>
                         <core_session_abstract_add_message/>
                     </flush_events>
-<!--                     <only_cache_if>no_text</only_cache_if> -->
+                    <only_cache_if>no_text</only_cache_if>
                 </params>
             </action>
         </reference>
