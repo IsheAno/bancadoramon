@@ -4,9 +4,7 @@
     {
         public function getProStock(Varien_Event_Observer $observer)
         {
-            $is_enable = Mage::getStoreConfig('lowstock/group_lowstock/status_select');
-            if($is_enable == 1)
-            {
+
                 $alt_qty = Mage::getStoreConfig('lowstock/group_notificationsetting/minstock_text_field');
                 $product      = $observer->getEvent()->getProduct();
                 $product_name = $product->getName();
@@ -23,28 +21,31 @@
                     $email_template_value = array('{product_name}','{sku}','{qty}');
                     $replace_value        = array($product_name,$sku,$remaning_qty);
                     $message              = str_replace($email_template_value,$replace_value,$email_template);
+                    
                     $subject              = 'Low Stock Notification for '.$product_name;
         
                     try{
-                        $mail = new Zend_Mail();
-                        $mail->setFrom($fromEmail, $fromName);
-                        $mail->addTo($toEmail, $toName);
-                        $mail->setSubject($subject);
-                        $mail->setBodyHtml($message); 
-                        $mail->send();
+                            
+                        $mail = Mage::getModel('core/email')
+                                ->setToEmail($toEmail)
+                                ->setBody($message)
+                                ->setSubject($subject)
+                                ->setFromEmail($fromEmail)
+                                ->setFromName($fromName)
+                                ->setType('html');
+
+                        $mail->send(); 
         
                     }catch(Exception $e){
                         echo $e->getMassage();
                     }
                 }
-            }
+            
         }
         
         public function checkStock(Varien_Event_Observer $observer)
         {
-            $is_enable = Mage::getStoreConfig('lowstock/group_lowstock/status_select');
-            if($is_enable == 1)
-            {
+
                 $order = $observer->getEvent()->getOrder();
                 $all_items = $order->getAllItems();
                 
@@ -68,19 +69,24 @@
                             $email_template_value = array('{product_name}','{sku}','{qty}');
                             $replace_value        = array($product_name,$sku,$remaning_qty);
                             $message              = str_replace($email_template_value,$replace_value,$email_template);
+                            
                             $subject              = 'Low Stock Notification for '.$product_name;
                 
                             try{
-                                $mail = new Zend_Mail();
-                                $mail->setFrom($fromEmail, $fromName);
-                                $mail->addTo($toEmail, $toName);
-                                $mail->setSubject($subject);
-                                $mail->setBodyHtml($message); 
-                                $mail->send();
+
+                                $mail = Mage::getModel('core/email')
+                                        ->setToEmail($toEmail)
+                                        ->setBody($message)
+                                        ->setSubject($subject)
+                                        ->setFromEmail($fromEmail)
+                                        ->setFromName($fromName)
+                                        ->setType('html');
+
+                                        $mail->send(); 
                             }catch(Exception $e){}                            
                         }
                     }
                 }               
-            }
+            
         }
     }
