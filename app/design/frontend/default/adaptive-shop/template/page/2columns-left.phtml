@@ -119,6 +119,22 @@
 		</div>  	
 	   	<?php echo $this->getChildHtml('footer') ?>
 	    <?php echo $this->getChildHtml('before_body_end') ?>
-	    <?php echo $this->getAbsoluteFooter() ?>    
+	    <?php echo $this->getAbsoluteFooter() ?>   
+
+		<script type="text/javascript">
+            $j = jQuery.noConflict();
+
+            $j(document).ready(function() {
+                $j(".list-qtd span.less").on("click", function() {
+                    var qtd_current = parseInt($j(this).parents(".list-qtd").find("input").val());
+                    return qtd_current--, 0 >= qtd_current && (qtd_current = 1), qtd_current > 9 || (qtd_current = qtd_current),$j(this).parents(".list-qtd").find("input").val(qtd_current), !1
+                });
+                $j(".list-qtd span.more").on("click", function() {
+                    var qtd_current = parseInt($j(this).parents(".list-qtd").find("input").val());
+                    return qtd_current++, qtd_current > 9 || (qtd_current = qtd_current), $j(this).parents(".list-qtd").find("input").val(qtd_current), !1
+                });
+            })
+        </script>
+
 	</body>
 </html>

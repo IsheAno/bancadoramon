@@ -1,12 +1,12 @@
-(function ($) {
+(function($) {
 
     var general = {
 
-        init: function () {
+        init: function() {
 
             this.headerCache();
         },
-        headerCache: function () {
+        headerCache: function() {
 
             const baseUrl = location.protocol + '//' + location.host;
 
@@ -74,12 +74,12 @@
 
             var updateFormKey = (formKey) => {
 
-                $('form[action*=form_key]').each(function () {
+                $('form[action*=form_key]').each(function() {
 
                     $(this).attr('action', $(this).attr('action').replace(/form_key\/([a-zA-Z0-9]+)/, 'form_key/' + formKey));
                 });
 
-                $('input[name*=form_key]').each(function () {
+                $('input[name*=form_key]').each(function() {
 
                     $(this).attr('value', formKey);
                 });
@@ -90,7 +90,7 @@
                 $cartContainer.html(cartTemplate(cart.itemsCount));
             };
 
-            $.getJSON(baseUrl + '/session.php', function (data) {
+            $.getJSON(baseUrl + '/session.php', function(data) {
 
                 updateUser(data.isLoggedIn);
                 updateFormKey(data.formKey);
@@ -99,14 +99,36 @@
         },
     };
 
-    $(document).ready(function () {
+    $(document).ready(function() {
 
         general.init();
 
-        $(".form-list-product .qty").keyup(function () {
+        $(".form-list-product .qty").keyup(function() {
 
             var urlCartCatalog = $(this).closest(".form-list-product").find(".bt-nova button").attr('onclick');
             urlCartCatalog = urlCartCatalog.replace(/qty\/.{0,}/, 'qty/' + $(this).val() + "')");
+
+            $(this).closest(".form-list-product").find(".bt-nova button").attr('onclick', urlCartCatalog);
+        });
+
+        $(".list-qtd span.less").on("click", function() {
+
+            var qtd = $(this).closest(".form-list-product").find('.qty').val();
+            qtd = parseInt(qtd) - 1;
+
+            var urlCartCatalog = $(this).closest(".form-list-product").find(".bt-nova button").attr('onclick');
+            urlCartCatalog = urlCartCatalog.replace(/qty\/.{0,}/, 'qty/' + qtd + "')");
+
+            $(this).closest(".form-list-product").find(".bt-nova button").attr('onclick', urlCartCatalog);
+        });
+
+        $(".list-qtd span.more").on("click", function() {
+
+            var qtd = $(this).closest(".form-list-product").find('.qty').val();
+            qtd = parseInt(qtd) + 1;
+
+            var urlCartCatalog = $(this).closest(".form-list-product").find(".bt-nova button").attr('onclick');
+            urlCartCatalog = urlCartCatalog.replace(/qty\/.{0,}/, 'qty/' + qtd + "')");
 
             $(this).closest(".form-list-product").find(".bt-nova button").attr('onclick', urlCartCatalog);
         });

@@ -76,10 +76,16 @@
 						<?php $loadProduct = Mage::getModel('catalog/product')->load( $_product->getId() );?>
 						<?php $minimal_quantity = $this->getMinimalQty($loadProduct); ?>
 						<?php if($_product->isSaleable()): ?>
-							<input style="text-align:center;" class="op-i qty" type="text" name="qty" maxlength="5" value="<?php echo $this->getMinimalQty($loadProduct);?>" />
-					    <?php else: ?>
-							<input style="text-align:center;" class="op-i qty" type="text" name="qty" disabled="disabled" maxlength="5" value="<?php echo $this->getMinimalQty($loadProduct);?>" />
-					    <?php endif; ?>
+                                 
+                            <span class="less">-</span>
+                            <input class="op-i qty" type="text" name="qty" id="qty" maxlength="5" value="<?php echo $this->getMinimalQty($loadProduct);?>" aria-label="Quantidade"/>
+                            <span class="more">+</span>
+                        
+                        <?php else: ?>
+                            <span class="less">-</span>
+                            <input class="op-i qty" type="text" name="qty" id="qty" maxlength="5" disabled="disabled" value="<?php echo $this->getMinimalQty($loadProduct);?>" aria-label="Quantidade"/>
+                            <span class="more">+</span>
+                        <?php endif; ?>
 					 </div>										
 					<div class="bt-nova">
                         <button title="Comprar" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product, array('qty' => $minimal_quantity)) ?>')">Adicionar</button>
