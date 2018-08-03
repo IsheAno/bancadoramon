@@ -72,7 +72,7 @@
                 </div>
 				 <div class="form-list-product" id="product_addtocart_form_<?php echo $_product->getId()?>"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
 					<div class="list-qtd">
-						<span class="qtd-text">Qtd Minima:</span>
+						<span class="qtd-text">Qtd:</span>
 						<?php $loadProduct = Mage::getModel('catalog/product')->load( $_product->getId() );?>
 						<?php $minimal_quantity = $this->getMinimalQty($loadProduct); ?>
 						<?php if($_product->isSaleable()): ?>
