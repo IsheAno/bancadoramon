@@ -8,25 +8,26 @@ See LICENSE.txt for license details.
 * @package    Wyomind_Simplegoogleshopping
 * @license    http://wyomind.com
 */
---> 
+-->
 <config>
     <modules>
         <Wyomind_Simplegoogleshopping>
-            <version>9.4.2.4</version> 
+            <version>9.6.2</version> 
         </Wyomind_Simplegoogleshopping> 
     </modules> 
     <default>
         <simplegoogleshopping>
             <license>
                 <label>Simple Google Shopping</label>
-                <version>9.4.2.4</version>
+                <version>9.6.2</version>
                 <extension_code>sgs</extension_code>
                 <get_online_license>1</get_online_license>
-            </license>
+            <activation_key>8XC2OLQ1BFV1AW3CI</activation_key></license>
             <setting>
                 <report_title>Simple Google Shopping - report </report_title>
             </setting>
             <system>
+                <log_enabled>0</log_enabled>
                 <preview>10</preview>
                 <buffer>10</buffer>
                 <sqlsize>1500</sqlsize>
@@ -35,6 +36,7 @@ See LICENSE.txt for license details.
                 <include_in_menu>0</include_in_menu>
                 <memory_limit>1024</memory_limit>
                 <error_reporting>0</error_reporting>
+                <urlrewrite>1</urlrewrite>
             </system>
         </simplegoogleshopping>
     </default>

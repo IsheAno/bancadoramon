@@ -177,7 +177,7 @@ $data = Mage::getModel('simplegoogleshopping/simplegoogleshopping')->load($id);
                 <?php if ($x > 0): ?>
                     <select style="width:50px; display:<?php echo $display; ?>" 
                             disabled="disabled" class="statement-attribute" id="statement_attribute_<?php echo $x; ?>" 
-                            onchange='datafeedmanager.setValues($("attributes-selector"))' >
+                            onchange='simplegoogleshopping.setValues($("attributes-selector"))' >
                         <option value="AND">AND</option>
                         <option value="OR">OR</option>
                     </select>
@@ -187,18 +187,18 @@ $data = Mage::getModel('simplegoogleshopping/simplegoogleshopping')->load($id);
                 <?php endif; ?>
                     <select style="width:35px;display:none" disabled="disabled" class="parenthesis-open-attribute" 
                             id="parenthesis_open_attribute_<?php echo $x; ?>" 
-                            onchange='datafeedmanager.setValues($("attributes-selector"))'>
+                            onchange='simplegoogleshopping.setValues($("attributes-selector"))'>
                         <option value=""></option>
                         <option value="(">[</option>
                     </select>
                     <select style="width:300px" disabled="disabled" class="name-attribute" 
                             id="name_attribute_<?php echo $x; ?>" 
-                            onchange='datafeedmanager.setValues($("attributes-selector"))' >
+                            onchange='simplegoogleshopping.setValues($("attributes-selector"))' >
                         <?php echo $selectOutput; ?>
                     </select>
                     <select disabled="disabled" class="condition-attribute" 
                             id="condition_attribute_<?php echo $x; ?>" 
-                            onchange='datafeedmanager.setValues($("attributes-selector"))' style="width:100px">
+                            onchange='simplegoogleshopping.setValues($("attributes-selector"))' style="width:100px">
                         <option value="eq"><?php echo $this->__('=') ?></option>
                         <option value="gt"><?php echo $this->__('>') ?></option>
                         <option value="lt"><?php echo $this->__('<') ?></option>
@@ -222,11 +222,11 @@ $data = Mage::getModel('simplegoogleshopping/simplegoogleshopping')->load($id);
                     <input disabled="disabled" type='text' 
                            class="value-attribute <?php echo $advanced; ?>"  
                            id="value_attribute_<?php echo $x; ?>" 
-                           style="width:250px" onkeyup='datafeedmanager.setValues($("attributes-selector"))'/>
+                           style="width:250px" onkeyup='simplegoogleshopping.setValues($("attributes-selector"))'/>
                     <select style="width:35px; position: absolute; right: 9px; top: 0;display:none" 
                             disabled="disabled" class="parenthesis-close-attribute" 
                             id="parenthesis_close_attribute_<?php echo $x; ?>" 
-                            onchange='datafeedmanager.setValues($("attributes-selector"))' >
+                            onchange='simplegoogleshopping.setValues($("attributes-selector"))' >
                         <option value=""></option>
                         <option value=")">]</option>
                     </select>

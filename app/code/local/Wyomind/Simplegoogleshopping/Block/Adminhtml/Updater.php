@@ -8,7 +8,7 @@ class Wyomind_Simplegoogleshopping_Block_Adminhtml_Updater extends Mage_Adminhtm
 
     public function _ToHtml()
     {
-
+        
         $json = array();
         $data = Mage::helper('core')->jsonDecode($this->getRequest()->getPost('data'));
         foreach ($data as $f) {

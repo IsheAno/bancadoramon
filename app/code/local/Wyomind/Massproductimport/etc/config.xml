@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wyomind_Massproductimport>
+            <version>3.2.1</version>
+        </Wyomind_Massproductimport>
+    </modules>
+    <default>
+        <massproductimport>
+            <license>
+                <label>Mass Product Import &amp; Update</label>
+                <version>3.2.1</version>
+                <extension_code>mpui</extension_code>
+                <get_online_license>1</get_online_license>
+            <activation_key>MFHTWGF83NI15ZOAN</activation_key></license>
+            
+            <import>
+                <report_title><![CDATA[Mass Product Import & Update - report ]]></report_title>
+                <backup_enabled>1</backup_enabled>
+               
+            </import>
+            <settings>
+                <log_enabled>1</log_enabled>
+                <sql_dir>var/sql/</sql_dir>
+            </settings>
+        </massproductimport>
+        
+    </default>
+    <frontend>
+        
+        <translate>
+            <modules>
+                <Wyomind_Massproductimport>
+                    <files>
+                        <default>Wyomind_Massproductimport.csv</default>
+                    </files>
+                </Wyomind_Massproductimport>
+            </modules>
+        </translate>
+    </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Wyomind_Massproductimport after="Mage_Adminhtml">Wyomind_Massproductimport_Adminhtml</Wyomind_Massproductimport>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <menu>
+            <system>
+                <children>
+                    <convert>
+                        <children>
+                            <massstockupdate translate="title" module="massproductimport">
+                                <title><![CDATA[Mass Product Import & Update]]></title>
+                                <sort_order>1</sort_order>
+                                <action>adminhtml/massproductimport</action>
+                            </massstockupdate>
+                        </children>
+                    </convert>
+                </children>
+            </system>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <convert>
+                                    <children>
+                                        <massproductimport>
+                                            <title><![CDATA[Mass Product Import & Update]]></title>
+                                        </massproductimport>
+                                    </children>
+                                </convert>
+                                <config>
+                                    <children>
+                                        <massproductimport>
+                                            <title><![CDATA[Mass Product Import & Update]]></title>
+                                        </massproductimport>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <translate>
+            <modules>
+                <Wyomind_Massproductimport>
+                    <files>
+                        <default>Wyomind_Massproductimport.csv</default>
+                    </files>
+                </Wyomind_Massproductimport>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <massproductimport>
+                    <file>massproductimport.xml</file>
+                </massproductimport>
+            </updates>
+        </layout>
+        
+    </adminhtml>
+    <global>
+         
+        
+        <models>
+            <massproductimport>
+                <class>Wyomind_Massproductimport_Model</class>
+                <resourceModel>massproductimport_mysql4</resourceModel>
+            </massproductimport>
+            <massproductimport_mysql4>
+                <class>Wyomind_Massproductimport_Model_Mysql4</class>
+                <entities>
+                    <import>
+                        <table>massproductimport_profile</table>
+                    </import>
+                </entities>
+            </massproductimport_mysql4>
+            
+        </models>
+        <resources>
+           
+           
+            <massproductimport_setup>
+                <setup>
+                    <module>Wyomind_Massproductimport</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </massproductimport_setup>
+            <massproductimport_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </massproductimport_write>
+            <massproductimport_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </massproductimport_read>
+        </resources>
+        <blocks>
+            <massproductimport>
+                <class>Wyomind_Massproductimport_Block</class>
+            </massproductimport>
+           
+        </blocks>
+        <helpers>
+            <massproductimport>
+                <class>Wyomind_Massproductimport_Helper</class>
+            </massproductimport>
+        </helpers>
+    </global>
+    <crontab>
+        <jobs>
+            <massproductimport_profile>
+                <schedule>
+                    <cron_expr>* * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>massproductimport/observer::run</model>
+                </run>
+            </massproductimport_profile>
+            <massstockupdate_profile>
+                <schedule>
+                    <!-- never run anymore -->
+                    <cron_expr>0 0 31 2 0</cron_expr>
+                </schedule>
+                <run>
+                    <model>massstockupdate/observer::run</model>
+                </run>
+            </massstockupdate_profile>
+        </jobs>
+    </crontab>
+</config>

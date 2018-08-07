@@ -1,0 +1,47 @@
+<div id="blackbox" class="draggable resizable">
+    <div class="header">
+        <span id="blackbox-title"></span>
+        <button class="button icon right" id="blackbox-size">
+            <span class="full">✚</span>
+            <span class="reduce hide">✖</span>
+        </button>
+        <button class="button icon right" id="blackbox-display">
+            <span class="arr_up">▲</span>
+            <span class="arr_down hide">▼</span>
+        </button>
+    </div>
+    <div class="content">
+        <div id="content-preview" class="area preview hide">
+
+        </div>
+        <div id="content-notification" class="area notification message-notification">
+            <?php echo __("The preview must be updated."); ?>
+            <br>
+            <?php echo __("Please Click on"); ?>
+            <button class="button icon blackbox-input">
+                <?php echo __("Input data"); ?>
+            </button>
+            or 
+            <button class="button icon blackbox-output">
+                <?php echo __("Output data"); ?> 
+            </button>
+
+        </div>
+        <div id="content-error" class="area error message message-error hide">
+
+        </div>
+        <div id="content-loader" class="area loader hide"></div>
+    </div>
+
+    <div class="footer">
+        <button class="button icon left blackbox-input">
+            <?php echo __("Input data"); ?>
+        </button>
+        <button class="button icon  blackbox-library">
+            <?php echo __("Library"); ?>
+        </button>
+        <button class="button icon right blackbox-output">
+            <?php echo __("Output data"); ?> 
+        </button>
+    </div>
+</div>

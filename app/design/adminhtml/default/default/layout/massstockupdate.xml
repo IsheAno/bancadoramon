@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+   
+    <adminhtml_massstockupdate_index>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>massstockupdate/updater.js</name>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="massstockupdate/adminhtml_import" name="import" />
+        </reference>
+    </adminhtml_massstockupdate_index>
+    <adminhtml_massstockupdate_edit>
+        <reference name="head">
+          
+            
+          
+            <action method="addJs">
+                <name>lib/wyomind/uploader.js</name>
+            </action>
+            
+            <action method="addItem">
+                <type>js_css</type>
+                <name>lib/codemirror-5.36.0/lib/codemirror.css</name>
+            </action>
+            <action method="addItem">
+                <type>js_css</type>
+                <name>lib/codemirror-5.36.0/theme/elegant.css</name>
+            </action>
+            <action method="addJs">
+                <name>lib/codemirror-5.36.0/lib/codemirror.js</name>
+            </action>
+            <action method="addJs">
+                <name>lib/codemirror-5.36.0/addon/display/autorefresh.js</name>
+            </action>
+            <action method="addJs">
+                <name>lib/codemirror-5.36.0/mode/htmlmixed/htmlmixed.js</name>
+            </action>
+            <action method="addJs">
+                <name>lib/codemirror-5.36.0/mode/xml/xml.js</name>
+            </action>
+            <action method="addJs">
+                <name>lib/codemirror-5.36.0/mode/javascript/javascript.js</name>
+            </action>
+            <action method="addJs">
+                <name>lib/codemirror-5.36.0/mode/css/css.js</name>
+            </action>
+            <action method="addJs">
+                <name>lib/codemirror-5.36.0/mode/clike/clike.js</name>
+            </action>
+            <action method="addJs">
+                <name>lib/codemirror-5.36.0/mode/php/php.js</name>
+            </action>
+            
+
+       
+            
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>massstockupdate/import.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>massstockupdate/import.js</name>
+            </action>
+            <reference name="content">
+                <block type="core/template" name="blackbox" template="massstockupdate/blackbox.phtml" after="-"/>
+            </reference>
+        </reference>
+    </adminhtml_massstockupdate_edit>
+    <adminhtml_massstockupdate_updater>
+        
+        <reference name='root'>
+            <action method='setTemplate'>
+                <tpl>massstockupdate/empty.phtml</tpl>
+            </action>
+        </reference>
+       
+        <reference name='content'>
+            <block type="massstockupdate/adminhtml_updater" name="updater"/>    
+        </reference>
+            
+    </adminhtml_massstockupdate_updater>
+    <adminhtml_massstockupdate_upload>
+        
+        <reference name='root'>
+            <action method='setTemplate'>
+                <tpl>massstockupdate/empty.phtml</tpl>
+            </action>
+        </reference>
+       
+        <reference name='content'>
+            <block type="massstockupdate/adminhtml_uploader" name="uploader"/>    
+        </reference>
+            
+    </adminhtml_massstockupdate_upload>
+</layout>

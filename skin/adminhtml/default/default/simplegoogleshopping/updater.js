@@ -33,6 +33,21 @@ var updater = {
                 }
         );
 
+    },
+    generate: function (generate_url) {
+        $$('.action-select').each(function (select) {
+            select.selectedIndex = 0;
+        });
+        new Ajax.Request(
+                generate_url, {
+                    method: 'get',
+                    asynchronous: true,
+                    loaderArea: false,
+                    onSuccess: function () {
+                       location.reload();
+                    }
+                }
+        );
     }
 }
 

@@ -15,6 +15,7 @@ class Wyomind_Simplegoogleshopping_Model_Observer
 
         foreach ($collection as $feed) {
             try {
+                $feed->isCron = true;
                 $log[] = "--> Running profile : " . $feed->getSimplegoogleshoppingFilename() 
                         . ' [#' . $feed->getSimplegoogleshoppingId() . '] <--';
 
@@ -118,7 +119,9 @@ class Wyomind_Simplegoogleshopping_Model_Observer
             }
         }
         
-        Mage::log("\n" . implode($log, "\n"), null, "SimpleGoogleShopping-cron.log");
+        if (Mage::getStoreConfig("simplegoogleshopping/system/log_enabled")) {
+            Mage::log("\n" . implode($log, "\n"), null, "SimpleGoogleShopping-cron.log");
+        }
     }
 
     public function switchCurrency()

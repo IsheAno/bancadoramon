@@ -1,13 +1,12 @@
 <?php
+
 /**
  * Copyright © 2016 Wyomind. All rights reserved.
  * See LICENSE.txt for license details.
  */
-class Wyomind_Simplegoogleshopping_Block_Adminhtml_Simplegoogleshopping_Grid extends Mage_Adminhtml_Block_Widget_Grid
-{
+class Wyomind_Simplegoogleshopping_Block_Adminhtml_Simplegoogleshopping_Grid extends Mage_Adminhtml_Block_Widget_Grid {
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         $this->setId('simplegoogleShoppingGrid');
         $this->setDefaultSort('simplegoogleshopping_id');
@@ -15,8 +14,7 @@ class Wyomind_Simplegoogleshopping_Block_Adminhtml_Simplegoogleshopping_Grid ext
         $this->setSaveParametersInSession(true);
     }
 
-    protected function _prepareCollection()
-    {
+    protected function _prepareCollection() {
         $collection = Mage::getModel('simplegoogleshopping/simplegoogleshopping')->getCollection();
 
         $this->setCollection($collection);
@@ -24,10 +22,9 @@ class Wyomind_Simplegoogleshopping_Block_Adminhtml_Simplegoogleshopping_Grid ext
         return parent::_prepareCollection();
     }
 
-    protected function _prepareColumns()
-    {
+    protected function _prepareColumns() {
         $this->addColumn(
-            'simplegoogleshopping_id', array(
+                'simplegoogleshopping_id', array(
             'header' => $this->__('ID'),
             'align' => 'right',
             'width' => '50px',
@@ -37,7 +34,7 @@ class Wyomind_Simplegoogleshopping_Block_Adminhtml_Simplegoogleshopping_Grid ext
 
 
         $this->addColumn(
-            'simplegoogleshopping_filename', array(
+                'simplegoogleshopping_filename', array(
             'header' => $this->__('File name'),
             'align' => 'left',
             'index' => 'simplegoogleshopping_filename',
@@ -45,7 +42,7 @@ class Wyomind_Simplegoogleshopping_Block_Adminhtml_Simplegoogleshopping_Grid ext
         );
 
         $this->addColumn(
-            'simplegoogleshopping_path', array(
+                'simplegoogleshopping_path', array(
             'header' => $this->__('File path'),
             'align' => 'left',
             'index' => 'simplegoogleshopping_path',
@@ -53,7 +50,7 @@ class Wyomind_Simplegoogleshopping_Block_Adminhtml_Simplegoogleshopping_Grid ext
         );
 
         $this->addColumn(
-            'link', array(
+                'link', array(
             'header' => $this->__('File link'),
             'align' => 'left',
             'index' => 'link',
@@ -63,14 +60,17 @@ class Wyomind_Simplegoogleshopping_Block_Adminhtml_Simplegoogleshopping_Grid ext
                 )
         );
         $this->addColumn(
-            'simplegoogleshopping_status', array(
+                'simplegoogleshopping_status', array(
             'header' => $this->__('Status'),
             'align' => 'left',
+            "filter" => false,
+            "width" => "150px",
+            "sortable" => false,
             'renderer' => 'Wyomind_Simplegoogleshopping_Block_Adminhtml_Simplegoogleshopping_Renderer_Status',
                 )
         );
         $this->addColumn(
-            'simplegoogleshopping_time', array(
+                'simplegoogleshopping_time', array(
             'header' => $this->__('Last update'),
             'align' => 'left',
             'index' => 'simplegoogleshopping_time',
@@ -79,7 +79,7 @@ class Wyomind_Simplegoogleshopping_Block_Adminhtml_Simplegoogleshopping_Grid ext
         );
         if (!Mage::app()->isSingleStoreMode()) {
             $this->addColumn(
-                'store_id', array(
+                    'store_id', array(
                 'header' => $this->__('Store View'),
                 'index' => 'store_id',
                 'type' => 'store',
@@ -89,7 +89,7 @@ class Wyomind_Simplegoogleshopping_Block_Adminhtml_Simplegoogleshopping_Grid ext
 
 
         $this->addColumn(
-            'action', array(
+                'action', array(
             'header' => $this->__('Action'),
             'align' => 'left',
             'index' => 'action',
@@ -104,8 +104,7 @@ class Wyomind_Simplegoogleshopping_Block_Adminhtml_Simplegoogleshopping_Grid ext
         return parent::_prepareColumns();
     }
 
-    public function getRowUrl($row)
-    {
+    public function getRowUrl($row) {
         return false;
     }
 

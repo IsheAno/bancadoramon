@@ -1,0 +1,149 @@
+<?php
+if (stristr(get_class($this), "massstockupdate")) {
+    $helper = "massstockupdate";
+} else {
+    $helper = "massproductimport";
+}
+$template = $this->getRow($helper);
+?>
+<div class='entry-edit'>
+    <div class="entry-edit-head"><h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Column mapping'); ?></h4></div>
+    <div class="fieldset">
+
+
+        <div class="main-box">
+            <div id="import-error"></div>
+
+            <ul id='mapping-area'>
+
+                <li >
+                    <div class='mapping-row '>
+                        <span class='cell head'><div class='icon grip invisible'></div></span>
+                        <span class='cell head'>Target atttribute<span class='icon help'></span></span>
+                        <span class='cell head'></span><span class='cell head'>Data source<span class='icon help'></span></span>
+                        <span class='cell head'>Default Value<span class='icon help'></span>
+                        </span><span class='cell head'></span><span class='cell head'></span>
+                    </div>
+                </li>
+                <li>
+                    <div class='mapping-row dont-sort'>
+
+                        <span class='cell body'><div class='icon grip invisible'></div></span>
+                        <span class='cell body'><select  id='identifier'>
+
+
+                                <?php
+                                $identifier = $this->getModel()->getIdentifierCode();
+
+                                $attributes = Mage::getResourceModel('catalog/product_attribute_collection')->getItems();
+                                $options = array();
+                                foreach ($attributes as $attribute) {
+                                    if ($attribute->getIsUnique()) {
+                                        $selected = "";
+                                        if ($attribute->getAttributeCode() == $identifier) {
+                                            $selected = "selected";
+                                        }
+                                        echo "<option $selected value=" . $attribute->getAttributeCode() . ">" . $attribute->getFrontendLabel() . "</option>";
+                                    }
+                                }
+                                ?>
+                            </select></span>
+                        <span class='cell body'><div class='icon link invisible' ></div></span>
+                        <span class='cell body'><select  id='identifier_source'>
+                                <option value=''><?php echo __("custom value"); ?></option>
+                            </select>
+                        </span>
+                        <span class='cell body'><input type="text" class='default invisible'/></span> 
+                        <?php
+                        $active = "";
+                        if ($this->getModel()->getIdentifierScript() != "") {
+                            $active = "active";
+                        }
+                        ?>
+                        <span class='cell body'><div class='icon code <?php echo $active; ?>'></div><textarea  id="identifier_script" name="identifier_script" class="scripting hidden"><?php echo $this->getModel()->getIdentifierScript(); ?></textarea></span>
+                        <span class='cell body'></span>
+                    </div>
+                </li>
+                      
+                <?php
+                try {
+                    $mapping = Mage::helper("core/data")->jsonDecode($this->getModel()->getMapping());
+                } catch (Exception $e) {
+                    $mapping = [];
+                }
+                foreach ($mapping as $column) {
+                    if (!isset($column['storeviews']) || !count($column['storeviews'])) {
+                        $column['storeviews'] = array(0);
+                    }
+					 if (!isset($column['id'])) {
+                        $column['id'] = "";
+                    }
+                    if (!isset($column['source'])) {
+                        $column['source'] = "";
+                    }
+                    if (!isset($column['default'])) {
+                        $column['default'] = "";
+                    }
+                    if (!isset($column['scripting'])) {
+                        $column['scripting'] = "";
+                    }
+                    if (!isset($column['enabled'])) {
+                        $column['enabled'] = "1";
+                    }
+                    echo $this->getRow($helper, $column['storeviews'], $column['id'], $column['source'], $column['default'], $column['scripting'], $column['enabled']);
+                };
+                ?>
+                <li class='add-row'>
+                    <a class='new-row'><div class='icon add'></div> Add a new row</a>
+                </li>
+            </ul>
+            <div id='overlay'>
+                <div id="scripting"> 
+                    <textarea id="codemirror"></textarea>
+                    <div class='handler'>
+                    <button type="button" class="validate" >Validate</button>
+                    <button type="button" class="cancel" >Cancel</button>
+                    <button type="button" class="clear" >Clear</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    massImportAndUpdate.template = '<?php echo $template; ?>';
+    massImportAndUpdate.loadLibraryUrl = '<?php echo $this->getUrl('*/*/loadlibrary', array('profile_id' => $this->getProfileId())) ?>';
+    massImportAndUpdate.loadFileUrl = '<?php echo $this->getUrl('*/*/loadfile', array('profile_id' => $this->getProfileId())) ?>';
+    massImportAndUpdate.loadPreviewUrl = '<?php echo $this->getUrl('*/*/loadpreview', array('profile_id' => $this->getProfileId())) ?>';
+<?php
+if (stristr(get_class($this), "massstockupdate")) {
+    $helper = "massstockupdate";
+} else {
+    $helper = "massproductimport";
+}
+?>
+
+    massImportAndUpdate.images = {
+        add: {
+            src: "<?php echo $this->getSkinUrl("images/rule_component_add.gif") ?>"
+
+        },
+        remove: {
+            src: "<?php echo $this->getSkinUrl("images/rule_component_remove.gif") ?>"
+
+        }
+    };
+    massImportAndUpdate.translate = {
+        add: "<?php echo $this->__("Add a new column"); ?>",
+        remove: "<?php echo $this->__("Remove this column"); ?>",
+        attribute: "<?php echo $this->__("Attribute"); ?>",
+        value: "<?php echo $this->__("Default value"); ?>"
+    };
+</script>
+
+

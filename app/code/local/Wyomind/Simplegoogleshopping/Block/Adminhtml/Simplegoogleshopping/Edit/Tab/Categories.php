@@ -50,4 +50,11 @@ class Wyomind_Simplegoogleshopping_Block_Adminhtml_Simplegoogleshopping_Edit_Tab
     {
         return count(explode('/', $categoryPath)) - 1;
     }
+    
+    
+    public function getJsonTree()
+    {
+        $treeCategories = Mage::helper('simplegoogleshopping/categories')->getTree();
+        return json_encode($treeCategories);
+    }
 }

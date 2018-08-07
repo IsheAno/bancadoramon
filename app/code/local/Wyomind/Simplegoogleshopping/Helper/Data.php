@@ -1,71 +1,70 @@
 <?php
+
 /**
  * Copyright © 2016 Wyomind. All rights reserved.
  * See LICENSE.txt for license details.
  */
-class Wyomind_Simplegoogleshopping_Helper_Data extends Mage_Core_Helper_Data
-{
+class Wyomind_Simplegoogleshopping_Helper_Data extends Mage_Core_Helper_Data {
 
-    public function checkHeartbeat()
-    {
+    const LOG_FILE = "SimpleGoogleShopping.log";
+
+    public function checkHeartbeat() {
         $lastHeartbeat = $this->getLastHeartbeat();
         if ($lastHeartbeat === false) {
             // no cron task found
             Mage::getSingleton('core/session')->addError(
-                $this->__(
-                    'No cron task found. '
+                    $this->__(
+                            'No cron task found. '
                             . '<a href="https://www.wyomind.com/faq.html#How_do_I_fix_the_issues_with_scheduled_tasks" '
                             . 'target="_blank">Check if cron is configured correctly.</a>'
-                )
+                    )
             );
         } else {
             $timespan = $this->dateDiff($lastHeartbeat);
             if ($timespan <= 5 * 60) {
                 Mage::getSingleton('core/session')->addSuccess(
-                    $this->__('Scheduler is working. (Last cron task: %s minute(s) ago)', round($timespan / 60))
+                        $this->__('Scheduler is working. (Last cron task: %s minute(s) ago)', round($timespan / 60))
                 );
             } elseif ($timespan > 5 * 60 && $timespan <= 60 * 60) {
                 // cron task wasn't executed in the last 5 minutes. 
                 // Heartbeat schedule could have been modified to not run every five minutes!
                 Mage::getSingleton('core/session')->addNotice(
-                    $this->__('Last cron task is older than %s minutes.', round($timespan / 60))
+                        $this->__('Last cron task is older than %s minutes.', round($timespan / 60))
                 );
             } else {
                 // everything ok
                 Mage::getSingleton('core/session')->addError(
-                    $this->__(
-                        'Last cron task is older than one hour. '
-                        . 'Please check your settings and your configuration!'
-                    )
+                        $this->__(
+                                'Last cron task is older than one hour. '
+                                . 'Please check your settings and your configuration!'
+                        )
                 );
             }
         }
     }
 
-    public function getLastHeartbeat()
-    {
+    public function getLastHeartbeat() {
         $schedules = Mage::getModel('cron/schedule')->getCollection();
         /** @var Mage_Cron_Model_Resource_Schedule_Collection $schedules */
         $schedules->setPageSize(1);
         $schedules->setOrder('executed_at', 'DESC');
         $schedules->addFieldToFilter('status', Mage_Cron_Model_Schedule::STATUS_SUCCESS);
         $schedules->load();
-        
+
         if ($schedules->getSize() == 0) {
             return false;
         }
-        
+
         $executedAt = $schedules->getFirstItem()->getExecutedAt();
         $value = Mage::getSingleton('core/date')->date(NULL, $executedAt);
-        
+
         return $value;
     }
 
-    public function dateDiff($firstTime, $secondTime = NULL)
-    {
+    public function dateDiff($firstTime, $secondTime = NULL) {
         $firstTimestamp = strtotime($firstTime);
         $secondTimestamp = strtotime($secondTime);
-        
+
         if (null === $secondTime) {
             $secondTimestamp = Mage::getSingleton('core/date')->timestamp();
         }
@@ -73,8 +72,7 @@ class Wyomind_Simplegoogleshopping_Helper_Data extends Mage_Core_Helper_Data
         return $secondTimestamp - $firstTimestamp;
     }
 
-    public function getDuration($time)
-    {
+    public function getDuration($time) {
         if ($time < 60) {
             $time = ceil($time) . ' sec. ';
         } else {
@@ -83,48 +81,42 @@ class Wyomind_Simplegoogleshopping_Helper_Data extends Mage_Core_Helper_Data
         return $time;
     }
 
-    public function generationStats($googleshopping)
-    {
+    public function generationStats($googleshopping) {
         $filePath = preg_replace(
-            '/^\//', '', 
-            $googleshopping->getSimplegoogleshoppingPath() . $googleshopping->getSimplegoogleshoppingFilename()
+                '/^\//', '', $googleshopping->getSimplegoogleshoppingPath() . $googleshopping->getSimplegoogleshoppingFilename()
         );
-        
+
         $url = (Mage::app()->getStore($googleshopping->getStoreId())
-                ->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) . $filePath);
-        
+                        ->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) . $filePath);
+
         $io = new Varien_Io_File();
-        
+
         if ($io->fileExists(BP . DS . $filePath)) {
             $report = unserialize($googleshopping->getSimplegoogleshoppingReport());
-            $errors = count($report['required']) + count($report['toolong']) + count($report['toomany']) 
-                    + count($report['invalid']);
+            $errors = count($report['required']) + count($report['toolong']) + count($report['toomany']) + count($report['invalid']);
             $warnings = count($report['recommended']);
             $time = $report['stats'][1];
             $items = $report['stats'][0];
 
             $stats = Mage::helper('simplegoogleshopping')->__(
-                '%s product%s exported in %s', 
-                $items, 
-                ($items > 1) ? "s" : null, 
-                Mage::helper('simplegoogleshopping')->getDuration($time)
+                    '%s product%s exported in %s', $items, ($items > 1) ? "s" : null, Mage::helper('simplegoogleshopping')->getDuration($time)
             );
             $urlTime = Mage::getSingleton('core/date')->gmtTimestamp();
-            
+
             if ($report == null) {
                 $message = Mage::helper('simplegoogleshopping')
-                            ->__('The data feed must be generated prior to any report.');
-                
-                return '<a href="' . $url . '?r=' . $urlTime . '" target="_blank">' 
+                        ->__('The data feed must be generated prior to any report.');
+
+                return '<a href="' . $url . '?r=' . $urlTime . '" target="_blank">'
                         . $url . '</a><br>[ ' . $message . " ]";
             } elseif (!($errors + $warnings)) {
                 return '<a href="' . $url . '?r=' . $urlTime . '" target="_blank">' . $url . '</a><br>'
                         . '[ ' . $stats . ", " . Mage::helper('simplegoogleshopping')->__('no error detected') . ' ]';
             } else {
                 return '<a href="' . $url . '?r=' . $urlTime . '" target="_blank">' . $url . '</a><br>'
-                        . '[ ' . $stats . ", " . $errors . " " 
-                        . Mage::helper('simplegoogleshopping')->__('error%s', ($errors > 1) ? "s" : null) 
-                        . ', ' . $warnings . ' ' 
+                        . '[ ' . $stats . ", " . $errors . " "
+                        . Mage::helper('simplegoogleshopping')->__('error%s', ($errors > 1) ? "s" : null)
+                        . ', ' . $warnings . ' '
                         . Mage::helper('simplegoogleshopping')->__('warning%s', ($warnings > 1) ? "s" : null) . ' ]';
             }
         } else {
@@ -132,80 +124,78 @@ class Wyomind_Simplegoogleshopping_Helper_Data extends Mage_Core_Helper_Data
         }
     }
 
-    public function reportToHtml($data)
-    {
+    public function reportToHtml($data) {
         $notice = Mage::helper('simplegoogleshopping')->__(
-            "This report does not replace the error report from Google"
-            . " and is by no means a guarantee that your data feed will be approved by the Google team."
+                "This report does not replace the error report from Google"
+                . " and is by no means a guarantee that your data feed will be approved by the Google team."
         );
         $html = null;
-	 foreach ($data["xml-error"] as $error) {
-            $html.="<h3>" . $error['message'] . " [" . $error['count'] . " " 
+        foreach ($data["xml-error"] as $error) {
+            $html.="<h3>" . $error['message'] . " [" . $error['count'] . " "
                     . Mage::helper('simplegoogleshopping')->__("items") . "]</h3>";
             if ($error['skus'] != "") {
-                $html.="<div class='exemples'>" . Mage::helper('simplegoogleshopping')->__("Examples:") 
+                $html.="<div class='exemples'>" . Mage::helper('simplegoogleshopping')->__("Examples:")
                         . " <b>" . $error['skus'] . "</b></div>";
             }
         }
         foreach ($data["required"] as $error) {
-            $html.="<h3>" . $error['message'] . " [" . $error['count'] . " " 
+            $html.="<h3>" . $error['message'] . " [" . $error['count'] . " "
                     . Mage::helper('simplegoogleshopping')->__("items") . "]</h3>";
             if ($error['skus'] != "") {
-                $html.="<div class='exemples'>" . Mage::helper('simplegoogleshopping')->__("Examples:") 
+                $html.="<div class='exemples'>" . Mage::helper('simplegoogleshopping')->__("Examples:")
                         . " <b>" . $error['skus'] . "</b></div>";
             }
         }
         foreach ($data["recommended"] as $error) {
-            $html.="<h3 style='color:orangered'>" . $error['message'] . " [" . $error['count'] . " " 
+            $html.="<h3 style='color:orangered'>" . $error['message'] . " [" . $error['count'] . " "
                     . Mage::helper('simplegoogleshopping')->__("items") . "]</h3>";
             if ($error['skus'] != "") {
-                $html.="<div class='exemples'>" . Mage::helper('simplegoogleshopping')->__("Examples:") 
+                $html.="<div class='exemples'>" . Mage::helper('simplegoogleshopping')->__("Examples:")
                         . " <b>" . $error['skus'] . "</b></div>";
             }
         }
         foreach ($data["toomany"] as $error) {
-            $html.="<h3>" . $error['message'] . " [" . $error['count'] . " " 
+            $html.="<h3>" . $error['message'] . " [" . $error['count'] . " "
                     . Mage::helper('simplegoogleshopping')->__("items") . "]</h3>";
             if ($error['skus'] != "") {
-                $html.="<div class='exemples'>" . Mage::helper('simplegoogleshopping')->__("Examples:") 
+                $html.="<div class='exemples'>" . Mage::helper('simplegoogleshopping')->__("Examples:")
                         . " <b>" . $error['skus'] . "</b></div>";
             }
         }
         foreach ($data["toolong"] as $error) {
-            $html.="<h3>" . $error['message'] . " [" . $error['count'] . " " 
+            $html.="<h3>" . $error['message'] . " [" . $error['count'] . " "
                     . Mage::helper('simplegoogleshopping')->__("items") . "]</h3>";
             if ($error['skus'] != "") {
-                $html.="<div class='exemples'>" . Mage::helper('simplegoogleshopping')->__("Examples:") 
+                $html.="<div class='exemples'>" . Mage::helper('simplegoogleshopping')->__("Examples:")
                         . " <b>" . $error['skus'] . "</b></div>";
             }
         }
         foreach ($data["invalid"] as $error) {
-            $html.="<h3>" . $error['message'] . " [" . $error['count'] . " " 
+            $html.="<h3>" . $error['message'] . " [" . $error['count'] . " "
                     . Mage::helper('simplegoogleshopping')->__("items") . "]</h3>";
             if ($error['skus'] != "") {
-                $html.="<div class='exemples'>" . Mage::helper('simplegoogleshopping')->__("Examples:") 
+                $html.="<div class='exemples'>" . Mage::helper('simplegoogleshopping')->__("Examples:")
                         . " <b>" . $error['skus'] . "</b></div>";
             }
         }
 
         if ($data == null) {
-            return "<div id='dfm-report'>" . $html . "<br><br><b>" 
-                    . Mage::helper('simplegoogleshopping')->__('The data feed must be generated prior to any report.') 
+            return "<div id='dfm-report'>" . $html . "<br><br><b>"
+                    . Mage::helper('simplegoogleshopping')->__('The data feed must be generated prior to any report.')
                     . "</b></div>";
         } elseif ($html !== null) {
             return "<div id='dfm-report'>" . $notice . $html . "</div>";
         } else {
-            return "<div id='dfm-report'>" . $notice . "<br><br><b>" 
-                    . Mage::helper('simplegoogleshopping')->__('no error detected.') 
+            return "<div id='dfm-report'>" . $notice . "<br><br><b>"
+                    . Mage::helper('simplegoogleshopping')->__('no error detected.')
                     . "</b></div>";
         }
     }
-    
+
     /**
      * @return array $requirements
      */
-    public function getRequirements()
-    {
+    public function getRequirements() {
         $requirements = array(
             /* Basic Product Information */
             array(
@@ -345,7 +335,7 @@ class Wyomind_Simplegoogleshopping_Helper_Data extends Mage_Core_Helper_Data
                 "length" => 70,
                 "type" => "Text",
                 "depends" => array(
-                    "identifier_exists" => array("neq" => "FALSE"), 
+                    "identifier_exists" => array("neq" => "FALSE"),
                     "google_product_category" => array("like" => "Apparel & Accessories")
                 )
             ),
@@ -427,7 +417,7 @@ class Wyomind_Simplegoogleshopping_Helper_Data extends Mage_Core_Helper_Data
                 "type" => "Text",
                 "depends" => array(
                     "google_product_category" => array(
-                        "like" => "Apparel & Accessories > Clothing", 
+                        "like" => "Apparel & Accessories > Clothing",
                         "like" => "Apparel & Accessories > Shoes"
                     )
                 )
@@ -453,7 +443,7 @@ class Wyomind_Simplegoogleshopping_Helper_Data extends Mage_Core_Helper_Data
                 "say" => "regular, petite, plus, big and tall or maternity",
                 "depends" => array(
                     "google_product_category" => array(
-                        "like" => "Apparel & Accessories > Clothing", 
+                        "like" => "Apparel & Accessories > Clothing",
                         "like" => "Apparel & Accessories > Shoes"
                     )
                 )
@@ -469,7 +459,7 @@ class Wyomind_Simplegoogleshopping_Helper_Data extends Mage_Core_Helper_Data
                 "say" => "US, UK, EU, DE, FR, JP, CN, IT, BR, MEX or AU",
                 "depends" => array(
                     "google_product_category" => array(
-                        "like" => "Apparel & Accessories > Clothing", 
+                        "like" => "Apparel & Accessories > Clothing",
                         "like" => "Apparel & Accessories > Shoes"
                     )
                 )
@@ -672,7 +662,51 @@ class Wyomind_Simplegoogleshopping_Helper_Data extends Mage_Core_Helper_Data
                 "type" => "Text"
             ),
         );
-        
+
         return $requirements;
     }
+
+    public function getLogFile() {
+        return self::LOG_FILE;
+    }
+
+    public function childPrice($product) {
+        /*
+         * Must be used in price.html template as follows in combination with the {config_url} variable
+         * list($price,$finalPrice)=Mage::helper("simplegoogleshopping/data")->childPrice($_product); 
+         * $_product->setPrice($price);
+         * $_product->setFinalPrice($finalPrice);
+         */
+        $price = $product->getPrice();
+        $finalPrice = $product->getFinalPrice();
+        $percentage = $finalPrice / $price;
+        $childId = Mage::app()->getRequest()->getParam("c");
+        if ($childId) {
+
+            $attributeArrays = ($product->getTypeInstance(true)->getConfigurableAttributesAsArray($product));
+            foreach ($attributeArrays as $attribute) {
+
+                if (($optionValue = Mage::app()->getRequest()->getParam($attribute["attribute_id"])) !== FALSE) {
+
+                    foreach ($attribute["values"] as $value) {
+
+                        if ($optionValue == $value["value_index"]) {
+
+                            if (!$value['is_percent']) {
+                                $price+=$value["pricing_value"];
+                                $finalPrice+=$value["pricing_value"] * $percentage;
+                            } else {
+                                $price+=$price * $value["pricing_value"] / 100;
+                                $finalPrice+=$specialPrice * $value["pricing_value"] / 100 * $percentage;
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        Mage::app()->getRequest()->setParam("c", false);
+        return array($price, $finalPrice);
+    }
+
 }

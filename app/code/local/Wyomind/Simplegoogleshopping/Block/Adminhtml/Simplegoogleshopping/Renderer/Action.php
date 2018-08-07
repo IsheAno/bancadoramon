@@ -11,10 +11,10 @@ class Wyomind_Simplegoogleshopping_Block_Adminhtml_Simplegoogleshopping_Renderer
         $this->getColumn()->setActions(
             array(
                     array(
-                        'url' => $this->getUrl(
+                        'url' => "javascript:updater.generate('".$this->getUrl(
                             '*/simplegoogleshopping/generate', 
                             array('simplegoogleshopping_id' => $row->getSimplegoogleshoppingId())
-                        ),
+                        )."');",
                         'confirm' => Mage::helper('simplegoogleshopping')->__(
                             'Generate a data feed can take a while. '
                             . 'Are you sure you want to generate it now ?'

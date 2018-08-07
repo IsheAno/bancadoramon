@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+   
+    <adminhtml_massproductimport_index>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>massstockupdate/updater.js</name>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="massproductimport/adminhtml_import" name="import" />
+        </reference>
+    </adminhtml_massproductimport_index>
+    
+    <adminhtml_massproductimport_edit>
+        <update handle="adminhtml_massstockupdate_edit"/>
+        <action method="addItem">
+            <type>skin_css</type>
+            <name>massstockupdate/import.css</name>
+        </action>
+        <action method="addItem">
+            <type>skin_js</type>
+            <name>massstockupdate/import.js</name>
+        </action>
+        
+    </adminhtml_massproductimport_edit>
+    <adminhtml_massproductimport_updater>
+        
+        <reference name='root'>
+            <action method='setTemplate'>
+                <tpl>massstockupdate/empty.phtml</tpl>
+            </action>
+        </reference>
+       
+        <reference name='content'>
+            <block type="massproductimport/adminhtml_updater" name="updater"/>    
+        </reference>
+            
+    </adminhtml_massproductimport_updater>
+    <adminhtml_massproductimport_upload>
+        
+        <reference name='root'>
+            <action method='setTemplate'>
+                <tpl>massstockupdate/empty.phtml</tpl>
+            </action>
+        </reference>
+       
+        <reference name='content'>
+            <block type="massproductimport/adminhtml_uploader" name="uploader"/>    
+        </reference>
+            
+    </adminhtml_massproductimport_upload>
+</layout>

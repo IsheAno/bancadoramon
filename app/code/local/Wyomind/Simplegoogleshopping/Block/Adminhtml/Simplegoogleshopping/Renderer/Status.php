@@ -1,18 +1,19 @@
 <?php
+
 /**
  * Copyright © 2016 Wyomind. All rights reserved.
  * See LICENSE.txt for license details.
  */
-class Wyomind_Simplegoogleshopping_Block_Adminhtml_Simplegoogleshopping_Renderer_Status extends Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Abstract
-{
+class Wyomind_Simplegoogleshopping_Block_Adminhtml_Simplegoogleshopping_Renderer_Status extends Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Abstract {
+
     const _SUCCEED = "SUCCEED";
     const _PENDING = "PENDING";
     const _PROCESSING = "PROCESSING";
+    const _COLLECTING = "COLLECTING";
     const _HOLD = "HOLD";
     const _FAILED = "FAILED";
 
-    public function render(Varien_Object $row)
-    {
+    public function render(Varien_Object $row) {
         $dir = Mage::getBaseDir() . DS . 'var' . DS . 'tmp' . DS;
         $file = $dir . "sgs_" . $row->getId() . ".flag";
 
@@ -23,12 +24,10 @@ class Wyomind_Simplegoogleshopping_Block_Adminhtml_Simplegoogleshopping_Renderer
             $flag->streamOpen($file, 'r');
             $line = $flag->streamReadCsv(";");
             $stats = $flag->streamStat();
-            
-            if ($line[0] == $this::_PROCESSING) {
-                $updatedAt = $stats["mtime"];
-                $taskTime = $line[3];
-                $line[0] = $this->getStatus($line[0], $updatedAt, $taskTime);
-            } elseif ($line[0] == $this::_SUCCEED) {
+
+
+
+            if ($line[0] == $this::_SUCCEED) {
                 $line[0] = $this->checkCronTasks($line[0], $row, $stats["mtime"]);
             }
 
@@ -41,8 +40,13 @@ class Wyomind_Simplegoogleshopping_Block_Adminhtml_Simplegoogleshopping_Renderer
                     $severity = 'minor';
                     $status = Mage::helper("simplegoogleshopping")->__($line[0]);
                     break;
+                case $this::_COLLECTING:
+                    $percent = $line[2];
+                    $severity = 'minor';
+                    $status = Mage::helper("simplegoogleshopping")->__($line[0]) . " [" . $percent . "%]";
+                    break;
                 case $this::_PROCESSING:
-                    $percent = round($line[1] * 100 / $line[2]);
+                    $percent = $line[2];
                     $severity = 'minor';
                     $status = Mage::helper("simplegoogleshopping")->__($line[0]) . " [" . $percent . "%]";
                     break;
@@ -61,55 +65,54 @@ class Wyomind_Simplegoogleshopping_Block_Adminhtml_Simplegoogleshopping_Renderer
             }
         } else {
             $severity = 'minor';
+            $line[1] = "no message";
             $status = Mage::helper("simplegoogleshopping")->__($this::_PENDING);
         }
-        $script = "<script language='javascript' type='text/javascript'>var updater_url='" 
+        $script = "<script language='javascript' type='text/javascript'>var updater_url='"
                 . $this->getUrl('/simplegoogleshopping/updater') . "'</script>";
-        
-        return $script . "<span class='grid-severity-$severity updater' cron='" . $row->getCronExpr() 
+
+        return $script . "<span title=\"" . htmlentities($line[1]) . "\" class='grid-severity-$severity updater' cron='" . $row->getCronExpr()
                 . "' id='feed_" . $row->getId() . "'><span>" . ($status) . "</span></span>";
     }
-    
-    protected function getStatus($status, $updatedAt, $taskTime)
-    {
+
+    protected function getStatus($status, $updatedAt, $taskTime) {
         if (Mage::getSingleton('core/date')->gmtTimestamp() > $updatedAt + ($taskTime * 10)) {
             $status = 'FAILED';
         } elseif (Mage::getSingleton('core/date')->gmtTimestamp() > $updatedAt + ($taskTime * 2)) {
             $status = 'HOLD';
         }
-        
+
         return $status;
     }
-    
-    protected function checkCronTasks($status, Varien_Object $row, $mtime)
-    {
+
+    protected function checkCronTasks($status, Varien_Object $row, $mtime) {
         $cron = array();
         $cron['curent']['localTime'] = Mage::getSingleton('core/date')->timestamp();
         $cron['file']['localTime'] = Mage::getSingleton('core/date')->timestamp($mtime);
         $cronExpr = json_decode($row->getCronExpr());
         $i = 0;
-        foreach ($cronExpr->days as $day) {
-            foreach ($cronExpr->hours as $hour) {
-                $time = explode(':', $hour);
-                
-                if (Mage::getSingleton('core/date')->date('l') == $day) {
-                    $cron['tasks'][$i]['localTime'] = strtotime(Mage::getSingleton('core/date')->date('Y-m-d')) 
-                                                        + ($time[0] * 60 * 60) + ($time[1] * 60);
-                } else {
-                    $cron['tasks'][$i]['localTime'] = strtotime("last " . $day, $cron['curent']['localTime']) 
-                                                        + ($time[0] * 60 * 60) + ($time[1] * 60);
+        if ($cronExpr != null) {
+            foreach ($cronExpr->days as $day) {
+                foreach ($cronExpr->hours as $hour) {
+                    $time = explode(':', $hour);
+
+                    if (Mage::getSingleton('core/date')->date('l') == $day) {
+                        $cron['tasks'][$i]['localTime'] = strtotime(Mage::getSingleton('core/date')->date('Y-m-d')) + ($time[0] * 60 * 60) + ($time[1] * 60);
+                    } else {
+                        $cron['tasks'][$i]['localTime'] = strtotime("last " . $day, $cron['curent']['localTime']) + ($time[0] * 60 * 60) + ($time[1] * 60);
+                    }
+
+                    if ($cron['tasks'][$i]['localTime'] >= $cron['file']['localTime'] && $cron['tasks'][$i]['localTime'] <= $cron['curent']['localTime']
+                    ) {
+                        $status = $this::_PENDING;
+                        continue 2;
+                    }
+                    $i++;
                 }
-                
-                if ($cron['tasks'][$i]['localTime'] >= $cron['file']['localTime'] 
-                        && $cron['tasks'][$i]['localTime'] <= $cron['curent']['localTime']
-                ) {
-                    $status = $this::_PENDING;
-                    continue 2;
-                }
-                $i++;
             }
         }
-        
+
         return $status;
     }
+
 }

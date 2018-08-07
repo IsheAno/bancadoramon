@@ -23,7 +23,7 @@ class Wyomind_Simplegoogleshopping_Model_Resource_Simplegoogleshopping extends M
             $this->options = "options=''";
         }
 
-        if (Mage::getStoreConfig("simplegoogleshopping/system/urlrewrite")) {
+        if (Mage::getStoreConfig("simplegoogleshopping/system/urlrewrite") == 1) {
             $this->notLike = "AND url.target_path NOT LIKE '%category%'";
             $this->concat = 'MAX';
         }
@@ -189,7 +189,7 @@ class Wyomind_Simplegoogleshopping_Model_Resource_Simplegoogleshopping extends M
         $tableCcp = $this->resource->getTableName('catalog_category_product');
         $tableCcpi = $this->resource->getTableName('catalog_category_product_index');
 
-        $collection = Mage::getSingleton('simplegoogleshopping/product_collection')->getCollection()
+        $collection = Mage::getModel('simplegoogleshopping/product_collection')->getCollection()
                 ->addStoreFilter($storeId);
         $collection->addAttributeToFilter('status', 1);
         $collection->addAttributeToFilter('type_id', array("in" => "configurable"));
@@ -567,17 +567,11 @@ class Wyomind_Simplegoogleshopping_Model_Resource_Simplegoogleshopping extends M
                     . ' AND is_system=1 AND ' . $this->options . ' AND url.store_id=' . $storeId, array('request_path' => $this->concat . '(DISTINCT request_path)')
             );
         }
+        
+        
 
         if ($categoriesFilterList[0] != '*') {
-            $v = 0;
-            $filter = null;
-            foreach ($categoriesFilterList as $categoriesFilter) {
-                if ($v > 0) {
-                    $filter.=',';
-                }
-                $filter.=array_pop(explode('/', $categoriesFilter));
-                $v++;
-            }
+            $filter = implode(",",$categoriesFilterList);
 
             if ($categoryFilter) {
                 $in = "IN";

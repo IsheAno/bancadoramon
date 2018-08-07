@@ -160,7 +160,7 @@ $storeId = $collection->getFirstItem()->getStoreId();
 $fullDatafeed = array(
     'simplegoogleshopping_id' => null,
     'simplegoogleshopping_filename' => 'GoogleShopping_full.xml',
-    'simplegoogleshopping_path' => '/',
+    'simplegoogleshopping_path' => '/feeds',
     'simplegoogleshopping_time' => $now,
     'store_id' => $storeId,
     'simplegoogleshopping_url' => 'http//www.example.com',
@@ -186,7 +186,7 @@ $fullDatafeedModel->save();
 $inventoryDatafeed = array(
     'simplegoogleshopping_id' => null,
     'simplegoogleshopping_filename' => 'GoogleShopping_inventory.xml',
-    'simplegoogleshopping_path' => '/',
+    'simplegoogleshopping_path' => '/feeds',
     'simplegoogleshopping_time' => $now,
     'store_id' => $storeId,
     'simplegoogleshopping_url' => 'http//www.example.com',
